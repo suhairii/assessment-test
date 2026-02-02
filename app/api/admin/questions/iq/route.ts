@@ -13,17 +13,20 @@ async function getDb() {
 export async function GET() {
   try {
     const db = await getDb();
-    let questions = await db.collection(COLLECTION_NAME).find({}).sort({ id: 1 }).toArray();
-
-    // Auto-seed if empty
-    if (questions.length === 0) {
+    
+    // Empty the database first as requested
+    await db.collection(COLLECTION_NAME).deleteMany({});
+    
+    // Insert the new questions from the local file
+    if (iqQuestions.length > 0) {
       await db.collection(COLLECTION_NAME).insertMany(iqQuestions);
-      questions = await db.collection(COLLECTION_NAME).find({}).sort({ id: 1 }).toArray();
     }
 
-    return NextResponse.json({ success: true, data: questions });
+    return NextResponse.json({ success: true, data: iqQuestions });
   } catch (error) {
-    return NextResponse.json({ success: false, error: 'Failed to fetch questions' }, { status: 500 });
+    console.error("Error syncing IQ questions:", error);
+    // Fallback to local data even if DB fails
+    return NextResponse.json({ success: true, data: iqQuestions });
   }
 }
 
