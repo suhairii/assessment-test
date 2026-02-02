@@ -1,0 +1,651 @@
+[
+  {
+    "id": "bc09c41d-2fc9-4f98-9c3c-40db95731169",
+    "createdAt": "2026-01-29T02:45:10.942Z",
+    "name": "suhairi",
+    "position": "IT",
+    "date": "2026-01-29",
+    "resultData": {
+      "most": {
+        "D": 5,
+        "I": 5,
+        "S": 4,
+        "C": 4,
+        "X": 0
+      },
+      "least": {
+        "D": 5,
+        "I": 3,
+        "S": 6,
+        "C": 6,
+        "X": 0
+      },
+      "graphMost": {
+        "D": 43,
+        "I": 68,
+        "S": 45,
+        "C": 54
+      },
+      "graphLeast": {
+        "D": 53,
+        "I": 67,
+        "S": 53,
+        "C": 52
+      },
+      "profileCodeMost": "HIHCLSLD",
+      "profileCodeLeast": "HIHDHSHC",
+      "profileTypeMost": "Promoter #58"
+    }
+  },
+  {
+    "id": "d18f1101-4427-4eee-bb41-a76f6269281b",
+    "createdAt": "2026-01-29T02:46:38.626Z",
+    "name": "suhairi",
+    "position": "IT",
+    "date": "2026-01-29",
+    "resultData": {
+      "most": {
+        "D": 4,
+        "I": 5,
+        "S": 6,
+        "C": 1,
+        "X": 0
+      },
+      "least": {
+        "D": 6,
+        "I": 5,
+        "S": 5,
+        "C": 6,
+        "X": 0
+      },
+      "graphMost": {
+        "D": 38,
+        "I": 68,
+        "S": 61,
+        "C": 16
+      },
+      "graphLeast": {
+        "D": 48,
+        "I": 46,
+        "S": 59,
+        "C": 52
+      },
+      "profileCodeMost": "HIHSLDLC",
+      "profileCodeLeast": "HSHCLDLI",
+      "profileTypeMost": "Relater #16",
+      "profileTypeLeast": "Coordinator #20"
+    }
+  },
+  {
+    "id": "e93bcd91-edd7-4a18-8c10-23d7e2eec22a",
+    "createdAt": "2026-01-29T02:52:27.485Z",
+    "name": "Andi Purchasing",
+    "position": "IT",
+    "date": "2026-01-29",
+    "resultData": {
+      "most": {
+        "D": 6,
+        "I": 4,
+        "S": 6,
+        "C": 2,
+        "X": 0
+      },
+      "least": {
+        "D": 6,
+        "I": 4,
+        "S": 5,
+        "C": 3,
+        "X": 0
+      },
+      "graphMost": {
+        "D": 48,
+        "I": 56,
+        "S": 61,
+        "C": 29
+      },
+      "graphLeast": {
+        "D": 48,
+        "I": 55,
+        "S": 59,
+        "C": 74
+      },
+      "profileCodeMost": "HSHILDLC",
+      "profileCodeLeast": "HCHSHILD",
+      "profileTypeMost": "Relater #17"
+    }
+  },
+  {
+    "id": "31e76acd-fc48-4a47-b29b-80ff8441562e",
+    "createdAt": "2026-01-29T02:55:48.644Z",
+    "name": "Budi DeptHead",
+    "position": "IT",
+    "date": "2026-01-29",
+    "resultData": {
+      "most": {
+        "D": 5,
+        "I": 4,
+        "S": 5,
+        "C": 4,
+        "X": 0
+      },
+      "least": {
+        "D": 6,
+        "I": 3,
+        "S": 4,
+        "C": 7,
+        "X": 0
+      },
+      "graphMost": {
+        "D": 43,
+        "I": 56,
+        "S": 55,
+        "C": 54
+      },
+      "graphLeast": {
+        "D": 48,
+        "I": 67,
+        "S": 67,
+        "C": 47
+      },
+      "profileCodeMost": "HIHSHCLD",
+      "profileCodeLeast": "HIHSLDLC",
+      "profileTypeMost": "Promoter #47",
+      "profileTypeLeast": "Relater #16",
+      "highestMost": {
+        "trait": "I",
+        "value": 56,
+        "label": "I Tinggi"
+      },
+      "highestLeast": {
+        "trait": "I",
+        "value": 67,
+        "label": "I Tinggi"
+      }
+    }
+  },
+  {
+    "id": "0fb343e5-adbb-406b-b0bb-e77a671adaef",
+    "createdAt": "2026-01-29T02:56:20.768Z",
+    "name": "Budi DeptHead",
+    "position": "IT",
+    "date": "2026-01-29",
+    "resultData": {
+      "most": {
+        "D": 6,
+        "I": 2,
+        "S": 6,
+        "C": 2,
+        "X": 0
+      },
+      "least": {
+        "D": 2,
+        "I": 4,
+        "S": 6,
+        "C": 7,
+        "X": 0
+      },
+      "graphMost": {
+        "D": 48,
+        "I": 35,
+        "S": 61,
+        "C": 29
+      },
+      "graphLeast": {
+        "D": 75,
+        "I": 55,
+        "S": 53,
+        "C": 47
+      },
+      "profileCodeMost": "HSLDLILC",
+      "profileCodeLeast": "HDHIHSLC",
+      "profileTypeMost": "Supporter #5",
+      "highestMost": {
+        "trait": "S",
+        "value": 61,
+        "label": "S Tinggi"
+      },
+      "highestLeast": {
+        "trait": "D",
+        "value": 75,
+        "label": "D Tinggi"
+      }
+    }
+  },
+  {
+    "id": "1f8f2261-0df6-4f54-857c-3a881cc0f4b1",
+    "createdAt": "2026-01-29T02:57:22.977Z",
+    "name": "suhairi",
+    "position": "IT",
+    "date": "2026-01-29",
+    "resultData": {
+      "most": {
+        "D": 2,
+        "I": 6,
+        "S": 7,
+        "C": 3,
+        "X": 0
+      },
+      "least": {
+        "D": 5,
+        "I": 1,
+        "S": 7,
+        "C": 7,
+        "X": 0
+      },
+      "graphMost": {
+        "D": 24,
+        "I": 73,
+        "S": 67,
+        "C": 40
+      },
+      "graphLeast": {
+        "D": 53,
+        "I": 86,
+        "S": 42,
+        "C": 47
+      },
+      "profileCodeMost": "HIHSLCLD",
+      "profileCodeLeast": "HIHDLCLS",
+      "profileTypeMost": "Relater #16",
+      "profileTypeLeast": "Persuader #13",
+      "highestMost": {
+        "trait": "I",
+        "value": 73,
+        "label": "I Tinggi"
+      },
+      "highestLeast": {
+        "trait": "I",
+        "value": 86,
+        "label": "I Tinggi"
+      }
+    }
+  },
+  {
+    "id": "3f226e4b-604c-483f-ad8c-10a982719ede",
+    "createdAt": "2026-01-29T02:57:35.619Z",
+    "name": "suhairi",
+    "position": "IT",
+    "date": "2026-01-29",
+    "resultData": {
+      "most": {
+        "D": 4,
+        "I": 4,
+        "S": 5,
+        "C": 4,
+        "X": 0
+      },
+      "least": {
+        "D": 5,
+        "I": 5,
+        "S": 5,
+        "C": 3,
+        "X": 0
+      },
+      "graphMost": {
+        "D": 38,
+        "I": 56,
+        "S": 55,
+        "C": 54
+      },
+      "graphLeast": {
+        "D": 53,
+        "I": 46,
+        "S": 59,
+        "C": 74
+      },
+      "profileCodeMost": "HIHSHCLD",
+      "profileCodeLeast": "HCHSHDLI",
+      "profileTypeMost": "Promoter #47",
+      "profileTypeLeast": "Analyzer #38",
+      "highestMost": {
+        "trait": "I",
+        "value": 56,
+        "label": "I Tinggi"
+      },
+      "highestLeast": {
+        "trait": "C",
+        "value": 74,
+        "label": "C Tinggi"
+      }
+    }
+  },
+  {
+    "id": "8492f036-ded9-4fc3-904f-af4ba7dc77f5",
+    "createdAt": "2026-01-29T02:58:29.449Z",
+    "name": "suhairi",
+    "position": "IT",
+    "date": "2026-01-29",
+    "resultData": {
+      "most": {
+        "D": 5,
+        "I": 4,
+        "S": 3,
+        "C": 2,
+        "X": 0
+      },
+      "least": {
+        "D": 4,
+        "I": 7,
+        "S": 3,
+        "C": 4,
+        "X": 0
+      },
+      "graphMost": {
+        "D": 43,
+        "I": 56,
+        "S": 38,
+        "C": 29
+      },
+      "graphLeast": {
+        "D": 59,
+        "I": 28,
+        "S": 75,
+        "C": 65
+      },
+      "profileCodeMost": "HILDLSLC",
+      "profileCodeLeast": "HSHCHDLI",
+      "profileTypeMost": "Promoter #3",
+      "highestMost": {
+        "trait": "I",
+        "value": 56,
+        "label": "I Tinggi"
+      },
+      "highestLeast": {
+        "trait": "S",
+        "value": 75,
+        "label": "S Tinggi"
+      }
+    }
+  },
+  {
+    "id": "3b3fbccf-2b2c-48cd-a4c6-20a2d7145495",
+    "createdAt": "2026-01-29T03:06:48.800Z",
+    "name": "suhairi",
+    "position": "IT",
+    "date": "2026-01-29",
+    "resultData": {
+      "most": {
+        "D": 1,
+        "I": 2,
+        "S": 7,
+        "C": 6,
+        "X": 0
+      },
+      "least": {
+        "D": 5,
+        "I": 6,
+        "S": 2,
+        "C": 2,
+        "X": 0
+      },
+      "graphMost": {
+        "D": 15,
+        "I": 35,
+        "S": 67,
+        "C": 73
+      },
+      "graphLeast": {
+        "D": 53,
+        "I": 37,
+        "S": 85,
+        "C": 82
+      },
+      "profileCodeMost": "HCHSLILD",
+      "profileCodeLeast": "HSHCHDLI",
+      "profileTypeMost": "Coordinator #21",
+      "highestMost": {
+        "trait": "C",
+        "value": 73,
+        "label": "C Tinggi"
+      },
+      "highestLeast": {
+        "trait": "S",
+        "value": 85,
+        "label": "S Tinggi"
+      }
+    }
+  },
+  {
+    "id": "5e88ae0d-388e-47df-91a3-96ee0a3d3e26",
+    "createdAt": "2026-01-29T03:07:38.051Z",
+    "name": "Budi DeptHead",
+    "position": "IT",
+    "date": "2026-01-29",
+    "resultData": {
+      "most": {
+        "D": 7,
+        "I": 5,
+        "S": 6,
+        "C": 3,
+        "X": 0
+      },
+      "least": {
+        "D": 4,
+        "I": 6,
+        "S": 3,
+        "C": 6,
+        "X": 0
+      },
+      "graphMost": {
+        "D": 53,
+        "I": 68,
+        "S": 61,
+        "C": 40
+      },
+      "graphLeast": {
+        "D": 59,
+        "I": 37,
+        "S": 75,
+        "C": 52
+      },
+      "profileCodeMost": "HIHSHDLC",
+      "profileCodeLeast": "HSHDHCLI",
+      "profileTypeMost": "Promoter #30",
+      "highestMost": {
+        "trait": "I",
+        "value": 68,
+        "label": "I Tinggi"
+      },
+      "highestLeast": {
+        "trait": "S",
+        "value": 75,
+        "label": "S Tinggi"
+      }
+    }
+  },
+  {
+    "id": "0ebc53c7-e5e0-4e06-86c5-c0fbbd953dd2",
+    "createdAt": "2026-01-29T03:07:48.605Z",
+    "name": "Andi Purchasing",
+    "position": "IT",
+    "date": "2026-01-29",
+    "resultData": {
+      "most": {
+        "D": 6,
+        "I": 3,
+        "S": 7,
+        "C": 4,
+        "X": 0
+      },
+      "least": {
+        "D": 5,
+        "I": 4,
+        "S": 3,
+        "C": 6,
+        "X": 0
+      },
+      "graphMost": {
+        "D": 48,
+        "I": 43,
+        "S": 67,
+        "C": 54
+      },
+      "graphLeast": {
+        "D": 53,
+        "I": 55,
+        "S": 75,
+        "C": 52
+      },
+      "profileCodeMost": "HSHCLDLI",
+      "profileCodeLeast": "HSHIHDHC",
+      "profileTypeMost": "Coordinator #20",
+      "highestMost": {
+        "trait": "S",
+        "value": 67,
+        "label": "S Tinggi"
+      },
+      "highestLeast": {
+        "trait": "S",
+        "value": 75,
+        "label": "S Tinggi"
+      }
+    }
+  },
+  {
+    "id": "ee93d9b3-c5b3-49cb-aaae-467bb3fc7eb1",
+    "createdAt": "2026-01-29T03:08:06.491Z",
+    "name": "Budi DeptHead",
+    "position": "IT",
+    "date": "2026-01-29",
+    "resultData": {
+      "most": {
+        "D": 6,
+        "I": 2,
+        "S": 3,
+        "C": 4,
+        "X": 0
+      },
+      "least": {
+        "D": 5,
+        "I": 3,
+        "S": 5,
+        "C": 5,
+        "X": 0
+      },
+      "graphMost": {
+        "D": 48,
+        "I": 35,
+        "S": 38,
+        "C": 54
+      },
+      "graphLeast": {
+        "D": 53,
+        "I": 67,
+        "S": 59,
+        "C": 58
+      },
+      "profileCodeMost": "HCLDLSLI",
+      "profileCodeLeast": "HIHSHCHD",
+      "profileTypeMost": "Analyzer #7",
+      "profileTypeLeast": "Promoter #47",
+      "highestMost": {
+        "trait": "C",
+        "value": 54,
+        "label": "C Tinggi"
+      },
+      "highestLeast": {
+        "trait": "I",
+        "value": 67,
+        "label": "I Tinggi"
+      }
+    }
+  },
+  {
+    "id": "af8ece95-8222-4c8c-bf73-ad6267f1dfba",
+    "createdAt": "2026-01-29T03:08:47.389Z",
+    "name": "Budi DeptHead",
+    "position": "IT",
+    "date": "2026-01-29",
+    "resultData": {
+      "most": {
+        "D": 7,
+        "I": 7,
+        "S": 3,
+        "C": 2,
+        "X": 0
+      },
+      "least": {
+        "D": 5,
+        "I": 5,
+        "S": 7,
+        "C": 3,
+        "X": 0
+      },
+      "graphMost": {
+        "D": 53,
+        "I": 83,
+        "S": 38,
+        "C": 29
+      },
+      "graphLeast": {
+        "D": 53,
+        "I": 46,
+        "S": 42,
+        "C": 74
+      },
+      "profileCodeMost": "HIHDLSLC",
+      "profileCodeLeast": "HCHDLILS",
+      "profileTypeMost": "Persuader #13",
+      "profileTypeLeast": "Implementor #24",
+      "highestMost": {
+        "trait": "I",
+        "value": 83,
+        "label": "I Tinggi"
+      },
+      "highestLeast": {
+        "trait": "C",
+        "value": 74,
+        "label": "C Tinggi"
+      }
+    }
+  },
+  {
+    "id": "5d8e756f-e509-409c-9e0f-0f6b6b7ec9b3",
+    "createdAt": "2026-01-29T03:09:24.576Z",
+    "name": "Budi DeptHead",
+    "position": "IT",
+    "date": "2026-01-29",
+    "resultData": {
+      "most": {
+        "D": 2,
+        "I": 8,
+        "S": 3,
+        "C": 5,
+        "X": 0
+      },
+      "least": {
+        "D": 12,
+        "I": 1,
+        "S": 2,
+        "C": 3,
+        "X": 0
+      },
+      "graphMost": {
+        "D": 24,
+        "I": 88,
+        "S": 38,
+        "C": 66
+      },
+      "graphLeast": {
+        "D": 21,
+        "I": 86,
+        "S": 85,
+        "C": 74
+      },
+      "profileCodeMost": "HIHCLSLD",
+      "profileCodeLeast": "HIHSHCLD",
+      "profileTypeMost": "Promoter #58",
+      "profileTypeLeast": "Promoter #47",
+      "highestMost": {
+        "trait": "I",
+        "value": 88,
+        "label": "I Tinggi"
+      },
+      "highestLeast": {
+        "trait": "I",
+        "value": 86,
+        "label": "I Tinggi"
+      }
+    }
+  }
+]

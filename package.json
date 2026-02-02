@@ -1,5 +1,5 @@
 {
-  "name": "frexor-assessment-clone",
+  "name": "disc-assessment-system",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -9,9 +9,13 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "@vercel/blob": "^2.0.1",
+    "lucide-react": "^0.563.0",
+    "mongodb": "^7.0.0",
     "next": "16.1.5",
     "react": "19.2.3",
-    "react-dom": "19.2.3"
+    "react-dom": "19.2.3",
+    "swr": "^2.3.8"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",

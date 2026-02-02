@@ -1,0 +1,903 @@
+{
+  "about": {
+    "keystrengths": [],
+    "improves": [],
+    "tendencies": {},
+    "vak": "1 VAK Tentang Working Style Test.pdf",
+    "iq": "1 IQ Tentang Aptitude Test.pdf",
+    "disc": "1 DISC Tentang Attitude Test.pdf"
+  },
+  "pdf": {
+    "keystrengths": [],
+    "improves": [],
+    "tendencies": {},
+    "name.vak": "2 VAK Lembar Soal & Jawaban Working Style Test.pdf",
+    "name.iq": "2 IQ Lembar Soal & Jawaban Aptitude Test.pdf",
+    "name.disc": "2 DISC Soal Attitude Test.pdf"
+  },
+  "guide": {
+    "keystrengths": [],
+    "improves": [],
+    "tendencies": {},
+    "disc": "3 DISC Cara Mengisi Attitude Test.pdf",
+    "vak": "3 VAK Cara Mengisi Working Style Test.pdf",
+    "iq": "3 IQ Cara Mengisi Aptitude Test.pdf"
+  },
+  "column": {
+    "keystrengths": [],
+    "improves": [],
+    "tendencies": {},
+    "answer": "Jawaban",
+    "correct": "Benar"
+  },
+  "button": {
+    "keystrengths": [],
+    "improves": [],
+    "tendencies": {},
+    "back": "Kembali",
+    "submit": "Kirim"
+  },
+  "Analyzer7": {
+    "keystrengths": [
+      "Kemampuan untuk melakukan tugas yang berat dengan benar pada pertama kali",
+      "Waspada dan peka terhadap kesalahan pada saat ketepatan dan akurasi diperlukan",
+      "Profesional dan disiplin dalam pendekatan mereka yang berkaitan dengan bidang keahlian mereka",
+      "Keterampilan organisasi, bijak menggunakan waktu"
+    ],
+    "improves": [
+      "Mengurangi perfeksionis",
+      "Kurangi pendekatan \"berdasarkan buku\"",
+      "Lebih antusias, kurangi ketergantungan pada data"
+    ],
+    "tendencies": {
+      "goal": "TUJUAN: Akurasi dan kualitas",
+      "judge": "MENILAI ORANG LAIN DENGAN: Hasil yang benar dan fakta yang disajikan",
+      "influence": "MEMPENGARUHI ORANG LAIN DENGAN: Penggunaan data dan ketepatan",
+      "valueorg": "NILAI TERHADAP ORGANISASI: Standar yang tinggi untuk diri sendiri dan bawahan, disiplin",
+      "overuses": "BERLEBIHAN MENGGUNAKAN:  Peraturan-peraturan",
+      "understress": "KETIKA DI BAWAH TEKANAN: Menjadi terlalu kritis terhadap diri sendiri dan orang lain",
+      "fears": "KETAKUTAN: Keputusan berisiko tinggi"
+    }
+  },
+  "Coordinator21": {
+    "keystrengths": [
+      "Kemampuan untuk menetapkan dan mencapai standar perilaku kerja yang tinggi",
+      "Waspada dan peka terhadap masalah, aturan, kesalahan dan prosedur",
+      "Kemampuan untuk membuat keputusan sulit tanpa terganggu emosi",
+      "Kemampuan untuk memahami dan memelihara kebutuhan untuk sistem yang berkualitas"
+    ],
+    "improves": [
+      "Menyatakan perasaan yang sebenarnya tentang isu-isu",
+      "Kurangi kekhawatiran bahwa perubahan dapat merusak hubungan atau kualitas",
+      "Lebih percaya diri, interdependensi"
+    ],
+    "tendencies": {
+      "goal": "TUJUAN: Keamanan dan kerapian",
+      "judge": "MENILAI ORANG LAIN DENGAN: Standar yang tepat",
+      "influence": "MEMPENGARUHI ORANG LAIN DENGAN: Hal yang dapat diandalkan, perhatian terhadap detail",
+      "valueorg": "NILAI TERHADAP ORGANISASI: Kesadaran, mempertahankan standar",
+      "overuses": "BERLEBIHAN MENGGUNAKAN: Ketergantungan pada Standar Prosedur Operasi (SOP)",
+      "understress": "KETIKA DI BAWAH TEKANAN: Menjadi introver, keras kepala",
+      "fears": "KETAKUTAN: Pertentangan"
+    }
+  },
+  "Implementor24": {
+    "keystrengths": [
+      "Kemampuan untuk melakukan pekerjaan yang berkualitas sambil mencari cara-cara baru untuk meningkatkan kuantitas",
+      "Kemampuan untuk membuat keputusan sulit, menggunakan wawasan dan fakta, namun tetap tidak emosional",
+      "Kemampuan untuk menemukan solusi yang dapat diterima untuk masalah",
+      "Mengharapkan dan menantang tim untuk standar kinerja yang lebih tinggi"
+    ],
+    "improves": [
+      "Menjadi peka terhadap perasaan orang lain",
+      "Mengurangi sikap terus terang & terlalu langsung",
+      "Lebih menampilkan ketulusan"
+    ],
+    "tendencies": {
+      "goal": "TUJUAN: Merancang sistem",
+      "judge": "MENILAI ORANG LAIN DENGAN: Standar tinggi mereka sendiri",
+      "influence": "MEMPENGARUHI ORANG LAIN DENGAN: Pengaturan langkah dalam mengembangkan sistem",
+      "valueorg": "NILAI TERHADAP ORGANISASI: Tepat, pekerja teliti",
+      "overuses": "BERLEBIHAN MENGGUNAKAN: Fakta dan angka",
+      "understress": "KETIKA DI BAWAH TEKANAN: Mengambil terlalu banyak",
+      "fears": "KETAKUTAN: Disorganisasi"
+    }
+  },
+  "Analyzer60": {
+    "keystrengths": [
+      "Seorang promotor sistem yang berkualitas",
+      "Rasa urgensi yang baik sambil mempertahankan standar yang tinggi",
+      "Terorganisir, bahkan dalam hubungan. Menghargai orang dengan ide yang sama, suka yang terorganisir dan sadar akan kualitas",
+      "Peka terhadap perubahan lingkungan sosial dan pekerjaan"
+    ],
+    "improves": [
+      "Menjadi lebih menerima ide-ide dan keyakinan orang lain",
+      "Menetapkan tujuan yang realistis",
+      "Tidak menjadi terlalu sensitif terhadap komentar orang lain"
+    ],
+    "tendencies": {
+      "goal": "TUJUAN: Diplomatis",
+      "judge": "MENILAI ORANG LAIN DENGAN: Siapa yang mereka tahu, nama baik dan prestasinya",
+      "influence": "MEMPENGARUHI ORANG LAIN DENGAN: Strategi dengan hubungan baik",
+      "valueorg": "NILAI TERHADAP ORGANISASI: Menciptakan lingkungan kerja yang baik",
+      "overuses": "BERLEBIHAN MENGGUNAKAN: Kebijaksanaan",
+      "understress": "KETIKA DI BAWAH TEKANAN: Menjadi terlalu ramah tamah",
+      "fears": "KETAKUTAN: Harus menukar kualitas dengan hubungan yang baik"
+    }
+  },
+  "Analyzer55": {
+    "keystrengths": [
+      "Kemampuan untuk menyelesaikan banyak proyek dengan standar tinggi",
+      "Kemampuan untuk mempertahankan perasaan yang kuat pada isu-isu tertentu",
+      "Kemampuan untuk mendapatkan hasil melalui orang lain",
+      "Mempertahankan standar dengan mengikuti prosedur yang telah terbukti"
+    ],
+    "improves": [
+      "Tidak terlalu mengendalikan situasi",
+      "Menjadi realistis ketika menilai orang",
+      "Menjadi lebih mudah beradaptasi di bawah tekanan"
+    ],
+    "tendencies": {
+      "goal": "TUJUAN: Banyak tantangan",
+      "judge": "MENILAI ORANG LAIN DENGAN: Keterampilan dan komitmen mereka",
+      "influence": "MEMPENGARUHI ORANG LAIN DENGAN: Menjadi optimis",
+      "valueorg": "NILAI TERHADAP ORGANISASI: Menggabungkan tugas dan keterampilan yang berhubungan dengan orang",
+      "overuses": "BERLEBIHAN MENGGUNAKAN: Standar Prosedur",
+      "understress": "KETIKA DI BAWAH TEKANAN: Menjadi mengendalikan",
+      "fears": "KETAKUTAN: Tidak memenuhi tenggat waktu"
+    }
+  },
+  "Analyzer38": {
+    "keystrengths": [
+      "Kemampuan berjuang keras untuk hasil dan/atau prosedur untuk memastikan kualitas dan ketepatan",
+      "Kemampuan dalam mengajukan pertanyaan yang tepat untuk mengungkap fakta tersembunyi",
+      "Menghindari favoritisme ketika mengevaluasi personil",
+      "Menggabungkan kemampuan analisis dan intuitif ketika berhadapan dengan isu-isu kompleks"
+    ],
+    "improves": [
+      "Mengurangi analisis untuk mencapai kebenaran",
+      "Tidak menyembunyikan emosi dan mengekspresikan lebih banyak pikiran kepada orang lain",
+      "Berbagi informasi, kerjasama tim"
+    ],
+    "tendencies": {
+      "goal": "TUJUAN: Pemecah masalah",
+      "judge": "MENILAI ORANG LAIN DENGAN: Penggunaan data mereka",
+      "influence": "MEMPENGARUHI ORANG LAIN DENGAN: Fakta dan angka",
+      "valueorg": "NILAI TERHADAP ORGANISASI: Mandiri menerima tugas yang menantang",
+      "overuses": "BERLEBIHAN MENGGUNAKAN: Perfeksionis",
+      "understress": "KETIKA DI BAWAH TEKANAN: Menjadi terus terang",
+      "fears": "KETAKUTAN: Kontak dengan orang, resiko tinggi dan kurangnya privasi"
+    }
+  },
+  "Conductor1": {
+    "keystrengths": [
+      "Kemampuan untuk mengatasi masalah yang berurusan dengan banyak hal",
+      "Memandang ke depan, agresif dan kompetitif",
+      "Kemampuan untuk bekerja di lingkungan yang memiliki variasi dan perubahan",
+      "Memulai aktivitas dan menetapkan langkah untuk mencapai hasil yang diinginkan"
+    ],
+    "improves": [
+      "Mengurangi rasa intens, keras kepala dan terus terang",
+      "Tidak memaksa orang lain yang mungkin tidak terlalu berkomitmen untuk sebuah proyek",
+      "Kesabaran, kepedulian terhadap orang, kerendahan hati"
+    ],
+    "tendencies": {
+      "goal": "TUJUAN: Dominasi dan kemandirian",
+      "judge": "MENILAI ORANG LAIN DENGAN: Kemampuan mereka untuk meyelesaikan tugas dengan cepat",
+      "influence": "MEMPENGARUHI ORANG LAIN DENGAN: Karakter, ketekunan",
+      "valueorg": "NILAI TERHADAP ORGANISASI: Tampilkan sikap mampu",
+      "overuses": "BERLEBIHAN MENGGUNAKAN: Tantangan dan lomba",
+      "understress": "KETIKA DI BAWAH TEKANAN: Menjadi tenang dan analitikal",
+      "fears": "KETAKUTAN: Kehilangan kontrol"
+    }
+  },
+  "Persuader12": {
+    "keystrengths": [
+      "Berorientasi pada hasil dengan rasa urgensi untuk mencapai tujuan dan memenuhi tenggat waktu",
+      "Tegas dan agresif ketika dihadapkan pada tantangan",
+      "Memulai kegiatan melalui orang lain untuk mendapatkan hasil yang diinginkan",
+      "Ekstrover dan aktif mencari hubungan dengan berbagai orang"
+    ],
+    "improves": [
+      "Mengurangi kekesalan karena tenggat waktu yang tidak tercapai",
+      "Tidak mengambil terlalu banyak tanggung jawab pada satu waktu, lebih konsisten",
+      "Lebih tindak lanjut, terus terang, menurunkan harapan"
+    ],
+    "tendencies": {
+      "goal": "TUJUAN: Agresif dan percaya diri untuk menang",
+      "judge": "MENILAI ORANG LAIN DENGAN: Kemampuan untuk berkomunikasi dan berpikir",
+      "influence": "MEMPENGARUHI ORANG LAIN DENGAN: Keramahan dan keinginan untuk hasil",
+      "valueorg": "NILAI TERHADAP ORGANISASI: Perencana dan  pemecah masalah yang baik",
+      "overuses": "BERLEBIHAN MENGGUNAKAN: Posisi dan cara mereka",
+      "understress": "KETIKA DI BAWAH TEKANAN: Menjadi gelisah, tidak sabar dan tidak sensitif",
+      "fears": "KETAKUTAN: Kehilangan dan gagal"
+    }
+  },
+  "Implementor9": {
+    "keystrengths": [
+      "Menetapkan standar tinggi untuk diri sendiri dan orang lain, mengharapkan kinerja dan kerja sama tim",
+      "Sadar dan peka terhadap resiko sebuah kesalahan",
+      "Terstruktur dalam penggunaan waktu",
+      "Sistematis memecahkan masalah tanpa membiarkan emosi mempengaruhi keputusan"
+    ],
+    "improves": [
+      "Lebih hangat dan apresiasi anggota tim lainnya",
+      "Lebih konsisten dengan keputusan-kuantitas dibandingkan kualitas",
+      "Tidak begitu terus terang dan kritis terhadap orang-orang yang tidak memenuhi standar mereka"
+    ],
+    "tendencies": {
+      "goal": "TUJUAN: Dominasi dan perintis",
+      "judge": "MENILAI ORANG LAIN DENGAN:  Standar mereka sendiri, ide-ide progresif",
+      "influence": "MEMPENGARUHI ORANG LAIN DENGAN: Persaingan dan tantangan yang unik",
+      "valueorg": "NILAI TERHADAP ORGANISASI: Memulai perubahan pada mereka sendiri",
+      "overuses": "BERLEBIHAN MENGGUNAKAN: Keterusterangan, terlalu kritis",
+      "understress": "KETIKA DI BAWAH TEKANAN: Mengendalikan dan menuntut",
+      "fears": "KETAKUTAN: Tidak menjadi berpengaruh"
+    }
+  },
+  "Conductor57": {
+    "keystrengths": [
+      "Kemampuan untuk memberikan ide-ide baru dan menyelesaikannya",
+      "Menghargai orang lain yang pemain tim",
+      "Kemampuan untuk melihat \"gambaran besar\" bersama dengan detail-detail kecil",
+      "Ketetapan hati dan ketekunan"
+    ],
+    "improves": [
+      "Tidak menjadi terlalu fokus pada satu masalah dan kehilangan kesempatan lainnya",
+      "Kurangi kepedulian terhadap standar pribadi",
+      "Memeriksa prioritas dengan orang lain"
+    ],
+    "tendencies": {
+      "goal": "TUJUAN: Penentu",
+      "judge": "MENILAI ORANG LAIN DENGAN: Jumlah pekerjaan yang telah diselesaikan",
+      "influence": "MEMPENGARUHI ORANG LAIN DENGAN: Kegigihan dan ketekunan",
+      "valueorg": "NILAI TERHADAP ORGANISASI: Berorientasi pada hasil secara konsistens",
+      "overuses": "BERLEBIHAN MENGGUNAKAN: Ketergantungan pada diri",
+      "understress": "KETIKA DI BAWAH TEKANAN: Keras kepala, tenang dan tidak demonstratif",
+      "fears": "KETAKUTAN: Keterlibatan dengan terlalu banyak orang"
+    }
+  },
+  "Conductor27": {
+    "keystrengths": [
+      "Mencapai hasil melalui orang",
+      "Menghadapi hambatan dan tantangan dengan optimis",
+      "Tujuan pribadi yang tinggi",
+      "Rasa urgensi untuk membuat sesuatu terjadi"
+    ],
+    "improves": [
+      "Menjadi lebih berhati-hati dengan detail",
+      "Mengurangi kecepatan ketika mendelegasikan seluruh proyek",
+      "Mengembangkan konsistensi ketika mendisiplinkan orang lain"
+    ],
+    "tendencies": {
+      "goal": "TUJUAN: Agresif bekerja melalui orang-orang untuk mencapai hasil",
+      "judge": "MENILAI ORANG LAIN DENGAN: Partisipasi dalam team",
+      "influence": "MEMPENGARUHI ORANG LAIN DENGAN: Bujukan",
+      "valueorg": "NILAI TERHADAP ORGANISASI: Inovasi dan futuristik",
+      "overuses": "BERLEBIHAN MENGGUNAKAN: Kemauan yang kuat",
+      "understress": "KETIKA DI BAWAH TEKANAN: Tidak sabar dan mengendalikan",
+      "fears": "KETAKUTAN: Tidak mencapai tujuan yang diinginkan"
+    }
+  },
+  "Conductor42": {
+    "keystrengths": [
+      "Kemampuan untuk mengekspresikan ide-ide tanpa emosional",
+      "Konsentrasi pada tujuan dan isu-isu penting",
+      "Hati-hati mengamati orang lain yang dapat mempengaruhi kinerja",
+      "Kemampuan untuk menjelaskan data teknis secara jelas dan menerjemahkan teori ke dalam solusi yang bisa diterapkan"
+    ],
+    "improves": [
+      "Berbagi pengetahuan, pikiran dan emosi dengan orang lain",
+      "Tidak ragu-ragu untuk bertindak di bawah tekanan berat",
+      "Lebih mengembangkan keterampilan yang berhubungan dengan orang dan kata-kata"
+    ],
+    "tendencies": {
+      "goal": "TUJUAN: Berdikari, dapat berdiri sendiri",
+      "judge": "MENILAI ORANG LAIN DENGAN: Pemahaman dan kekuatan penalaran",
+      "influence": "MEMPENGARUHI ORANG LAIN DENGAN: Rasional, secara tak langsung",
+      "valueorg": "NILAI TERHADAP ORGANISASI: Bisa memulai sendiri, berorientasi pada tujuan",
+      "overuses": "BERLEBIHAN MENGGUNAKAN: Kemandirian",
+      "understress": "KETIKA DI BAWAH TEKANAN: Ambivalen dan pesimis",
+      "fears": "KETAKUTAN: Tenggat waktu tanpa waktu untuk jaminan kualitas"
+    }
+  },
+  "Promoter3": {
+    "keystrengths": [
+      "Sangat optimis dengan rasa humor yang positif",
+      "Menempatkan fokus pada orang dan kepercayaan yang tinggi dalam suatu hubungan",
+      "Mengembangkan persahabatan secara cepat, menikmati jaringan/networking",
+      "Menggunakan pendekatan konsensus untuk pengambilan keputusan"
+    ],
+    "improves": [
+      "Menetapkan pandangan pada tujuan karir",
+      "Kurangi kepedulian terhadap perasaan orang lain",
+      "Menjadi terorganisir dan memiliki sikap yang realistis"
+    ],
+    "tendencies": {
+      "goal": "TUJUAN: Bersedia membantu dan akomodatif",
+      "judge": "MENILAI ORANG LAIN DENGAN: Kehangatan mereka",
+      "influence": "MEMPENGARUHI ORANG LAIN DENGAN: Keramahan dan keterampilan interpersonal",
+      "valueorg": "NILAI TERHADAP ORGANISASI: Mengkomunikasikan \"mimpi besar\", kemampuan untuk membawa tim bersama-sama",
+      "overuses": "BERLEBIHAN MENGGUNAKAN: Ketergantungan pada orang lain dan optimis",
+      "understress": "KETIKA DI BAWAH TEKANAN: Emosional, terlalu percaya",
+      "fears": "KETAKUTAN: Tidak merasa disenangi"
+    }
+  },
+  "Persuader13": {
+    "keystrengths": [
+      "Kemampuan untuk mempengaruhi orang untuk mengikuti cara berpikir mereka",
+      "Berkomunikasi dengan cara yang sangat terbuka",
+      "Kemampuan untuk menenangkan situasi konflik",
+      "Kemampuan untuk mempromosikan ide-ide & produk baru"
+    ],
+    "improves": [
+      "Kurangi membuat keputusan berdasarkan emosi",
+      "Bersedia untuk konfrontasi bila diperlukan",
+      "Membuat tenggat waktu yang realistis dan berlatih manajemen waktu yang baik"
+    ],
+    "tendencies": {
+      "goal": "TUJUAN: Menjaga persahabatan",
+      "judge": "MENILAI ORANG LAIN DENGAN: Kontak yang berpengaruh, komitmen",
+      "influence": "MEMPENGARUHI ORANG LAIN DENGAN: Inspirasi dan karisma",
+      "valueorg": "NILAI TERHADAP ORGANISASI: Stabil, dapat diandalkan, bersahabat",
+      "overuses": "BERLEBIHAN MENGGUNAKAN: Antusiasme",
+      "understress": "KETIKA DI BAWAH TEKANAN: Terlalu lisan",
+      "fears": "KETAKUTAN: Kegagalan"
+    }
+  },
+  "Relater16": {
+    "keystrengths": [
+      "Kemampuan untuk membantu orang lain menggunakan kehangatan, empati dan pemahaman",
+      "Melindungi dan menghargai manusia serta segala sesuatu",
+      "Pendengar & pembicara yang baik",
+      ""
+    ],
+    "improves": [
+      "Bersikap tegas dalam situasi tertentu",
+      "Tidak menghindari konfrontasi, bahkan ketika berisiko",
+      "Lebih inisiatif, rasa urgensi"
+    ],
+    "tendencies": {
+      "goal": "TUJUAN: Menjaga persahabatan jangka panjang",
+      "judge": "MENILAI ORANG LAIN DENGAN: Kesetiaan mereka kepada hubungan",
+      "influence": "MEMPENGARUHI ORANG LAIN DENGAN: Hubungan pribadi, menetapkan contoh yang baik",
+      "valueorg": "NILAI TERHADAP ORGANISASI: Pendengar yang baik, sabar terhadap orang lain",
+      "overuses": "BERLEBIHAN MENGGUNAKAN: Toleransi",
+      "understress": "KETIKA DI BAWAH TEKANAN: Gelisah di bawah situasi stres",
+      "fears": "KETAKUTAN: Konfrontasi"
+    }
+  },
+  "Promoter58": {
+    "keystrengths": [
+      "Kemampuan untuk menangani situasi sulit secara bijaksana, peka terhadap kebutuhan orang-orang",
+      "Kemampuan untuk membuat suasana yang menyenangkan dan nyaman",
+      "Kemampuan untuk mempromosikan ide-ide secara efektif",
+      "Lebih menyukai lingkungan yang serba cepat"
+    ],
+    "improves": [
+      "Mengurangi analisis",
+      "Mengkomunikasikan informasi yang lebih sedikit ketika menjual produk atau ide",
+      "Menjadi lebih tegas"
+    ],
+    "tendencies": {
+      "goal": "TUJUAN: Persetujuan dan penerimaan",
+      "judge": "MENILAI ORANG LAIN DENGAN: Kemampuan mereka untuk membaca petunjuk verbal dan nonverbal",
+      "influence": "MEMPENGARUHI ORANG LAIN DENGAN: Ketenangan dan keyakinan",
+      "valueorg": "NILAI TERHADAP ORGANISASI: Meredakan ketegangan dan mempromosikan orang dan proyek",
+      "overuses": "BERLEBIHAN MENGGUNAKAN: Pengendalian percakapan",
+      "understress": "KETIKA DI BAWAH TEKANAN: Verbal, tajam terhadap orang lain",
+      "fears": "KETAKUTAN: Hilangnya keunikan"
+    }
+  },
+  "Promoter47": {
+    "keystrengths": [
+      "Kemampuan untuk beradaptasi dalam berbagai situasi",
+      "Pemain tim optimis, bersosialisasi dan kooperatif",
+      "Akan berusaha untuk membawa tim bersama-sama dengan cara yang terorganisir dengan baik",
+      "Kesabaran untuk mendengarkan apa yang orang lain katakan"
+    ],
+    "improves": [
+      "Mengurangi akomodatif terhadap orang lain",
+      "Lebih konsisten dalam menunjukkan ketegasan",
+      "Lebih terusterangan dan manajemen waktu yang lebih baik"
+    ],
+    "tendencies": {
+      "goal": "TUJUAN: Hasil sistematis melalui orang lain",
+      "judge": "MENILAI ORANG LAIN DENGAN: Kemampuan mereka untuk berkomunikasi dan berpikir",
+      "influence": "MEMPENGARUHI ORANG LAIN DENGAN: Diplomasi",
+      "valueorg": "NILAI TERHADAP ORGANISASI: Hati-hati dan menarik",
+      "overuses": "BERLEBIHAN MENGGUNAKAN: Posisi dan standar mereka",
+      "understress": "KETIKA DI BAWAH TEKANAN: Posesif dan terlalu sensitif",
+      "fears": "KETAKUTAN: Tidak menjadi bagian dari tim"
+    }
+  },
+  "Promoter30": {
+    "keystrengths": [
+      "Kemampuan untuk menjadi persuasif, tegas dan mantap",
+      "Kemampuan untuk mandiri jika diperlukan",
+      "Kemampuan untuk membuat dan mempromosikan ide",
+      "Kemampuan untuk mempresentasikan ide dengan cara yang positif dan agak langsung"
+    ],
+    "improves": [
+      "Kurangi pendirian yang keras",
+      "Mengumpulkan informasi yang cukup sebelum bertindak",
+      "Lebih banyak perhatian terhadap detail, organisasi"
+    ],
+    "tendencies": {
+      "goal": "TUJUAN: Supel dan meyakinkan",
+      "judge": "MENILAI ORANG LAIN DENGAN: Dedikasi dan kegigihan mereka Mengambil tanggung jawab",
+      "influence": "MEMPENGARUHI ORANG LAIN DENGAN: Mengambil tanggung jawab",
+      "valueorg": "NILAI TERHADAP ORGANISASI: Antusiasme dan terus terang dengan ide-ide baru dan opini",
+      "overuses": "BERLEBIHAN MENGGUNAKAN: Ambisi",
+      "understress": "KETIKA DI BAWAH TEKANAN: Dangkal",
+      "fears": "KETAKUTAN:Tidak terlihat sebagai pemain tim"
+    }
+  },
+  "Supporter5": {
+    "keystrengths": [
+      "Kemampuan untuk memperkenalkan diri dengan cara yang tenang dan terkendali, menggunakan kemampuan untuk berkonsentrasi sebagai sarana untuk mendengarkan dan belajar",
+      "Kemampuan untuk terus dengan tugas yang memberikan kontribusi yang berarti bagi organisasi",
+      "Seorang anggota tim yang dapat terbuka, sabar dan toleran terhadap perbedaan",
+      "Suka memuji orang lain"
+    ],
+    "improves": [
+      "Memproyeksikan rasa urgensi ketika kebutuhan muncul",
+      "Kurangi ketergantungan pada rutinitas",
+      "Lebih inisiatif, kemampuan beradaptasi terhadap perubahan"
+    ],
+    "tendencies": {
+      "goal": "TUJUAN: Keteguhan dan stabilitas",
+      "judge": "MENILAI ORANG LAIN DENGAN: Konsistensi mereka",
+      "influence": "MEMPENGARUHI ORANG LAIN DENGAN: Sebuah pengaturan menyenangkan, melayani orang lain",
+      "valueorg": "NILAI TERHADAP ORGANISASI: Menstabilkan lingkungan dengan cara yang ramah",
+      "overuses": "BERLEBIHAN MENGGUNAKAN: Ketenangan",
+      "understress": "KETIKA DI BAWAH TEKANAN: Non-ekspresif",
+      "fears": "KETAKUTAN: Tidak dihargai dan dikenal"
+    }
+  },
+  "Coordinator20": {
+    "keystrengths": [
+      "Kemampuan untuk memulai sebuah proyek dan mengikutinya sampai selesai",
+      "Bersedia bekerja untuk seorang pemimpin dan tujuan",
+      "Unggul dalam mencari solusi untuk masalah melalui logika yang menyenangkan untuk semua yang terlibat",
+      "Menunjukkan kepemimpinan yang positif melalui pertimbangan yang ditunjukkan oleh perasaan orang lain di tim"
+    ],
+    "improves": [
+      "Belajar untuk mempromosikan diri sendiri",
+      "Menggunakan pendekatan langsung",
+      "Menampilkan kepedulian dan perasaan"
+    ],
+    "tendencies": {
+      "goal": "TUJUAN: Mencapai standar tinggi yang ditetapkan untuk diri sendiri",
+      "judge": "MENILAI ORANG LAIN DENGAN: Penggunaan pengetahuan",
+      "influence": "MEMPENGARUHI ORANG LAIN DENGAN: Kemampuan untuk menindaklanjuti",
+      "valueorg": "NILAI TERHADAP ORGANISASI: Menambahkan fokus dan logika terhadap kebutuhan yang ada",
+      "overuses": "BERLEBIHAN MENGGUNAKAN : Resistensi terhadap perubahan",
+      "understress": "KETIKA DI BAWAH TEKANAN: Menjadi keras kepala",
+      "fears": "KETAKUTAN: Tidak memenuhi persyaratan tertentu"
+    }
+  },
+  "Relater17": {
+    "keystrengths": [
+      "Keterampilan mendengarkan yang baik dengan kemampuan untuk berempati dengan orang-orang",
+      "Terampil untuk membantu dan mendukung orang lain mencapai tujuan dan aspirasi",
+      "Berbakat menerima sentimen orang-orang, keyakinan dan nilai-nilai",
+      "Kemampuan untuk menciptakan lingkungan di mana orang merasa signifikan"
+    ],
+    "improves": [
+      "Bersikap tegas",
+      "Kurangi penerimaan akan status quo",
+      "Lebih kuat, teguh dan ketegasan diri"
+    ],
+    "tendencies": {
+      "goal": "TUJUAN: Penerimaan",
+      "judge": "MENILAI ORANG LAIN DENGAN: Loyalitas, ketulusan, keteguhan",
+      "influence": "MEMPENGARUHI ORANG LAIN DENGAN: Menawarkan pemahaman, persahabatan",
+      "valueorg": "NILAI TERHADAP ORGANISASI: Mendukung, menyelaraskan dan menawarkan stabilitas di bawah tekanan",
+      "overuses": "BERLEBIHAN MENGGUNAKAN: Kebaikan, kasih sayang",
+      "understress": "KETIKA DI BAWAH TEKANAN: Menyendiri",
+      "fears": "KETAKUTAN: Perpecahan, konflik, tidak disukai"
+    }
+  },
+  "Supporter59": {
+    "keystrengths": [
+      "Kemampuan untuk menghadapi masalah dan menindaklanjutinya untuk diselesaikan",
+      "Gigih, bertekad, ulet dan logis dalam mengejar hasil",
+      "Unggul untuk mempertahankan hubungan baik di dalam dan di luar pekerjaan",
+      "Pemain tim yang menunjukkan keterampilan kepemimpinan dan berpegang teguh atas keyakinan yang mereka percayai"
+    ],
+    "improves": [
+      "Kurangi menunjukkan perilaku yang pasif, bahkan jika itu mempengaruhi keamanan mereka",
+      "Menggunakan pemikiran baru dan kreatif saat memecahkan masalah",
+      "Tidak menolak situasi baru yang mungkin keluar dari zona kenyamanan mereka"
+    ],
+    "tendencies": {
+      "goal": "TUJUAN: Prestasi pribadi",
+      "judge": "MENILAI ORANG LAIN DENGAN: Pencapaian dan keberhasilan mereka",
+      "influence": "MEMPENGARUHI ORANG LAIN DENGAN: Ketekunan",
+      "valueorg": "NILAI TERHADAP ORGANISASI: Bekerja secara independen dan menyukai tantangan",
+      "overuses": "BERLEBIHAN MENGGUNAKAN: Keterusterangan",
+      "understress": "KETIKA DI BAWAH TEKANAN: Keras kepala, tidak fleksibel, keras hati",
+      "fears": "KETAKUTAN: Tidak mencapai hasil yang diinginkan"
+    }
+  },
+  "Supporter35": {
+    "keystrengths": [
+      "Kemampuan untuk mendukung, ramah dan optimis dalam hubungan apapun",
+      "Bersosialisasi dengan kemampuan untuk menikmati keunikan setiap manusia",
+      "Kemampuan untuk menggunakan penilaian yang seimbang, membawa stabilitas kepada seluruh tim",
+      "Baik untuk menganalisis situasi yang dapat dirasakan, disentuh, dilihat, didengar, diamati atau dialami secara pribadi"
+    ],
+    "improves": [
+      "Tetap fokus pada peran dan harapan untuk menjadi efektif",
+      "Memiliki rasa urgensi",
+      "Penghargaan yang tulus metode jalan pintas"
+    ],
+    "tendencies": {
+      "goal": "TUJUAN: Status quo",
+      "judge": "MENILAI ORANG LAIN DENGAN: Persahabatan",
+      "influence": "MEMPENGARUHI ORANG LAIN DENGAN: Konsistensi kinerja, akomodasi",
+      "valueorg": "NILAI TERHADAP ORGANISASI: Perencana, konsistensi, mempertahankan kecepatan",
+      "overuses": "BERLEBIHAN MENGGUNAKAN: Kesederhanaan, konservatif",
+      "understress": "KETIKA DI BAWAH TEKANAN: Dendam",
+      "fears": "KETAKUTAN: Konflik, kehilangan muka"
+    }
+  },
+  "Supporter50": {
+    "keystrengths": [
+      "Kemampuan untuk berempati dengan perasaan orang lain dengan tetap menjaga independensi mereka sendiri",
+      "Unggul di proyek yang memerlukan tekad dan ketekunan untuk menang",
+      "Pengaruh positif terhadap anggota tim yang tidak kooperatif atau negatif",
+      "Baik untuk membawa orang-orang untuk proses negosiasi dan mendengarkan pandangan yang bertentangan"
+    ],
+    "improves": [
+      "Memprioritaskan kegiatan sehari-hari",
+      "Lebih mengukur pro dan kontra",
+      "Menjadi lebih tegas dan konsisten dalam keyakinan mereka"
+    ],
+    "tendencies": {
+      "goal": "TUJUAN: Sukses melalui konsistensi",
+      "judge": "MENILAI ORANG LAIN DENGAN: Persahabatan yang setia",
+      "influence": "MEMPENGARUHI ORANG LAIN DENGAN: Keterampilan persuasif",
+      "valueorg": "NILAI TERHADAP ORGANISASI: Memecahkan masalah secara kreatif dan bekerja untuk berinovasi melalui orang",
+      "overuses": "BERLEBIHAN MENGGUNAKAN: Intensitas",
+      "understress": "KETIKA DI BAWAH TEKANAN: Bergairah, tegas",
+      "fears": "KETAKUTAN: Tidak didukung oleh tim dan perubahan"
+    }
+  },
+  "Explanation": {
+    "keystrengths": [],
+    "improves": [],
+    "tendencies": {},
+    "visual.1": "Gaya belajar Anda melibatkan penggunaan penglihatan atau pengamatan akan suatu hal, termasuk gambar, diagram, demonstrasi, tampilan, buku panduan, film, flip-chart, dan lain-lain.",
+    "visual.2": "Seseorang dengan gaya belajar Visual, akan menggunakan frase seperti \"tunjukkan pada saya\" atau \"mari kita lihat itu\" dan akan menjadi yang terbaik untuk melakukan tugas baru setelah membaca petunjuk atau melihat orang lain melakukannya terlebih dahulu.",
+    "visual.3": "Orang-orang dengan tipe ini lebih mudah bekerja dengan daftar, arahan dan instruksi tertulis.",
+    "visual.4": "",
+    "visual.5": "",
+    "auditory.1": "Gaya belajar Anda melibatkan transfer informasi melalui pendengaran: dengan kata-kata yang diucapkan, dari diri sendiri atau orang lain dan suara-suara yang didengar.",
+    "auditory.2": "Seseorang dengan gaya belajar Auditory, akan menggunakan frase seperti \"beritahu saya\" atau \"mari kita bicarakan\" dan akan menjadi yang terbaik untuk melakukan tugas baru setelah mendengarkan instruksi dari seorang ahli.",
+    "auditory.3": "Orang-orang dengan tipe ini senang diberi petunjuk lisan melalui percakapan langsung dan bahkan dapat mengingat semua kata-kata dari lagu-lagu yang mereka dengar.",
+    "auditory.4": "",
+    "auditory.5": "",
+    "kinestetik.1": "Gaya belajar Anda melibatkan pengalaman fisik: menyentuh, merasakan, memegang, melakukan, pengalaman moncoba langsung.",
+    "kinestetik.2": "Seseorang dengan gaya belajar Kinestetik, akan menggunakan frase seperti \"biarkan saya mencoba\", \"bagaimana perasaan Anda?\" dan akan menjadi yang terbaik untuk dapat melakukan tugas baru dengan mencoba langsung dan mempelajarinya sambil melakukannya.",
+    "kinestetik.3": "Orang-orang dengan tipe ini suka bereksperimen, mencoba-coba, dan tidak melihat petunjuk terlebih dahulu.",
+    "kinestetik.4": "",
+    "kinestetik.5": "",
+    "multimodal.visual.auditory.1": "Anda memiliki gaya belajar campuran: Visual dan Auditory. Ini ideal karena Anda dapat belajar dengan cara yang bervariasi. Dalam kasus Anda, gaya belajar Anda melibatkan indra penglihatan (Visual) dan indra pendengaran (Auditory).",
+    "multimodal.visual.auditory.2": "Alat yang dapat membantu Anda untuk belajar adalah gambar, diagram, demonstrasi, buku panduan, film, flip-chart, dsb (Visual) dan kata-kata yang diucapkan, dari diri sendiri atau orang lain, dan suara-suara yang Anda dengar (Auditory).",
+    "multimodal.visual.auditory.3": "Seseorang dengan gaya belajar ini akan menjadi yang terbaik untuk melakukan tugas baru setelah membaca petunjuk atau melihat orang lain melakukannya lebih dulu atau setelah mendengarkan instruksi dari seorang ahli.",
+    "multimodal.visual.auditory.4": "Orang-orang dengan tipe ini lebih mudah bekerja dengan daftar, arahan dan instruksi tertulis atau dengan diberi petunjuk lisan melalui percakapan langsung dan bahkan dapat mengingat semua kata-kata dari lagu-lagu yang mereka dengar.",
+    "multimodal.visual.auditory.5": "",
+    "multimodal.visual.kinestetik.1": "Anda memiliki gaya belajar campuran: Visual dan Kinestetik. Ini ideal karena Anda dapat belajar dengan cara yang bervariasi. Dalam kasus Anda, gaya belajar Anda melibatkan indra penglihatan (Visual) dan pengalaman fisik: menyentuh, merasakan, memegang, melakukan, pengalaman moncoba langsung (Kinestetik).",
+    "multimodal.visual.kinestetik.2": "Alat yang dapat membantu Anda untuk belajar adalah gambar, diagram, demonstrasi, buku panduan, film, flip-chart, dsb (Visual) atau bahkan Anda tidak memerlukan alat apapun sama sekali (Kinestetik).",
+    "multimodal.visual.kinestetik.3": "Seseorang dengan gaya belajar ini akan menjadi yang terbaik untuk melakukan tugas baru setelah membaca petunjuk atau melihat orang lain melakukannya lebih dulu atau dengan mencoba langsung dan mempelajarinya sambil melakukannya.",
+    "multimodal.visual.kinestetik.4": "Orang-orang dengan tipe ini lebih mudah bekerja dengan daftar, arahan dan instruksi tertulis atau suka bereksperimen, mencoba-coba, dan tidak melihat petunjuk terlebih dahulu.",
+    "multimodal.visual.kinestetik.5": "",
+    "multimodal.auditory.kinestetik.1": "Anda memiliki gaya belajar campuran: Audio dan Kinestetik. Ini ideal karena Anda dapat belajar banyak cara yang bervariasi. Dalam kasus Anda, gaya belajar Anda melibatkan transfer informasi melalui indra pendengaran (Auditory) dan pengalaman fisik: menyentuh, merasakan, memegang, melakukan, pengalaman moncoba langsung (Kinestetik).",
+    "multimodal.auditory.kinestetik.2": "Pengucapan kata-kata dari diri sendiri atau orang lain serta suara-suara yang Anda dengar dapat membantu Anda untuk belajar atau bahkan Anda tidak memerlukan alat apapun sama sekali.",
+    "multimodal.auditory.kinestetik.3": "Seseorang dengan gaya belajar ini akan menjadi yang terbaik untuk melakukan tugas baru setelah mendengarkan instruksi dari seorang ahli dan/atau dengan mencoba langsung dan mempelajarinya sambil melakukannya.",
+    "multimodal.auditory.kinestetik.4": "Orang-orang dengan tipe ini akan lebih mudah bekerja dengan diberi petunjuk lisan melalui percakapan langsung atau suka bereksperimen, mencoba-coba, dan tidak melihat petunjuk terlebih dahulu.",
+    "multimodal.auditory.kinestetik.5": "",
+    "multimodal.visual.auditory.kinestetik.1": "Anda memiliki tiga campuran gaya belajar, yaitu: Visual, Audio dan Kinestetik. Ini sangat ideal karena Anda dapat belajar berbagai cara yang bervariasi dan dengan dinamis merubah cara belajar Anda tergantung pada situasi.",
+    "multimodal.visual.auditory.kinestetik.2": "Gaya belajar Anda melibatkan indra penglihatan seperti pengamatan (Visual), transfer informasi melalui pendengaran (Auditory) dan pengalaman fisik: menyentuh, merasakan, memegang, melakukan, pengalaman moncoba langsung (Kinestetik).",
+    "multimodal.visual.auditory.kinestetik.3": "Alat yang dapat membantu Anda untuk belajar adalah gambar, diagram, demonstrasi (Visual); kata yang diucapkan, dari diri sendiri atau orang lain (Auditory); dan kadang-kadang Anda tidak memerlukan alat apapun sama sekali, langsung melakukannya (Kinestetik).",
+    "multimodal.visual.auditory.kinestetik.4": "Seseorang dengan gaya belajar ini akan menjadi yang terbaik untuk melakukan tugas baru setelah membaca petunjuk atau melihat orang lain melakukannya dahulu atau setelah mendengarkan instruksi dari seorang ahli atau suka bereksperimen, mencoba-coba, dan tidak melihat petunjuk terlebih dahulu.",
+    "multimodal.visual.auditory.kinestetik.5": "Orang-orang dengan tipe ini lebih mudah bekerja dengan diberi petunjuk lisan melalui percakapan langsung atau dari daftar dan instruksi tertulis atau dengan percobaan langsung dan bahkan tidak melihat petunjuk dahulu."
+  },
+  "Intake": {
+    "keystrengths": [],
+    "improves": [],
+    "tendencies": {},
+    "visual.1": "Garisbawahi atau gunakan highlight dengan warna yang berbeda",
+    "visual.2": "Membuat simbol, flow chart, diagram, grafik",
+    "visual.3": "Video-video atau poster",
+    "visual.4": "Buku dengan berbagai diagram dan gambar",
+    "visual.5": "",
+    "visual.6": "",
+    "visual.7": "",
+    "auditory.1": "Menghadiri seminar-seminar",
+    "auditory.2": "Menghadiri panel diskusi terbuka",
+    "auditory.3": "Berdiskusi dengan kolega atau atasan",
+    "auditory.4": "Menyampaikan ide-ide baru kepada orang lain",
+    "auditory.5": "",
+    "auditory.6": "",
+    "auditory.7": "",
+    "kinestetik.1": "Semua indra Anda: penglihatan, peraba, perasa, penciuman dan pendengaran",
+    "kinestetik.2": "Laboratorium, kunjungan lapangan",
+    "kinestetik.3": "Pendekatan dengan mencoba sendiri terlebih dahulu, trial and error",
+    "kinestetik.4": "Mendatangi pameran, melihat sampel dan foto",
+    "kinestetik.5": "",
+    "kinestetik.6": "",
+    "kinestetik.7": "",
+    "multimodal.visual.auditory.1": "Garisbawahi atau gunakan highlight dengan warna yang berbeda",
+    "multimodal.visual.auditory.2": "Membuat simbol, flow chart, diagram, grafik",
+    "multimodal.visual.auditory.3": "Menghadiri panel diskusi terbuka",
+    "multimodal.visual.auditory.4": "Berdiskusi dengan kolega atau atasan",
+    "multimodal.visual.auditory.5": "Menyampaikan ide-ide baru kepada orang lain",
+    "multimodal.visual.auditory.6": "",
+    "multimodal.visual.auditory.7": "",
+    "multimodal.visual.kinestetik.1": "Garisbawahi atau gunakan highlight dengan warna yang berbeda",
+    "multimodal.visual.kinestetik.2": "Membuat simbol, flow chart, diagram, grafik",
+    "multimodal.visual.kinestetik.3": "Semua indra Anda: penglihatan, peraba, perasa, penciuman dan pendengaran",
+    "multimodal.visual.kinestetik.4": "Laboratorium, kunjungan lapangan",
+    "multimodal.visual.kinestetik.5": "Pendekatan dengan mencoba sendiri terlebih dahulu, trial and error",
+    "multimodal.visual.kinestetik.6": "",
+    "multimodal.visual.kinestetik.7": "",
+    "multimodal.auditory.kinestetik.1": "Menghadiri panel diskusi terbuka",
+    "multimodal.auditory.kinestetik.2": "Berdiskusi dengan kolega atau atasan",
+    "multimodal.auditory.kinestetik.3": "Menyampaikan ide-ide baru kepada orang lain",
+    "multimodal.auditory.kinestetik.4": "Semua indra Anda: penglihatan, peraba, perasa, penciuman dan pendengaran",
+    "multimodal.auditory.kinestetik.5": "Laboratorium, kunjungan lapangan",
+    "multimodal.auditory.kinestetik.6": "Pendekatan dengan mencoba sendiri terlebih dahulu, trial and error",
+    "multimodal.auditory.kinestetik.7": "",
+    "multimodal.visual.auditory.kinestetik.1": "Garisbawahi atau gunakan highlight dengan warna yang berbeda",
+    "multimodal.visual.auditory.kinestetik.2": "Membuat simbol, flow chart, diagram, grafik",
+    "multimodal.visual.auditory.kinestetik.3": "Berdiskusi dengan kolega atau atasan",
+    "multimodal.visual.auditory.kinestetik.4": "Menyampaikan ide-ide baru kepada orang lain",
+    "multimodal.visual.auditory.kinestetik.5": "Semua indra Anda: penglihatan, peraba, perasa, penciuman dan pendengaran",
+    "multimodal.visual.auditory.kinestetik.6": "Laboratorium, kunjungan lapangan",
+    "multimodal.visual.auditory.kinestetik.7": "Pendekatan dengan mencoba sendiri terlebih dahulu, trial and error"
+  },
+  "Swot": {
+    "keystrengths": [],
+    "improves": [],
+    "tendencies": {},
+    "visual.1": "Buatlah catatan yang jelas dan singkat",
+    "visual.2": "Buatlah gambar-gambar dari sudut pandang yang berbeda",
+    "visual.3": "Tuangkan ingatan dalam bentuk tulisan atau catatan",
+    "visual.4": "Ganti kata-kata dengan gambar atau inisial",
+    "visual.5": "Lihatlah kembali catatan Anda",
+    "visual.6": "",
+    "visual.7": "",
+    "auditory.1": "Perkaya catatan Anda dengan berbicara dengan orang lain",
+    "auditory.2": "Rekam ringkasan catatan Anda dalam bentuk suara kedalam CD dan dengarkan kembali",
+    "auditory.3": "Minta orang lain untuk mendengarkan pemahaman Anda tentang suatu hal",
+    "auditory.4": "Baca catatan dengan suara yang lantang",
+    "auditory.5": "Terangkan catatan Anda ke orang lain yang juga Auditory",
+    "auditory.6": "",
+    "auditory.7": "",
+    "kinestetik.1": "Anda akan mengingat hal-hal \"nyata\" yang telah terjadi",
+    "kinestetik.2": "Gunakan banyak contoh-contoh dalam catatan Anda",
+    "kinestetik.3": "Gunakan studi kasus dan aplikasi-aplikasi yang membantu Anda memahami suatu konsep dan prinsip yang abstrak",
+    "kinestetik.4": "Diskusikan catatan Anda dengan orang-orang Kinestetik lainnya",
+    "kinestetik.5": "Melakukan eksperimen di laboratorium, ingat kembali pengalaman-pengalaman yang ada, kunjungan lapangan",
+    "kinestetik.6": "",
+    "kinestetik.7": "",
+    "multimodal.visual.auditory.1": "Tuangkan ingatan dalam bentuk tulisan atau catatan",
+    "multimodal.visual.auditory.2": "Ganti kata-kata dengan gambar, grafik atau simbol yang mudah",
+    "multimodal.visual.auditory.3": "Lihatlah kembali catatan Anda",
+    "multimodal.visual.auditory.4": "Perluas pandangan dengan berbicara dengan orang lain",
+    "multimodal.visual.auditory.5": "Rekam ringkasan catatan Anda dalam bentuk suara kedalam CD",
+    "multimodal.visual.auditory.6": "Meminta orang lain untuk mendengarkan pemahaman Anda tentang suatu hal",
+    "multimodal.visual.auditory.7": "",
+    "multimodal.visual.kinestetik.1": "Tuangkan ingatan dalam bentuk tulisan atau catatan",
+    "multimodal.visual.kinestetik.2": "Ganti kata-kata dengan gambar atau inisial",
+    "multimodal.visual.kinestetik.3": "Lihatlah kembali catatan Anda",
+    "multimodal.visual.kinestetik.4": "Anda akan mengingat hal-hal \"nyata\" yang telah terjadi",
+    "multimodal.visual.kinestetik.5": "Gunakan banyak contoh-contoh dalam catatan Anda",
+    "multimodal.visual.kinestetik.6": "Diskusikan catatan Anda dengan orang-orang Kinestetik lainnya",
+    "multimodal.visual.kinestetik.7": "",
+    "multimodal.auditory.kinestetik.1": "Perkaya catatan Anda dengan berbicara dengan orang lain",
+    "multimodal.auditory.kinestetik.2": "Rekam ringkasan catatan Anda dalam bentuk suara kedalam CD dan dengarkan kembali",
+    "multimodal.auditory.kinestetik.3": "Meminta orang lain untuk mendengarkan pemahaman Anda tentang suatu hal",
+    "multimodal.auditory.kinestetik.4": "Anda akan mengingat hal-hal \"nyata\" yang telah terjadi",
+    "multimodal.auditory.kinestetik.5": "Gunakan banyak contoh-contoh dalam catatan Anda",
+    "multimodal.auditory.kinestetik.6": "Diskusikan catatan Anda dengan orang-orang Kinestetik lainnya",
+    "multimodal.auditory.kinestetik.7": "",
+    "multimodal.visual.auditory.kinestetik.1": "Ganti kata-kata dengan gambar, grafik atau simbol yang mudah",
+    "multimodal.visual.auditory.kinestetik.2": "Lihatlah kembali catatan Anda",
+    "multimodal.visual.auditory.kinestetik.3": "Perkaya catatan Anda dengan berbicara dengan orang lain",
+    "multimodal.visual.auditory.kinestetik.4": "Rekam ringkasan catatan Anda dalam bentuk suara kedalam CD dan dengarkan kembali",
+    "multimodal.visual.auditory.kinestetik.5": "Meminta orang lain untuk mendengarkan pemahaman Anda tentang suatu hal",
+    "multimodal.visual.auditory.kinestetik.6": "Anda akan mengingat hal-hal \"nyata\" yang telah terjadi",
+    "multimodal.visual.auditory.kinestetik.7": "Diskusikan catatan Anda dengan orang-orang Kinestetik lainnya"
+  },
+  "Output": {
+    "keystrengths": [],
+    "improves": [],
+    "tendencies": {},
+    "visual.1": "Ingat \"gambar\" yang Anda lihat, gunakan diagram jika bisa",
+    "visual.2": "Tuliskan jawaban-jawaban Anda",
+    "visual.3": "Latih diri Anda untuk menuliskan apa yang Anda lihat dalam kata-kata",
+    "visual.4": "Anda adalah seseorang yang holistik dan bukan \"pengurang\" dalam pendekatan Anda",
+    "visual.5": "Anda memerlukan pemahaman yang menyeluruh dari suatu hal",
+    "visual.6": "",
+    "visual.7": "",
+    "visual.8": "",
+    "auditory.1": "Dengar apa yang Anda katakan dan tuangkan dalam bentuk tulisan",
+    "auditory.2": "Luangkan waktu di tempat yang tenang untuk mengingat kembali ide-ide Anda",
+    "auditory.3": "Bicarakan dan/atau diskusikan ide-ide Anda",
+    "auditory.4": "Penjelasan yang Anda dengarkan mungkin lebih berharga dari tulisan Anda baca",
+    "auditory.5": "Anda sebaiknya pergi dan ceritakan ide Anda ke orang lain",
+    "auditory.6": "",
+    "auditory.7": "",
+    "auditory.8": "",
+    "kinestetik.1": "Tuliskan ide-ide yang praktis",
+    "kinestetik.2": "Lakukan role play, bawa suatu situasi dalam situasi yang sudah Anda kenal",
+    "kinestetik.3": "Anda ingin merasakan suatu situasi terlebih dahulu supaya Anda dapat memahaminya",
+    "kinestetik.4": "Ide-Ide akan berharga bagi Anda jika praktis, nyata dan relevan bagi Anda",
+    "kinestetik.5": "Anda harus melakukan sesuatu hal untuk mengerti akan hal tersebut",
+    "kinestetik.6": "",
+    "kinestetik.7": "",
+    "kinestetik.8": "",
+    "multimodal.visual.auditory.1": "Tuliskan jawaban-jawaban Anda",
+    "multimodal.visual.auditory.2": "Latih diri Anda untuk menuliskan apa yang Anda lihat dalam kata-kata",
+    "multimodal.visual.auditory.3": "Dengar apa yang Anda katakan dan tuangkan dalam bentuk tulisan",
+    "multimodal.visual.auditory.4": "Luangkan waktu di tempat yang tenang untuk mengingat kembali ide-ide Anda",
+    "multimodal.visual.auditory.5": "Bicarakan dan/atau diskusikan ide-ide Anda",
+    "multimodal.visual.auditory.6": "",
+    "multimodal.visual.auditory.7": "",
+    "multimodal.visual.auditory.8": "",
+    "multimodal.visual.kinestetik.1": "Tuliskan jawaban-jawaban Anda",
+    "multimodal.visual.kinestetik.2": "Latih diri Anda untuk menuliskan apa yang Anda lihat dalam kata-kata",
+    "multimodal.visual.kinestetik.3": "Lakukan role play, bawa suatu situasi dalam situasi yang sudah Anda kenal",
+    "multimodal.visual.kinestetik.4": "Anda ingin merasakan suatu situasi terlebih dahulu supaya Anda dapat memahaminya",
+    "multimodal.visual.kinestetik.5": "Anda harus melakukan sesuatu hal untuk mengerti akan hal tersebut",
+    "multimodal.visual.kinestetik.6": "",
+    "multimodal.visual.kinestetik.7": "",
+    "multimodal.visual.kinestetik.8": "",
+    "multimodal.auditory.kinestetik.1": "Dengar apa yang Anda katakan dan tuangkan dalam bentuk tulisan",
+    "multimodal.auditory.kinestetik.2": "Luangkan waktu di tempat yang tenang untuk mengingat kembali ide-ide Anda",
+    "multimodal.auditory.kinestetik.3": "Bicarakan dan/atau diskusikan ide-ide Anda",
+    "multimodal.auditory.kinestetik.4": "Lakukan role play, bawa suatu situasi dalam situasi yang sudah Anda kenal",
+    "multimodal.auditory.kinestetik.5": "Anda ingin merasakan suatu situasi terlebih dahulu supaya Anda dapat memahaminya",
+    "multimodal.auditory.kinestetik.6": "Anda harus melakukan sesuatu hal untuk mengerti akan hal tersebut",
+    "multimodal.auditory.kinestetik.7": "",
+    "multimodal.auditory.kinestetik.8": "",
+    "multimodal.visual.auditory.kinestetik.1": "Tuliskan jawaban-jawaban Anda",
+    "multimodal.visual.auditory.kinestetik.2": "Latih diri Anda untuk menuliskan apa yang Anda lihat dalam kata-kata",
+    "multimodal.visual.auditory.kinestetik.3": "Dengar apa yang Anda katakan dan tuangkan dalam bentuk tulisan",
+    "multimodal.visual.auditory.kinestetik.4": "Luangkan waktu di tempat yang tenang untuk mengingat kembali ide-ide Anda",
+    "multimodal.visual.auditory.kinestetik.5": "Bicarakan dan/atau diskusikan ide-ide Anda",
+    "multimodal.visual.auditory.kinestetik.6": "Lakukan role play, bawa suatu situasi dalam situasi yang sudah Anda kenal",
+    "multimodal.visual.auditory.kinestetik.7": "Anda ingin merasakan suatu situasi terlebih dahulu supaya Anda dapat memahaminya",
+    "multimodal.visual.auditory.kinestetik.8": "Anda harus melakukan sesuatu hal untuk mengerti akan hal tersebut"
+  },
+  "D": {
+    "keystrengths": [
+      "Orang yang memandang ke depan",
+      "Berorientasi pada tantangan",
+      "Memulai kegiatan",
+      "Inovatif"
+    ],
+    "improves": [
+      "Terlalu sering menggunakan posisi",
+      "Set standar yang terlalu tinggi",
+      "Kurang taktis dan diplomasi",
+      "Mengambil terlalu banyak, terlalu cepat, terlalu cepat"
+    ],
+    "tendencies": {},
+    "ideal.1": "Kebebasan dari kontrol, pengawasan dan details",
+    "ideal.2": "Sebuah lingkungan yang berorientasi inovatif dan futuristik",
+    "ideal.3": "Forum untuk mengekspresikan ide dan sudut pandang",
+    "ideal.4": "Pekerjaan Non-rutin",
+    "ideal.5": "Bekerja dengan tantangan dan kesempatan"
+  },
+  "I": {
+    "keystrengths": [
+      "Optimis dan antusias",
+      "Pemecah masalah yang kreatif dan merundingkan konflik",
+      "Memotivasi orang lain mencapai tujuan",
+      "Pemain tim"
+    ],
+    "improves": [
+      "Tidak detail",
+      "Tidak realistic dalam menilai orang",
+      "Percaya pada semua orang",
+      "Pendengar yang situasional"
+    ],
+    "tendencies": {},
+    "ideal.1": "Hubungan manusia yang tinggi",
+    "ideal.2": "Kebebasan dari kontrol dan detail",
+    "ideal.3": "Kebebasan untuk bergerak",
+    "ideal.4": "Forum untuk ide-ide untuk didengar",
+    "ideal.5": "Supervisor yang demokrasi dengan siapa ia dapat berteman"
+  },
+  "S": {
+    "keystrengths": [
+      "Pemain tim yang dapat diandalkan dan berorientasi pada layanan",
+      "Bekerja untuk pemimpin dan tujuan",
+      "Sabar dan empati",
+      "Pemikir yang logis"
+    ],
+    "improves": [
+      "Mengalah untuk menghindari kontroversi",
+      "Kesulitan dalam menetapkan prioritas",
+      "Tidak menyukai perubahan yang tidak beralasan",
+      "Kesulitan menghadapi situasi yang beragam"
+    ],
+    "tendencies": {},
+    "ideal.1": "Lingkungan stabil dan dapat diprediksi",
+    "ideal.2": "Lingkungan yang memberikan waktu untuk perubahan",
+    "ideal.3": "Hubungan kerja jangka panjang",
+    "ideal.4": "Sedikit konflik di antara orang-orang",
+    "ideal.5": "Bebas dari aturan yang ketat"
+  },
+  "C": {
+    "keystrengths": [
+      "Punya standar yang tinggi",
+      "Teliti, stabil dan pemecah masalah yang komprehensif",
+      "Mendefinisikan, menjelaskan, mendapatkan informasi dan tes",
+      "Objektif \\u2013 \\u201Cjangkar untuk kenyataan\\u201D"
+    ],
+    "improves": [
+      "Menjadi defensif jika dikritik",
+      "Senang detail",
+      "Terlalu intens dalam suatu situasi",
+      "Kelihatan seperti terasing dan dingin"
+    ],
+    "tendencies": {},
+    "ideal.1": "Dimana pemikiran yang kritikal diperlukan",
+    "ideal.2": "Pekerjaan teknikal atau area yang spesial",
+    "ideal.3": "Hubungan yang dekat dengan grup yang kecil",
+    "ideal.4": "Lingkungan kerja yang familiar",
+    "ideal.5": "Area kerja atau kantor yang privat"
+  },
+  "range": {
+    "keystrengths": [],
+    "improves": [],
+    "tendencies": {},
+    "title.range": "340",
+    "title.graph.1": "680.0f",
+    "title.graph.x": "10"
+  },
+  "menu": {
+    "keystrengths": [],
+    "improves": [],
+    "tendencies": {},
+    "item": "Pengaturan",
+    "item.1": "Lihat Hasil Tes",
+    "item.2": "Bahasa",
+    "about.us": "Tentang"
+  },
+  "visual": {
+    "keystrengths": [],
+    "improves": [],
+    "tendencies": {},
+    "auditory.kinestetik": "Multimodal: Visual, Auditory & Kinestetik",
+    "auditory": "Multimodal: Visual & Auditory",
+    "kinestetik": "Multimodal: Visual & Kinestetik",
+    "only": "Visual"
+  },
+  "auditory": {
+    "keystrengths": [],
+    "improves": [],
+    "tendencies": {},
+    "kinestetik": "Multimodal: Auditory & Kinestetik",
+    "only": "Auditory"
+  },
+  "kinestetik": {
+    "keystrengths": [],
+    "improves": [],
+    "tendencies": {},
+    "only": "Kinestetik"
+  },
+  "file": {
+    "keystrengths": [],
+    "improves": [],
+    "tendencies": {},
+    "exist": "Hasil test sudah ada, silakan simpan dengan nama file berbeda.",
+    "opened": "Dokumen sudah dibuka."
+  }
+}

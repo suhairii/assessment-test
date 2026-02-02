@@ -1,0 +1,12 @@
+{
+  "functions": {
+    "app/api/**/*": {
+      "maxDuration": 10
+    }
+  },
+  "crons": [],
+  "buildCommand": "next build",
+  "installCommand": "npm install",
+  "ignoreCommand": "if [ \"$VERCEL_ENV\" == \"production\" ]; then exit 1; else exit 0; fi",
+  "framework": "nextjs"
+}
