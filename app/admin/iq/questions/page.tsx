@@ -38,30 +38,36 @@ export default function IqQuestionsAdmin() {
       });
   }, []);
 
-  const handleFileUpload = async (file: File, qId: number, type: 'question' | 'option', optIdx?: number) => {
-    setUploadingId({ qId, type, optIdx });
-    try {
-      const response = await fetch(`/api/admin/upload?filename=${file.name}`, {
-        method: 'POST',
-        body: file,
-      });
-      const newBlob = await response.json();
-      
-      if (newBlob.url) {
-        if (type === 'question') {
-          updateQuestionField(qId, 'image', newBlob.url);
-        } else if (type === 'option' && optIdx !== undefined) {
-          updateOptionField(qId, optIdx, 'image', newBlob.url);
-        }
-        toast.success("Gambar berhasil diupload!");
-      } else {
-        toast.error("Gagal upload gambar.");
-      }
-    } catch {
-      toast.error("Error upload.");
-    } finally {
-      setUploadingId(null);
+  const handleFileUpload = (file: File, qId: number, type: 'question' | 'option', optIdx?: number) => {
+    // Limit file size to 500KB to prevent payload issues
+    if (file.size > 500 * 1024) {
+      toast.error("Ukuran file terlalu besar! Maksimal 500KB.");
+      return;
     }
+
+    setUploadingId({ qId, type, optIdx });
+    
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      const base64Url = e.target?.result as string;
+      if (base64Url) {
+        if (type === 'question') {
+          updateQuestionField(qId, 'image', base64Url);
+        } else if (type === 'option' && optIdx !== undefined) {
+          updateOptionField(qId, optIdx, 'image', base64Url);
+        }
+        toast.success("Gambar berhasil diproses!");
+      } else {
+        toast.error("Gagal memproses gambar.");
+      }
+      setUploadingId(null);
+    };
+    reader.onerror = () => {
+      toast.error("Error membaca file.");
+      setUploadingId(null);
+    };
+    
+    reader.readAsDataURL(file);
   };
 
   const handleUpdate = async (q: Question) => {
