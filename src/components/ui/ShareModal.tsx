@@ -33,8 +33,8 @@ export default function ShareModal({ isOpen, onClose, url }: ShareModalProps) {
           <X size={24} />
         </button>
 
-        <h3 className="text-xl font-bold mb-2">Bagikan Hasil Tes</h3>
-        <p className="text-sm text-gray-500 mb-6">Salin link berikut untuk membagikan hasil tes ini.</p>
+        <h3 className="text-xl font-bold mb-2">Share Test Result</h3>
+        <p className="text-sm text-gray-500 mb-6">Copy the following link to share this test result.</p>
 
         <div className="flex items-center gap-2 bg-gray-50 p-2 rounded-lg border border-gray-200">
           <input 
@@ -52,7 +52,7 @@ export default function ShareModal({ isOpen, onClose, url }: ShareModalProps) {
             }`}
           >
             {copied ? <Check size={16} /> : <Copy size={16} />}
-            {copied ? "Disalin" : "Salin"}
+            {copied ? "Copied" : "Copy"}
           </button>
         </div>
       </div>
