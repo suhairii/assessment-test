@@ -1,7 +1,7 @@
 "use client";
 import { useState, Suspense, useRef, useEffect } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
-import { Dices, Clock, CheckCircle2, AlertCircle } from "lucide-react";
+import { Clock, CheckCircle2, AlertCircle } from "lucide-react";
 import { vakQuestions } from "../../../src/data/vak-data";
 import { calculateVakScore } from "../../../src/lib/vak-logic";
 
@@ -45,16 +45,6 @@ function VakTestContent() {
     setTimeout(() => setToast(null), 3000);
   };
 
-  const handleRandomFill = () => {
-    const newAnswers: { [key: number]: string } = {};
-    const options = ["a", "b", "c"];
-    for (let i = 1; i <= 30; i++) {
-      newAnswers[i] = options[Math.floor(Math.random() * options.length)];
-    }
-    setAnswers(newAnswers);
-    showToast("Jawaban VAK diisi acak!", "success");
-  };
-
   const handleSubmit = async () => {
     if (!name.trim() || !position.trim()) {
       showToast("Mohon isi identitas lengkap.", "error");
@@ -79,7 +69,7 @@ function VakTestContent() {
         body: JSON.stringify({ name, position, date, resultData: result, token }),
       });
       const data = await response.json();
-      if (data.success) router.push(`/result/vak?id=${data.id}`);
+      if (data.success) router.push('/submit-success');
       else showToast(data.error || "Gagal menyimpan hasil.", "error");
     } catch {
       showToast("Terjadi kesalahan koneksi.", "error");
@@ -111,7 +101,6 @@ function VakTestContent() {
               <Clock size={14} /> {formatTime(timeLeft)}
             </div>
           </div>
-          <button onClick={handleRandomFill} className="text-xs bg-gray-100 px-3 py-1.5 rounded-full transition font-medium flex items-center gap-1.5"><Dices size={14} /> Random</button>
         </div>
         <div className="h-1 w-full bg-gray-100"><div className="h-full bg-purple-600 transition-all duration-500" style={{ width: `${progress}%` }}></div></div>
       </header>
@@ -153,7 +142,7 @@ function VakTestContent() {
            <div className="text-xs text-gray-500 font-medium">
              {completedCount < 30 ? <span>Tersisa <span className="text-black font-bold">{30 - completedCount}</span> soal</span> : <span className="text-purple-600 font-bold font-bold">Siap kirim!</span>}
            </div>
-          <button onClick={handleSubmit} disabled={completedCount < 30} className="w-full sm:w-auto bg-purple-600 text-white px-8 py-3 rounded-full hover:bg-purple-700 transition font-bold text-sm shadow-lg disabled:opacity-50">LIHAT HASIL VAK</button>
+          <button onClick={handleSubmit} disabled={completedCount < 30} className="w-full sm:w-auto bg-purple-600 text-white px-8 py-3 rounded-full hover:bg-purple-700 transition font-bold text-sm shadow-lg disabled:opacity-50">SUBMIT VAK TEST</button>
         </div>
       </div>
     </div>

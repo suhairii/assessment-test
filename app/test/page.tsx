@@ -1,7 +1,7 @@
 "use client";
 import { useState, Suspense, useRef, useEffect } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
-import { Dices, Clock, CheckCircle2, AlertCircle } from "lucide-react";
+import { Clock, CheckCircle2, AlertCircle } from "lucide-react";
 import { discQuestions } from "../../src/data/disc-data";
 import { calculateDiscScore } from "../../src/lib/disc-logic";
 
@@ -88,21 +88,6 @@ function TestContent() {
     });
   };
 
-  const handleRandomFill = () => {
-    const newAnswers: { [key: number]: { most: string; least: string } } = {};
-    const options = ["A", "B", "C", "D"];
-
-    for (let i = 1; i <= 24; i++) {
-      const shuffled = [...options].sort(() => Math.random() - 0.5);
-      newAnswers[i] = {
-        most: shuffled[0],
-        least: shuffled[1],
-      };
-    }
-    setAnswers(newAnswers);
-    showToast("Jawaban telah diisi secara acak!", "success");
-  };
-
   const handleSubmit = async () => {
     // Validate Biodata
     if (!name.trim()) {
@@ -143,7 +128,7 @@ function TestContent() {
 
       if (data.success) {
         showToast("Hasil tersimpan! Mengalihkan...", "success");
-        router.push(`/result?id=${data.id}`);
+        router.push('/submit-success');
       } else {
         showToast(data.error || "Gagal menyimpan hasil tes.", "error");
       }
@@ -181,13 +166,6 @@ function TestContent() {
               {formatTime(timeLeft)}
             </div>
           </div>
-          <button
-            onClick={handleRandomFill}
-            className="text-xs bg-gray-100 hover:bg-gray-200 text-gray-900 px-3 py-1.5 rounded-full transition font-medium flex items-center gap-1.5"
-          >
-            <Dices size={14} />
-            Random
-          </button>
         </div>
         {/* Progress Bar */}
         <div className="h-1 w-full bg-gray-100">
@@ -341,7 +319,7 @@ function TestContent() {
             disabled={completedCount < 24}
             className="w-full sm:w-auto bg-black text-white px-8 py-3 rounded-full hover:bg-gray-800 active:scale-95 transition font-bold text-sm shadow-lg disabled:opacity-50 disabled:cursor-not-allowed"
           >
-            LIHAT HASIL ANALISA
+            SUBMIT DISC TEST
           </button>
         </div>
       </div>

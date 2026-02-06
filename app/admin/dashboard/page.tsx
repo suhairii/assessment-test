@@ -1,13 +1,58 @@
 "use client";
 import Link from "next/link";
-import { Users, FileText, Brain, ArrowRight } from "lucide-react";
+import { Users, FileText, Brain, ArrowRight, Settings } from "lucide-react";
+import { useState, useEffect } from "react";
 
 export default function Dashboard() {
+  const [maintenance, setMaintenance] = useState(false);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    fetch("/api/admin/maintenance")
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.success) setMaintenance(data.maintenance);
+        setLoading(false);
+      });
+  }, []);
+
+  const toggleMaintenance = async () => {
+    const newState = !maintenance;
+    setMaintenance(newState);
+    try {
+      await fetch("/api/admin/maintenance", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ maintenance: newState }),
+      });
+    } catch (error) {
+      console.error("Failed to update maintenance mode");
+      setMaintenance(!newState); // Revert on error
+    }
+  };
+
   return (
     <div className="max-w-5xl mx-auto">
-      <header className="mb-12 text-center md:text-left">
-        <h1 className="text-4xl font-extrabold tracking-tight mb-3">Sistem Management Asesmen</h1>
-        <p className="text-gray-500 text-lg">Pilih modul untuk mengelola hasil dan undangan peserta.</p>
+      <header className="mb-12 flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
+        <div className="text-center md:text-left">
+          <h1 className="text-4xl font-extrabold tracking-tight mb-3">Sistem Management Asesmen</h1>
+          <p className="text-gray-500 text-lg">Pilih modul untuk mengelola hasil dan undangan peserta.</p>
+        </div>
+        
+        {!loading && (
+          <div className="flex items-center bg-gray-50 p-4 rounded-xl border border-gray-200">
+             <div className="mr-4">
+               <p className="font-bold text-sm">Mode Maintenance</p>
+               <p className="text-xs text-gray-500">{maintenance ? "Aktif" : "Non-aktif"}</p>
+             </div>
+             <button 
+               onClick={toggleMaintenance}
+               className={`relative inline-flex h-8 w-14 items-center rounded-full transition-colors ${maintenance ? 'bg-black' : 'bg-gray-300'}`}
+             >
+               <span className={`inline-block h-6 w-6 transform rounded-full bg-white transition-transform ${maintenance ? 'translate-x-7' : 'translate-x-1'}`} />
+             </button>
+          </div>
+        )}
       </header>
       
       <div className="grid md:grid-cols-3 gap-8">

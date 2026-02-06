@@ -23,6 +23,7 @@ const fetcher = (url: string) => fetch(url).then((res) => res.json());
 export default function IqAdminPage() {
   const [dbStatus, setDbStatus] = useState<{ status: string; message: string } | null>(null);
   const [deleteModal, setDeleteModal] = useState<{ isOpen: boolean; id: string }>({ isOpen: false, id: "" });
+  const [isHrd, setIsHrd] = useState(false);
 
   const { data, error, mutate, isValidating } = useSWR("/api/admin/results/iq", fetcher, {
     refreshInterval: 5000,
@@ -32,6 +33,14 @@ export default function IqAdminPage() {
   const results: TestResult[] = data?.success ? data.data : [];
 
   useEffect(() => {
+    // Check Role
+    const cookies = document.cookie.split(';');
+    const sessionCookie = cookies.find(c => c.trim().startsWith('admin_session='));
+    if (sessionCookie) {
+        const role = sessionCookie.split('=')[1];
+        if (role === 'hrd') setIsHrd(true);
+    }
+
     const checkDb = async () => {
         try {
             const res = await fetch("/api/health");
@@ -100,13 +109,15 @@ export default function IqAdminPage() {
         </div>
         
         <div className="flex items-center gap-3">
-            <Link
-                href="/admin/iq/questions"
-                className="bg-white text-gray-700 border border-gray-200 px-5 py-2.5 rounded-xl font-bold hover:bg-gray-50 transition shadow-sm flex items-center gap-2 text-sm"
-            >
-                <Database size={18} />
-                Edit Soal IQ
-            </Link>
+            {!isHrd && (
+                <Link
+                    href="/admin/iq/questions"
+                    className="bg-white text-gray-700 border border-gray-200 px-5 py-2.5 rounded-xl font-bold hover:bg-gray-50 transition shadow-sm flex items-center gap-2 text-sm"
+                >
+                    <Database size={18} />
+                    Edit Soal IQ
+                </Link>
+            )}
             {dbStatus && (
                 <div className={`px-3 py-1.5 rounded-full text-[10px] font-black uppercase tracking-widest flex items-center gap-2 border ${dbStatus.status === 'ok' ? 'bg-green-50 text-green-700 border-green-200' : 'bg-red-50 text-red-700 border-red-200'}`}>
                     {dbStatus.status === 'ok' ? <CheckCircle size={14} /> : <XCircle size={14} />}
