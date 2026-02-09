@@ -180,7 +180,6 @@ function VakResultContent() {
       </div>
     </>
   );
-  );
 }
 
 export default function VakResultPage() {

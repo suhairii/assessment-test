@@ -2,9 +2,10 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import useSWR from "swr";
-import { Trash2, Eye, Link as LinkIcon, Database, CheckCircle, XCircle, RefreshCw, Brain } from "lucide-react";
+import { Trash2, Eye, Link as LinkIcon, Database, CheckCircle, XCircle, RefreshCw, Brain, Share } from "lucide-react";
 import { toast } from "@/src/components/ui/Toast";
 import { Modal } from "@/src/components/ui/Modal";
+import ShareModal from "@/src/components/ui/ShareModal";
 
 interface TestResult {
   id: string;
@@ -24,6 +25,8 @@ export default function IqAdminPage() {
   const [dbStatus, setDbStatus] = useState<{ status: string; message: string } | null>(null);
   const [deleteModal, setDeleteModal] = useState<{ isOpen: boolean; id: string }>({ isOpen: false, id: "" });
   const [isHrd, setIsHrd] = useState(false);
+  const [shareModalOpen, setShareModalOpen] = useState(false);
+  const [shareUrl, setShareUrl] = useState("");
 
   const { data, error, mutate, isValidating } = useSWR("/api/admin/results/iq", fetcher, {
     refreshInterval: 5000,
@@ -59,8 +62,8 @@ export default function IqAdminPage() {
       const d = await res.json();
       if (d.success) {
         const link = `${window.location.origin}/test/iq?token=${d.token}`;
-        navigator.clipboard.writeText(link);
-        toast.success("Link Undangan IQ disalin!");
+        setShareUrl(link);
+        setShareModalOpen(true);
       } else {
         toast.error("Gagal membuat link.");
       }
@@ -88,6 +91,7 @@ export default function IqAdminPage() {
 
   return (
     <div>
+      <ShareModal isOpen={shareModalOpen} onClose={() => setShareModalOpen(false)} url={shareUrl} />
       <Modal 
         isOpen={deleteModal.isOpen}
         title="Hapus Hasil IQ?"
@@ -129,7 +133,7 @@ export default function IqAdminPage() {
                 className="bg-blue-600 text-white px-5 py-2.5 rounded-xl font-bold hover:bg-blue-700 transition shadow-lg hover:shadow-blue-200 flex items-center gap-2 active:scale-95 text-sm"
             >
                 <LinkIcon size={18} />
-                Share IQ Link
+                Share Link
             </button>
         </div>
       </header>
@@ -172,6 +176,16 @@ export default function IqAdminPage() {
                     >
                       <Eye size={18} />
                     </Link>
+                    <button
+                      onClick={() => {
+                        setShareUrl(`${window.location.origin}/result/iq?id=${item.id}`);
+                        setShareModalOpen(true);
+                      }}
+                      className="text-gray-400 hover:text-blue-600 p-2 hover:bg-white rounded-lg transition shadow-sm border border-transparent hover:border-gray-100"
+                      title="Share Result"
+                    >
+                      <Share size={18} />
+                    </button>
                     <button
                       onClick={() => setDeleteModal({ isOpen: true, id: item.id })}
                       className="text-gray-300 hover:text-red-600 p-2 hover:bg-white rounded-lg transition shadow-sm border border-transparent hover:border-gray-100"

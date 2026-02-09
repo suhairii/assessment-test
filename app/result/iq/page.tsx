@@ -162,7 +162,6 @@ function IqResultContent() {
       </div>
     </>
   );
-  );
 }
 
 export default function IqResultPage() {

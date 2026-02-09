@@ -3,7 +3,8 @@ import { useSearchParams } from "next/navigation";
 import { Suspense, useEffect, useState } from "react";
 import { personalityDescriptions } from "@/src/data/disc-data";
 import Link from "next/link";
-import { Printer } from "lucide-react";
+import { Printer, Share } from "lucide-react";
+import ShareModal from "@/src/components/ui/ShareModal";
 
 interface ProfileDescription {
   strength: string[];
@@ -74,8 +75,17 @@ function ResultContent() {
   const [data, setData] = useState<ResultData | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
+  const [shareModalOpen, setShareModalOpen] = useState(false);
+  const [shareUrl, setShareUrl] = useState("");
 
   useEffect(() => {
+    const id = searchParams.get("id");
+    if (id) {
+      // Point to public URL
+      const baseUrl = window.location.origin;
+      setShareUrl(`${baseUrl}/result?id=${id}`);
+    }
+
     const fetchResult = async () => {
       const id = searchParams.get("id");
       if (!id) { setError("ID hasil tidak ditemukan."); setLoading(false); return; }
@@ -144,78 +154,84 @@ function ResultContent() {
   };
 
   return (
-    <div className="min-h-screen bg-white text-black font-sans p-4 md:p-12 print:p-0">
-      <style>
-        {`
-          @media print {
-            @page { size: A4; margin: 10mm; }
-            body { background: white !important; font-size: 10pt; }
-            .no-print { display: none !important; }
-            .print-text-small { font-size: 9pt !important; }
-            h1 { font-size: 20pt !important; }
-            h2 { font-size: 14pt !important; }
-            h3 { font-size: 11pt !important; }
-            h4 { font-size: 9pt !important; margin-bottom: 4pt !important; }
-          }
-        `}
-      </style>
-      <div className="max-w-6xl mx-auto">
-        <div className="border-b-2 border-black pb-4 mb-6 flex flex-col md:flex-row justify-between md:items-end gap-4 print:flex-row print:mb-6">
-            <div>
-                <h1 className="text-2xl md:text-4xl font-extrabold uppercase tracking-tight mb-1">Laporan Analisa DISC</h1>
-                <p className="text-gray-500 text-xs font-medium">Psychology Assessment System</p>
-            </div>
-            <div className="text-left md:text-right text-xs space-y-0.5 print:bg-transparent">
-                <div className="flex md:justify-end gap-2"><span className="text-gray-500">Nama:</span> <span className="font-bold">{name}</span></div>
-                <div className="flex md:justify-end gap-2"><span className="text-gray-500">Posisi:</span> <span className="font-bold">{position}</span></div>
-                <div className="flex md:justify-end gap-2"><span className="text-gray-500">Tanggal:</span> <span className="font-bold">{date}</span></div>
-            </div>
-        </div>
+    <>
+      <ShareModal isOpen={shareModalOpen} onClose={() => setShareModalOpen(false)} url={shareUrl} />
+      <div className="min-h-screen bg-white text-black font-sans p-4 md:p-12 print:p-0">
+        <style>
+          {`
+            @media print {
+              @page { size: A4; margin: 10mm; }
+              body { background: white !important; font-size: 10pt; }
+              .no-print { display: none !important; }
+              .print-text-small { font-size: 9pt !important; }
+              h1 { font-size: 20pt !important; }
+              h2 { font-size: 14pt !important; }
+              h3 { font-size: 11pt !important; }
+              h4 { font-size: 9pt !important; margin-bottom: 4pt !important; }
+            }
+          `}
+        </style>
+        <div className="max-w-6xl mx-auto">
+          <div className="border-b-2 border-black pb-4 mb-6 flex flex-col md:flex-row justify-between md:items-end gap-4 print:flex-row print:mb-6">
+              <div>
+                  <h1 className="text-2xl md:text-4xl font-extrabold uppercase tracking-tight mb-1">Laporan Analisa DISC</h1>
+                  <p className="text-gray-500 text-xs font-medium">Psychology Assessment System</p>
+              </div>
+              <div className="text-left md:text-right text-xs space-y-0.5 print:bg-transparent">
+                  <div className="flex md:justify-end gap-2"><span className="text-gray-500">Nama:</span> <span className="font-bold">{name}</span></div>
+                  <div className="flex md:justify-end gap-2"><span className="text-gray-500">Posisi:</span> <span className="font-bold">{position}</span></div>
+                  <div className="flex md:justify-end gap-2"><span className="text-gray-500">Tanggal:</span> <span className="font-bold">{date}</span></div>
+              </div>
+          </div>
 
-        <div className="bg-gray-50 p-4 md:p-6 rounded-xl border border-gray-100 mb-6 shadow-sm print:bg-white print:border-gray-200 print:mb-6 print:p-4">
-            <div className="grid md:grid-cols-2 gap-4 relative print:grid-cols-2">
-                <div className="hidden md:block absolute top-0 bottom-0 left-1/2 w-px bg-gray-200 -translate-x-1/2 print:block"></div>
-                <div className="text-center">
-                    <p className="text-xs font-medium text-gray-500 mb-1 italic">Perilaku Adaptasi (Grafik 1)</p>
-                    <div className="bg-black text-white px-4 py-2 rounded-lg inline-block print:bg-white print:text-black print:border print:border-black">
-                        <span className="text-base font-bold">{profileTypeMost}</span>
-                    </div>
-                </div>
-                <div className="text-center print:border-t-0">
-                    <p className="text-xs font-medium text-gray-500 mb-1 italic">Perilaku Alami (Grafik 2)</p>
-                    <div className="bg-black text-white px-4 py-2 rounded-lg inline-block print:bg-white print:text-black print:border print:border-black">
-                        <span className="text-base font-bold">{profileTypeLeast}</span>
-                    </div>
-                </div>
-            </div>
-        </div>
+          <div className="bg-gray-50 p-4 md:p-6 rounded-xl border border-gray-100 mb-6 shadow-sm print:bg-white print:border-gray-200 print:mb-6 print:p-4">
+              <div className="grid md:grid-cols-2 gap-4 relative print:grid-cols-2">
+                  <div className="hidden md:block absolute top-0 bottom-0 left-1/2 w-px bg-gray-200 -translate-x-1/2 print:block"></div>
+                  <div className="text-center">
+                      <p className="text-xs font-medium text-gray-500 mb-1 italic">Perilaku Adaptasi (Grafik 1)</p>
+                      <div className="bg-black text-white px-4 py-2 rounded-lg inline-block print:bg-white print:text-black print:border print:border-black">
+                          <span className="text-base font-bold">{profileTypeMost}</span>
+                      </div>
+                  </div>
+                  <div className="text-center print:border-t-0">
+                      <p className="text-xs font-medium text-gray-500 mb-1 italic">Perilaku Alami (Grafik 2)</p>
+                      <div className="bg-black text-white px-4 py-2 rounded-lg inline-block print:bg-white print:text-black print:border print:border-black">
+                          <span className="text-base font-bold">{profileTypeLeast}</span>
+                      </div>
+                  </div>
+              </div>
+          </div>
 
-        <div className="grid md:grid-cols-2 gap-8 mb-8 print:grid-cols-2 print:mb-6 print:gap-8">
-            <div className="text-center">
-                <h3 className="font-bold text-sm mb-2">Grafik 1: Adaptasi</h3>
-                <LineChart data={graphMost} color="#000000" />
-            </div>
-            <div className="text-center">
-                <h3 className="font-bold text-sm mb-2">Grafik 2: Alami</h3>
-                <LineChart data={graphLeast} color="#000000" />
-            </div>
-        </div>
+          <div className="grid md:grid-cols-2 gap-8 mb-8 print:grid-cols-2 print:mb-6 print:gap-8">
+              <div className="text-center">
+                  <h3 className="font-bold text-sm mb-2">Grafik 1: Adaptasi</h3>
+                  <LineChart data={graphMost} color="#000000" />
+              </div>
+              <div className="text-center">
+                  <h3 className="font-bold text-sm mb-2">Grafik 2: Alami</h3>
+                  <LineChart data={graphLeast} color="#000000" />
+              </div>
+          </div>
 
-        <div className="grid md:grid-cols-2 gap-8 border-t border-black pt-6 mt-6 print:grid-cols-2 print:pt-6 print:mt-6 print:gap-10">
-            <DetailedReport graphIndex={1} type="Adaptasi" profileName={profileTypeMost} traitLabel={highestMost.label} profileData={profileMost} />
-            <DetailedReport graphIndex={2} type="Alami" profileName={profileTypeLeast} traitLabel={highestLeast.label} profileData={profileLeast} />
-        </div>
+          <div className="grid md:grid-cols-2 gap-8 border-t border-black pt-6 mt-6 print:grid-cols-2 print:pt-6 print:mt-6 print:gap-10">
+              <DetailedReport graphIndex={1} type="Adaptasi" profileName={profileTypeMost} traitLabel={highestMost.label} profileData={profileMost} />
+              <DetailedReport graphIndex={2} type="Alami" profileName={profileTypeLeast} traitLabel={highestLeast.label} profileData={profileLeast} />
+          </div>
 
-        <div className="mt-10 text-center no-print pb-10">
-            <Link href="/admin/disc" className="inline-block px-6 py-3 rounded-full font-bold text-sm text-gray-500 hover:text-black hover:bg-gray-100 transition mb-4 md:mb-0 md:mr-4">
-                ← Kembali ke Manajemen DISC
-            </Link>
-            <button onClick={() => window.print()} className="w-full md:w-auto bg-black text-white px-8 py-3 rounded-full hover:bg-gray-800 transition shadow-lg font-bold text-sm">
-              <Printer size={18} className="inline mr-2" /> Cetak Laporan (PDF)
-            </button>
+          <div className="mt-10 text-center no-print pb-10">
+              <Link href="/admin/disc" className="inline-block px-6 py-3 rounded-full font-bold text-sm text-gray-500 hover:text-black hover:bg-gray-100 transition mb-4 md:mb-0 md:mr-4">
+                  ← Kembali ke Manajemen DISC
+              </Link>
+              <button onClick={() => setShareModalOpen(true)} className="w-full md:w-auto flex items-center justify-center gap-2 bg-gray-100 text-black px-8 py-3 rounded-full hover:bg-gray-200 transition font-bold text-sm mr-4">
+                  <Share size={18} className="inline mr-2" /> Share Link
+              </button>
+              <button onClick={() => window.print()} className="w-full md:w-auto bg-black text-white px-8 py-3 rounded-full hover:bg-gray-800 transition shadow-lg font-bold text-sm">
+                <Printer size={18} className="inline mr-2" /> Cetak Laporan (PDF)
+              </button>
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }
 

@@ -17,6 +17,7 @@ function VakTestContent() {
   
   const [answers, setAnswers] = useState<{ [key: number]: string }>({});
   const [toast, setToast] = useState<{ message: string; type: 'error' | 'success' } | null>(null);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const questionRefs = useRef<{ [key: number]: HTMLDivElement | null }>({});
   
   const [timeLeft, setTimeLeft] = useState(900); // 15 mins
@@ -46,6 +47,8 @@ function VakTestContent() {
   };
 
   const handleSubmit = async () => {
+    if (isSubmitting) return;
+
     if (!name.trim() || !position.trim()) {
       showToast("Mohon isi identitas lengkap.", "error");
       window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -60,6 +63,7 @@ function VakTestContent() {
       }
     }
 
+    setIsSubmitting(true);
     const result = calculateVakScore(answers);
 
     try {
@@ -69,10 +73,15 @@ function VakTestContent() {
         body: JSON.stringify({ name, position, date, resultData: result, token }),
       });
       const data = await response.json();
-      if (data.success) router.push('/submit-success');
-      else showToast(data.error || "Gagal menyimpan hasil.", "error");
+      if (data.success) {
+        router.push('/submit-success');
+      } else {
+        showToast(data.error || "Gagal menyimpan hasil.", "error");
+        setIsSubmitting(false);
+      }
     } catch {
       showToast("Terjadi kesalahan koneksi.", "error");
+      setIsSubmitting(false);
     }
   };
 
@@ -137,12 +146,25 @@ function VakTestContent() {
         </div>
       </main>
 
-      <div className="fixed bottom-0 left-0 right-0 p-4 bg-white/80 backdrop-blur-xl border-t border-gray-200 z-30">
+      <div className="fixed bottom-0 left-0 right-0 p-4 pb-[env(safe-area-inset-bottom,16px)] bg-white/80 backdrop-blur-xl border-t border-gray-200 z-40">
         <div className="max-w-3xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-3">
            <div className="text-xs text-gray-500 font-medium">
              {completedCount < 30 ? <span>Tersisa <span className="text-black font-bold">{30 - completedCount}</span> soal</span> : <span className="text-purple-600 font-bold font-bold">Siap kirim!</span>}
            </div>
-          <button onClick={handleSubmit} disabled={completedCount < 30} className="w-full sm:w-auto bg-purple-600 text-white px-8 py-3 rounded-full hover:bg-purple-700 transition font-bold text-sm shadow-lg disabled:opacity-50">SUBMIT VAK TEST</button>
+          <button
+            type="button"
+            onClick={handleSubmit}
+            className={`w-full sm:w-auto bg-purple-600 text-white px-8 py-3 rounded-full hover:bg-purple-700 active:scale-95 transition font-bold text-sm shadow-lg flex items-center justify-center gap-2 cursor-pointer ${isSubmitting ? 'opacity-70 cursor-not-allowed' : ''}`}
+          >
+            {isSubmitting ? (
+              <>
+                <div className="w-4 h-4 border-2 border-white/20 border-t-white rounded-full animate-spin"></div>
+                MENGIRIM...
+              </>
+            ) : (
+              "SUBMIT VAK TEST"
+            )}
+          </button>
         </div>
       </div>
     </div>

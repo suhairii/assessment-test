@@ -17,6 +17,7 @@ function TestContent() {
   
   const [answers, setAnswers] = useState<{ [key: number]: { most: string; least: string } }>({});
   const [toast, setToast] = useState<{ message: string; type: 'error' | 'success' } | null>(null);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const questionRefs = useRef<{ [key: number]: HTMLDivElement | null }>({});
   
   // Timer State (15 minutes = 900 seconds)
@@ -89,6 +90,8 @@ function TestContent() {
   };
 
   const handleSubmit = async () => {
+    if (isSubmitting) return;
+
     // Validate Biodata
     if (!name.trim()) {
       showToast("Mohon isi Nama Lengkap terlebih dahulu.", "error");
@@ -115,6 +118,7 @@ function TestContent() {
       }
     }
 
+    setIsSubmitting(true);
     const result = calculateDiscScore(answers);
 
     try {
@@ -131,10 +135,12 @@ function TestContent() {
         router.push('/submit-success');
       } else {
         showToast(data.error || "Gagal menyimpan hasil tes.", "error");
+        setIsSubmitting(false);
       }
     } catch (error) {
       console.error("Error submitting test:", error);
       showToast("Terjadi kesalahan koneksi.", "error");
+      setIsSubmitting(false);
     }
   };
 
@@ -305,7 +311,7 @@ function TestContent() {
       </main>
 
       {/* Floating Footer Action */}
-      <div className="fixed bottom-0 left-0 right-0 p-4 bg-white/80 backdrop-blur-xl border-t border-gray-200 z-30">
+      <div className="fixed bottom-0 left-0 right-0 p-4 pb-[env(safe-area-inset-bottom,16px)] bg-white/80 backdrop-blur-xl border-t border-gray-200 z-40">
         <div className="max-w-3xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-3">
            <div className="text-xs text-gray-500 font-medium">
              {completedCount < 24 ? (
@@ -315,11 +321,18 @@ function TestContent() {
              )}
            </div>
           <button
+            type="button"
             onClick={handleSubmit}
-            disabled={completedCount < 24}
-            className="w-full sm:w-auto bg-black text-white px-8 py-3 rounded-full hover:bg-gray-800 active:scale-95 transition font-bold text-sm shadow-lg disabled:opacity-50 disabled:cursor-not-allowed"
+            className={`w-full sm:w-auto bg-black text-white px-8 py-3 rounded-full hover:bg-gray-800 active:scale-95 transition font-bold text-sm shadow-lg flex items-center justify-center gap-2 cursor-pointer ${isSubmitting ? 'opacity-70 cursor-not-allowed' : ''}`}
           >
-            SUBMIT DISC TEST
+            {isSubmitting ? (
+              <>
+                <div className="w-4 h-4 border-2 border-white/20 border-t-white rounded-full animate-spin"></div>
+                MENGIRIM...
+              </>
+            ) : (
+              "SUBMIT DISC TEST"
+            )}
           </button>
         </div>
       </div>

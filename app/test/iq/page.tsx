@@ -17,6 +17,7 @@ function IqTestContent() {
   
   const [answers, setAnswers] = useState<{ [key: number]: string }>({});
   const [toast, setToast] = useState<{ message: string; type: 'error' | 'success' } | null>(null);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const questionRefs = useRef<{ [key: number]: HTMLDivElement | null }>({});
   
   const [timeLeft, setTimeLeft] = useState(1800); // 30 minutes
@@ -61,12 +62,24 @@ function IqTestContent() {
   };
 
   const handleSubmit = async () => {
+    if (isSubmitting) return;
+
     if (!name.trim() || !position.trim()) {
       showToast("Mohon isi identitas lengkap.", "error");
       window.scrollTo({ top: 0, behavior: 'smooth' });
       return;
     }
 
+    // Validate all 60 questions
+    for (let i = 1; i <= 60; i++) {
+      if (!answers[i]) {
+        showToast(`Pertanyaan nomor ${i} belum dijawab.`, "error");
+        questionRefs.current[i]?.scrollIntoView({ behavior: "smooth", block: "center" });
+        return;
+      }
+    }
+
+    setIsSubmitting(true);
     const result = calculateIqScore(answers);
 
     try {
@@ -76,10 +89,15 @@ function IqTestContent() {
         body: JSON.stringify({ name, position, date, resultData: result, token }),
       });
       const data = await response.json();
-      if (data.success) router.push('/submit-success');
-      else showToast(data.error || "Gagal menyimpan hasil.", "error");
+      if (data.success) {
+        router.push('/submit-success');
+      } else {
+        showToast(data.error || "Gagal menyimpan hasil.", "error");
+        setIsSubmitting(false);
+      }
     } catch {
       showToast("Terjadi kesalahan koneksi.", "error");
+      setIsSubmitting(false);
     }
   };
 
@@ -163,12 +181,25 @@ function IqTestContent() {
         </div>
       </main>
 
-      <div className="fixed bottom-0 left-0 right-0 p-4 bg-white/80 backdrop-blur-xl border-t border-gray-200 z-30">
+      <div className="fixed bottom-0 left-0 right-0 p-4 pb-[env(safe-area-inset-bottom,16px)] bg-white/80 backdrop-blur-xl border-t border-gray-200 z-40">
         <div className="max-w-3xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-3">
            <div className="text-xs text-gray-500 font-medium text-center md:text-left">
              {completedCount < 60 ? <span>Dijawab <span className="text-black font-bold">{completedCount}</span> dari <span className="font-bold text-black">60</span> soal</span> : <span className="text-blue-600 font-bold uppercase tracking-wider">Selesai! Silakan Kirim</span>}
            </div>
-          <button onClick={handleSubmit} className="w-full sm:w-auto bg-black text-white px-10 py-3 rounded-full hover:bg-gray-800 transition font-bold text-sm shadow-lg">SUBMIT IQ TEST</button>
+          <button
+            type="button"
+            onClick={handleSubmit}
+            className={`w-full sm:w-auto bg-black text-white px-10 py-3 rounded-full hover:bg-gray-800 active:scale-95 transition font-bold text-sm shadow-lg flex items-center justify-center gap-2 cursor-pointer ${isSubmitting ? 'opacity-70 cursor-not-allowed' : ''}`}
+          >
+            {isSubmitting ? (
+              <>
+                <div className="w-4 h-4 border-2 border-white/20 border-t-white rounded-full animate-spin"></div>
+                MENGIRIM...
+              </>
+            ) : (
+              "SUBMIT IQ TEST"
+            )}
+          </button>
         </div>
       </div>
     </div>

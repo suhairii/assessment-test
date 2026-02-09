@@ -237,7 +237,6 @@ function ResultContent() {
       </div>
     </>
   );
-  );
 }
 
 export default function ResultPage() {
