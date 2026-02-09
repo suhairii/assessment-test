@@ -1,9 +1,10 @@
 "use client";
 import { useState, Suspense, useRef, useEffect } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
-import { Clock, CheckCircle2, AlertCircle } from "lucide-react";
+import { Clock } from "lucide-react";
 import { discQuestions } from "../../src/data/disc-data";
 import { calculateDiscScore } from "../../src/lib/disc-logic";
+import { toast } from "../../src/components/ui/Toast";
 
 function TestContent() {
   const router = useRouter();
@@ -16,7 +17,6 @@ function TestContent() {
   const [date, setDate] = useState(searchParams.get("date") || new Date().toISOString().split("T")[0]);
   
   const [answers, setAnswers] = useState<{ [key: number]: { most: string; least: string } }>({});
-  const [toast, setToast] = useState<{ message: string; type: 'error' | 'success' } | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const questionRefs = useRef<{ [key: number]: HTMLDivElement | null }>({});
   
@@ -27,7 +27,7 @@ function TestContent() {
   useEffect(() => {
     if (timeLeft <= 0) {
       setIsTimeUp(true);
-      showToast("Waktu habis! Menyerahkan jawaban otomatis...", "error");
+      toast.error("Waktu habis! Menyerahkan jawaban otomatis...");
       handleSubmit(); // Trigger auto-submit
       return;
     }
@@ -66,11 +66,6 @@ function TestContent() {
     validateToken();
   }, [token, router]);
 
-  const showToast = (message: string, type: 'error' | 'success' = 'error') => {
-    setToast({ message, type });
-    setTimeout(() => setToast(null), 3000);
-  };
-
   if (isValidating) return <div className="min-h-screen flex items-center justify-center bg-white font-medium text-gray-400">Memvalidasi Akses...</div>;
 
   const handleSelect = (questionId: number, type: "most" | "least", value: string) => {
@@ -94,12 +89,12 @@ function TestContent() {
 
     // Validate Biodata
     if (!name.trim()) {
-      showToast("Mohon isi Nama Lengkap terlebih dahulu.", "error");
+      toast.error("Mohon isi Nama Lengkap terlebih dahulu.");
       window.scrollTo({ top: 0, behavior: 'smooth' });
       return;
     }
     if (!position.trim()) {
-      showToast("Mohon isi Posisi / Jabatan terlebih dahulu.", "error");
+      toast.error("Mohon isi Posisi / Jabatan terlebih dahulu.");
       window.scrollTo({ top: 0, behavior: 'smooth' });
       return;
     }
@@ -108,12 +103,15 @@ function TestContent() {
     for (let i = 1; i <= 24; i++) {
       const ans = answers[i];
       if (!ans || !ans.most || !ans.least) {
-        showToast(`Pertanyaan nomor ${i} belum lengkap (Wajib pilih Most & Least).`, "error");
+        toast.error(`Pertanyaan nomor ${i} belum lengkap (Wajib pilih Most & Least).`);
         // Scroll to the specific question
         questionRefs.current[i]?.scrollIntoView({ behavior: "smooth", block: "center" });
         // Highlight the question temporarily
-        questionRefs.current[i]?.classList.add("bg-red-50");
-        setTimeout(() => questionRefs.current[i]?.classList.remove("bg-red-50"), 2000);
+        const el = questionRefs.current[i];
+        if (el) {
+          el.classList.add("ring-2", "ring-red-500", "bg-red-50");
+          setTimeout(() => el.classList.remove("ring-2", "ring-red-500", "bg-red-50"), 3000);
+        }
         return;
       }
     }
@@ -131,15 +129,15 @@ function TestContent() {
       const data = await response.json();
 
       if (data.success) {
-        showToast("Hasil tersimpan! Mengalihkan...", "success");
+        toast.success("Hasil tersimpan! Mengalihkan...");
         router.push('/submit-success');
       } else {
-        showToast(data.error || "Gagal menyimpan hasil tes.", "error");
+        toast.error(data.error || "Gagal menyimpan hasil tes.");
         setIsSubmitting(false);
       }
     } catch (error) {
       console.error("Error submitting test:", error);
-      showToast("Terjadi kesalahan koneksi.", "error");
+      toast.error("Terjadi kesalahan koneksi.");
       setIsSubmitting(false);
     }
   };
@@ -150,16 +148,6 @@ function TestContent() {
 
   return (
     <div className="min-h-screen bg-white text-gray-900 font-sans pb-32">
-      {/* Custom Toast Notification */}
-      {toast && (
-        <div className={`fixed top-4 left-1/2 transform -translate-x-1/2 px-6 py-3 rounded-full shadow-xl z-50 transition-all duration-300 ${toast.type === 'error' ? 'bg-black text-white border border-gray-800' : 'bg-white text-black border border-gray-200'}`}>
-          <div className="flex items-center gap-2">
-            {toast.type === 'error' ? <AlertCircle size={18} className="text-red-500" /> : <CheckCircle2 size={18} className="text-green-500" />}
-            <span className="font-medium text-sm">{toast.message}</span>
-          </div>
-        </div>
-      )}
-
       {/* Sticky Header - Mobile Compact */}
       <header className="bg-white/90 backdrop-blur-md border-b border-gray-100 sticky top-0 z-20">
         <div className="max-w-3xl mx-auto px-4 py-3 flex justify-between items-center">

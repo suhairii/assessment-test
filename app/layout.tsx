@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import { cookies } from "next/headers";
 import { settingsDb } from "@/src/lib/settings";
 import MaintenanceGuard from "@/src/components/MaintenanceGuard";
+import { ToastContainer } from "@/src/components/ui/Toast";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -40,6 +41,7 @@ export default async function RootLayout({
         <MaintenanceGuard maintenanceActive={maintenanceActive} isAdmin={isAdmin}>
           {children}
         </MaintenanceGuard>
+        <ToastContainer />
       </body>
     </html>
   );

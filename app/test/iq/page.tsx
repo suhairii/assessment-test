@@ -3,6 +3,7 @@ import { useState, Suspense, useRef, useEffect } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { Clock, CheckCircle2, AlertCircle, Brain } from "lucide-react";
 import { calculateIqScore } from "../../../src/lib/iq-logic";
+import { toast } from "../../../src/components/ui/Toast";
 
 function IqTestContent() {
   const router = useRouter();
@@ -16,7 +17,6 @@ function IqTestContent() {
   const [date, setDate] = useState(new Date().toISOString().split("T")[0]);
   
   const [answers, setAnswers] = useState<{ [key: number]: string }>({});
-  const [toast, setToast] = useState<{ message: string; type: 'error' | 'success' } | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const questionRefs = useRef<{ [key: number]: HTMLDivElement | null }>({});
   
@@ -56,16 +56,11 @@ function IqTestContent() {
     return () => clearInterval(timer);
   }, [timeLeft, isValidating]);
 
-  const showToast = (message: string, type: 'error' | 'success' = 'error') => {
-    setToast({ message, type });
-    setTimeout(() => setToast(null), 3000);
-  };
-
   const handleSubmit = async () => {
     if (isSubmitting) return;
 
     if (!name.trim() || !position.trim()) {
-      showToast("Mohon isi identitas lengkap.", "error");
+      toast.error("Mohon isi identitas lengkap.");
       window.scrollTo({ top: 0, behavior: 'smooth' });
       return;
     }
@@ -73,8 +68,13 @@ function IqTestContent() {
     // Validate all 60 questions
     for (let i = 1; i <= 60; i++) {
       if (!answers[i]) {
-        showToast(`Pertanyaan nomor ${i} belum dijawab.`, "error");
+        toast.error(`Pertanyaan nomor ${i} belum dijawab.`);
         questionRefs.current[i]?.scrollIntoView({ behavior: "smooth", block: "center" });
+        const el = questionRefs.current[i];
+        if (el) {
+          el.classList.add("ring-2", "ring-red-500", "bg-red-50");
+          setTimeout(() => el.classList.remove("ring-2", "ring-red-500", "bg-red-50"), 3000);
+        }
         return;
       }
     }
@@ -90,13 +90,14 @@ function IqTestContent() {
       });
       const data = await response.json();
       if (data.success) {
+        toast.success("Hasil IQ Test tersimpan!");
         router.push('/submit-success');
       } else {
-        showToast(data.error || "Gagal menyimpan hasil.", "error");
+        toast.error(data.error || "Gagal menyimpan hasil.");
         setIsSubmitting(false);
       }
     } catch {
-      showToast("Terjadi kesalahan koneksi.", "error");
+      toast.error("Terjadi kesalahan koneksi.");
       setIsSubmitting(false);
     }
   };
@@ -109,15 +110,6 @@ function IqTestContent() {
 
   return (
     <div className="min-h-screen bg-white text-gray-900 font-sans pb-32">
-      {toast && (
-        <div className={`fixed top-4 left-1/2 transform -translate-x-1/2 px-6 py-3 rounded-full shadow-xl z-50 transition-all ${toast.type === 'error' ? 'bg-black text-white' : 'bg-white text-black border border-gray-200'}`}>
-          <div className="flex items-center gap-2">
-            {toast.type === 'error' ? <AlertCircle size={18} /> : <CheckCircle2 size={18} />}
-            <span className="font-medium text-sm">{toast.message}</span>
-          </div>
-        </div>
-      )}
-
       <header className="bg-white/90 backdrop-blur-md border-b border-gray-100 sticky top-0 z-20">
         <div className="max-w-3xl mx-auto px-4 py-3 flex justify-between items-center">
           <div className="flex items-center gap-4">
