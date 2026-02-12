@@ -28,8 +28,7 @@ export default function VakAdminPage() {
 
   // Filter states
   const [searchTerm, setSearchTerm] = useState("");
-  const [startDate, setStartDate] = useState("");
-  const [endDate, setEndDate] = useState("");
+  const [selectedDate, setSelectedDate] = useState("");
   const [preferenceFilter, setPreferenceFilter] = useState("");
 
   const { data, error, mutate, isValidating } = useSWR("/api/admin/results/vak", fetcher, {
@@ -46,12 +45,11 @@ export default function VakAdminPage() {
       item.position.toLowerCase().includes(searchTerm.toLowerCase());
     
     const itemDate = new Date(item.createdAt).toISOString().split('T')[0];
-    const matchesStartDate = !startDate || itemDate >= startDate;
-    const matchesEndDate = !endDate || itemDate <= endDate;
+    const matchesDate = !selectedDate || itemDate === selectedDate;
     
     const matchesPreference = !preferenceFilter || item.resultData.preference.includes(preferenceFilter);
 
-    return matchesSearch && matchesStartDate && matchesEndDate && matchesPreference;
+    return matchesSearch && matchesDate && matchesPreference;
   });
 
   useEffect(() => {
@@ -156,26 +154,13 @@ export default function VakAdminPage() {
         </div>
         
         <div className="w-full md:w-auto">
-          <label className="block text-[10px] font-black uppercase tracking-widest text-gray-400 mb-2 ml-1">Tanggal Mulai</label>
+          <label className="block text-[10px] font-black uppercase tracking-widest text-gray-400 mb-2 ml-1">Pilih Tanggal</label>
           <div className="relative">
             <Calendar className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" size={16} />
             <input 
               type="date" 
-              value={startDate}
-              onChange={(e) => setStartDate(e.target.value)}
-              className="pl-10 pr-4 py-2.5 bg-gray-50 border border-gray-100 rounded-xl focus:ring-2 focus:ring-purple-500 focus:bg-white transition-all outline-none text-sm font-medium"
-            />
-          </div>
-        </div>
-
-        <div className="w-full md:w-auto">
-          <label className="block text-[10px] font-black uppercase tracking-widest text-gray-400 mb-2 ml-1">Tanggal Akhir</label>
-          <div className="relative">
-            <Calendar className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" size={16} />
-            <input 
-              type="date" 
-              value={endDate}
-              onChange={(e) => setEndDate(e.target.value)}
+              value={selectedDate}
+              onChange={(e) => setSelectedDate(e.target.value)}
               className="pl-10 pr-4 py-2.5 bg-gray-50 border border-gray-100 rounded-xl focus:ring-2 focus:ring-purple-500 focus:bg-white transition-all outline-none text-sm font-medium"
             />
           </div>
@@ -201,8 +186,7 @@ export default function VakAdminPage() {
         <button 
           onClick={() => {
             setSearchTerm("");
-            setStartDate("");
-            setEndDate("");
+            setSelectedDate("");
             setPreferenceFilter("");
           }}
           className="px-4 py-2.5 text-gray-400 hover:text-purple-600 font-bold text-[10px] uppercase tracking-widest transition-colors"
