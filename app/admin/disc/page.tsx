@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import useSWR from "swr";
-import { Trash2, Eye, Link as LinkIcon, Database, CheckCircle, XCircle, RefreshCw, FileText, Share } from "lucide-react";
+import { Trash2, Eye, Link as LinkIcon, Database, CheckCircle, XCircle, RefreshCw, FileText, Share, Search, Calendar, Filter } from "lucide-react";
 import { toast } from "@/src/components/ui/Toast";
 import { Modal } from "@/src/components/ui/Modal";
 import ShareModal from "@/src/components/ui/ShareModal";
@@ -27,13 +27,36 @@ export default function DiscAdminPage() {
   const [shareModalOpen, setShareModalOpen] = useState(false);
   const [shareUrl, setShareUrl] = useState("");
 
+  // Filter states
+  const [searchTerm, setSearchTerm] = useState("");
+  const [startDate, setStartDate] = useState("");
+  const [endDate, setEndDate] = useState("");
+  const [profileFilter, setProfileFilter] = useState("");
+
   // Real-time data fetching with SWR
   const { data, error, mutate, isValidating } = useSWR("/api/admin/results", fetcher, {
     refreshInterval: 5000, // Refresh every 5 seconds
     revalidateOnFocus: true
   });
 
-  const results: TestResult[] = data?.success ? data.data : [];
+  const allResults: TestResult[] = data?.success ? data.data : [];
+
+  // Filter logic
+  const results = allResults.filter((item) => {
+    const matchesSearch = 
+      item.name.toLowerCase().includes(searchTerm.toLowerCase()) || 
+      item.position.toLowerCase().includes(searchTerm.toLowerCase());
+    
+    const itemDate = new Date(item.createdAt).toISOString().split('T')[0];
+    const matchesStartDate = !startDate || itemDate >= startDate;
+    const matchesEndDate = !endDate || itemDate <= endDate;
+    
+    const matchesProfile = !profileFilter || 
+      item.resultData.profileTypeMost.includes(profileFilter) || 
+      item.resultData.profileTypeLeast.includes(profileFilter);
+
+    return matchesSearch && matchesStartDate && matchesEndDate && matchesProfile;
+  });
 
   useEffect(() => {
     const checkDb = async () => {
@@ -121,6 +144,79 @@ export default function DiscAdminPage() {
             </button>
         </div>
       </header>
+
+      {/* Filter Bar */}
+      <div className="bg-white p-4 rounded-2xl shadow-sm border border-gray-200 mb-6 flex flex-wrap gap-4 items-end">
+        <div className="flex-1 min-w-[200px]">
+          <label className="block text-[10px] font-black uppercase tracking-widest text-gray-400 mb-2 ml-1">Cari Peserta</label>
+          <div className="relative">
+            <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" size={16} />
+            <input 
+              type="text" 
+              placeholder="Nama atau posisi..." 
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              className="w-full pl-10 pr-4 py-2.5 bg-gray-50 border border-gray-100 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:bg-white transition-all outline-none text-sm font-medium"
+            />
+          </div>
+        </div>
+        
+        <div className="w-full md:w-auto">
+          <label className="block text-[10px] font-black uppercase tracking-widest text-gray-400 mb-2 ml-1">Tanggal Mulai</label>
+          <div className="relative">
+            <Calendar className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" size={16} />
+            <input 
+              type="date" 
+              value={startDate}
+              onChange={(e) => setStartDate(e.target.value)}
+              className="pl-10 pr-4 py-2.5 bg-gray-50 border border-gray-100 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:bg-white transition-all outline-none text-sm font-medium"
+            />
+          </div>
+        </div>
+
+        <div className="w-full md:w-auto">
+          <label className="block text-[10px] font-black uppercase tracking-widest text-gray-400 mb-2 ml-1">Tanggal Akhir</label>
+          <div className="relative">
+            <Calendar className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" size={16} />
+            <input 
+              type="date" 
+              value={endDate}
+              onChange={(e) => setEndDate(e.target.value)}
+              className="pl-10 pr-4 py-2.5 bg-gray-50 border border-gray-100 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:bg-white transition-all outline-none text-sm font-medium"
+            />
+          </div>
+        </div>
+
+        <div className="w-full md:w-auto">
+          <label className="block text-[10px] font-black uppercase tracking-widest text-gray-400 mb-2 ml-1">Profil DISC</label>
+          <div className="relative">
+            <Filter className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" size={16} />
+            <select 
+              value={profileFilter}
+              onChange={(e) => setProfileFilter(e.target.value)}
+              className="pl-10 pr-8 py-2.5 bg-gray-50 border border-gray-100 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:bg-white transition-all outline-none text-sm font-medium appearance-none"
+            >
+              <option value="">Semua Profil</option>
+              <option value="D">Dominance (D)</option>
+              <option value="I">Influence (I)</option>
+              <option value="S">Steadiness (S)</option>
+              <option value="C">Compliance (C)</option>
+            </select>
+          </div>
+        </div>
+
+        <button 
+          onClick={() => {
+            setSearchTerm("");
+            setStartDate("");
+            setEndDate("");
+            setProfileFilter("");
+          }}
+          className="px-4 py-2.5 text-gray-400 hover:text-indigo-600 font-bold text-[10px] uppercase tracking-widest transition-colors"
+        >
+          Reset
+        </button>
+      </div>
       
       <div className="bg-white rounded-2xl shadow-sm border border-gray-200 overflow-hidden">
         <table className="w-full text-left border-collapse">
