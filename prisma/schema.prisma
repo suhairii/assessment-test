@@ -1,0 +1,155 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+}
+
+model Application {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // A. Personal Data
+  appliedPosition    String
+  vacancySource      String
+  fullName           String
+  gender             String
+  nickname           String?
+  bloodType          String?
+  placeOfBirth       String
+  dateOfBirth        String
+  religion           String?
+  ktpNo              String
+  ktpValidUntil      String?
+  email              String
+  passportNo         String?
+  passportValidUntil String?
+  homePhone          String?
+  simNo              String?
+  simValidUntil      String?
+  mobilePhone        String
+  currentAddress     String
+  ktpAddress         String
+  status             String
+
+  // B. Family Data
+  familyMembers FamilyMember[]
+
+  // C & D. Education & Courses
+  educations Education[]
+  courses    Course[]
+
+  // E. Languages
+  languages Language[]
+
+  // F. Employment
+  employmentHistory Employment[]
+
+  // G. Social
+  socialActivities SocialActivity[]
+
+  // I. References
+  references Reference[]
+
+  // J. Emergency
+  emergencyContacts EmergencyContact[]
+
+  // Final Section
+  expectedSalary   String
+  availability     String
+  expectedJoinDate String
+  declaration      Boolean
+}
+
+model FamilyMember {
+  id               String      @id @default(auto()) @map("_id") @db.ObjectId
+  relationship     String
+  name             String
+  placeDateOfBirth String
+  occupation       String
+  applicationId    String      @db.ObjectId
+  application      Application @relation(fields: [applicationId], references: [id], onDelete: Cascade)
+}
+
+model Education {
+  id             String      @id @default(auto()) @map("_id") @db.ObjectId
+  level          String
+  institution    String
+  major          String
+  graduationYear String
+  gpa            String?
+  applicationId  String      @db.ObjectId
+  application      Application @relation(fields: [applicationId], references: [id], onDelete: Cascade)
+}
+
+model Course {
+  id            String      @id @default(auto()) @map("_id") @db.ObjectId
+  topic         String
+  duration      String
+  year          String
+  organizer     String
+  location      String
+  financedBy    String
+  applicationId String      @db.ObjectId
+  application   Application @relation(fields: [applicationId], references: [id], onDelete: Cascade)
+}
+
+model Language {
+  id            String      @id @default(auto()) @map("_id") @db.ObjectId
+  language      String
+  read          String
+  speak         String
+  write         String
+  applicationId String      @db.ObjectId
+  application   Application @relation(fields: [applicationId], references: [id], onDelete: Cascade)
+}
+
+model Employment {
+  id                   String      @id @default(auto()) @map("_id") @db.ObjectId
+  companyName          String
+  jobTitle             String
+  salary               String
+  officePhone          String?
+  startWorking         String
+  resigned             String
+  reasonForResignation String?
+  jobDesc              String
+  businessType         String
+  supervisorName       String
+  supervisorTitle      String
+  reportingCount       String
+  applicationId        String      @db.ObjectId
+  application          Application @relation(fields: [applicationId], references: [id], onDelete: Cascade)
+}
+
+model SocialActivity {
+  id            String      @id @default(auto()) @map("_id") @db.ObjectId
+  orgName       String
+  activity      String
+  function      String
+  year          String
+  applicationId String      @db.ObjectId
+  application   Application @relation(fields: [applicationId], references: [id], onDelete: Cascade)
+}
+
+model Reference {
+  id            String      @id @default(auto()) @map("_id") @db.ObjectId
+  name          String
+  relationship  String
+  jobTitle      String
+  companyName   String
+  mobilePhone   String
+  applicationId String      @db.ObjectId
+  application   Application @relation(fields: [applicationId], references: [id], onDelete: Cascade)
+}
+
+model EmergencyContact {
+  id            String      @id @default(auto()) @map("_id") @db.ObjectId
+  name          String
+  relationship  String
+  mobilePhone   String
+  applicationId String      @db.ObjectId
+  application   Application @relation(fields: [applicationId], references: [id], onDelete: Cascade)
+}

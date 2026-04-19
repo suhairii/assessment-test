@@ -16,6 +16,7 @@ export const Sidebar = ({ isOpen, toggle }: SidebarProps) => {
     { name: "DISC Assessment", href: "/admin/disc", icon: Users },
     { name: "VAK Test", href: "/admin/vak", icon: Ear },
     { name: "IQ Test", href: "/admin/iq", icon: Brain },
+    { name: "Application Form", href: "/admin/application-form", icon: FileText },
   ];
 
   return (
