@@ -5,12 +5,25 @@ export const dynamic = 'force-dynamic';
 
 const DB_NAME = 'disc_db';
 const COLLECTION_NAME = 'applications';
+const INVITE_COLLECTION = 'invitations';
 
 export async function POST(request: Request) {
   try {
     const data = await request.json();
+    const token = data.token;
     const client = await clientPromise;
     const db = client.db(DB_NAME);
+
+    // Validate Token if exists (application form must have a token now)
+    if (token) {
+        const invite = await db.collection(INVITE_COLLECTION).findOne({ token: token });
+        if (!invite || invite.used) {
+            return NextResponse.json({ success: false, error: 'Token tidak valid atau sudah terpakai.' }, { status: 403 });
+        }
+        
+        // Mark token as used
+        await db.collection(INVITE_COLLECTION).updateOne({ token: token }, { $set: { used: true } });
+    }
 
     // Menambahkan timestamp
     const applicationData = {
@@ -41,7 +54,13 @@ export async function GET() {
       .sort({ createdAt: -1 })
       .toArray();
 
-    return NextResponse.json(applications);
+    // Transform _id to id for frontend compatibility
+    const formatted = applications.map(app => ({
+        ...app,
+        id: app._id.toString()
+    }));
+
+    return NextResponse.json(formatted);
   } catch (error) {
     console.error("Error fetching applications:", error);
     return NextResponse.json(

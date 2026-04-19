@@ -16,10 +16,14 @@ export async function GET(request: Request) {
     const invite = await db.collection(COLLECTION).findOne({ token: token });
 
     if (invite && !invite.used) {
-      return NextResponse.json({ valid: true });
+      return NextResponse.json({ 
+        valid: true, 
+        type: invite.type || 'TEST' 
+      });
     }
     return NextResponse.json({ valid: false });
-  } catch {
+  } catch (error) {
+    console.error('Token validation error:', error);
     return NextResponse.json({ valid: false }, { status: 500 });
   }
 }

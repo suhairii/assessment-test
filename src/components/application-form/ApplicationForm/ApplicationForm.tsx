@@ -19,7 +19,11 @@ import { EmploymentSection } from "./sections/EmploymentSection";
 import { ReferenceEmergencySection } from "./sections/ReferenceEmergencySection";
 import { FinalSection } from "./sections/FinalSection";
 
-export default function ApplicationForm() {
+interface ApplicationFormProps {
+  token?: string | null;
+}
+
+export default function ApplicationForm({ token }: ApplicationFormProps) {
   const [currentStep, setCurrentStep] = useState(0);
   const [isSaving, setIsSaving] = useState(false);
 
@@ -142,10 +146,20 @@ export default function ApplicationForm() {
 
   const onSubmit = async (data: ApplicationFormData) => {
     try {
+      // Flatten data for database if needed, or send as is
+      // We will add the token to identify and mark it as used
+      const payload = {
+        ...data,
+        token: token,
+        // Map top level fields for dashboard search/view
+        fullName: data.personalData.fullName,
+        appliedPosition: data.personalData.appliedPosition,
+      };
+
       const response = await fetch("/api/applications", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
+        body: JSON.stringify(payload),
       });
 
       const responseData = await response.json();
@@ -155,7 +169,7 @@ export default function ApplicationForm() {
         localStorage.removeItem("application_form_step");
         toast.success("Application Submitted Successfully!");
         setTimeout(() => {
-          window.location.href = "/dashboard";
+          window.location.href = "/submit-success";
         }, 1500);
       } else {
         throw new Error(responseData.error || "Failed to submit application");
