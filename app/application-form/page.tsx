@@ -1,3 +1,4 @@
+export const dynamic = 'force-dynamic';
 import ApplicationForm from "@/src/components/application-form/ApplicationForm/ApplicationForm";
 import { ChevronRight } from "lucide-react";
 import Link from "next/link";
