@@ -15,7 +15,7 @@ export async function GET(request: Request) {
     const db = client.db(DB_NAME);
     const invite = await db.collection(COLLECTION).findOne({ token: token });
 
-    if (invite && !invite.used) {
+    if (invite && (invite.isPermanent || !invite.used)) {
       return NextResponse.json({ 
         valid: true, 
         type: invite.type || 'TEST' 

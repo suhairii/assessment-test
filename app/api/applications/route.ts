@@ -18,12 +18,14 @@ export async function POST(request: Request) {
     // Validate Token if exists (application form must have a token now)
     if (token) {
         const invite = await db.collection(INVITE_COLLECTION).findOne({ token: token });
-        if (!invite || invite.used) {
+        if (!invite || (!invite.isPermanent && invite.used)) {
             return NextResponse.json({ success: false, error: 'Token tidak valid atau sudah terpakai.' }, { status: 403 });
         }
         
-        // Mark token as used
-        await db.collection(INVITE_COLLECTION).updateOne({ token: token }, { $set: { used: true } });
+        // Mark token as used only if it's not permanent
+        if (!invite.isPermanent) {
+            await db.collection(INVITE_COLLECTION).updateOne({ token: token }, { $set: { used: true } });
+        }
     }
 
     // Menambahkan timestamp

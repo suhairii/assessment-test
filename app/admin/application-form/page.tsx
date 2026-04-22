@@ -38,13 +38,12 @@ export default function ApplicationFormAdminPage() {
     };
     checkDb();
   }, []);
-
   const handleGenerateLink = async () => {
     try {
-      const res = await fetch("/api/admin/token", { 
+      const res = await fetch("/api/admin/token", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ type: "APPLICATION" })
+        body: JSON.stringify({ type: 'APPFORM', isPermanent: true })
       });
       const d = await res.json();
       if (d.success) {
@@ -54,8 +53,9 @@ export default function ApplicationFormAdminPage() {
       } else {
         toast.error("Gagal membuat link.");
       }
-    } catch {
-      toast.error("Gagal membuat link.");
+    } catch (e) {
+      console.error(e);
+      toast.error("Terjadi kesalahan.");
     }
   };
 

@@ -9,6 +9,7 @@ export async function POST(request: Request) {
   try {
     const body = await request.json().catch(() => ({}));
     const type = body.type || 'TEST'; // Default to TEST for backward compatibility
+    const isPermanent = body.isPermanent || false;
 
     const client = await clientPromise;
     const db = client.db(DB_NAME);
@@ -19,6 +20,7 @@ export async function POST(request: Request) {
       token: token,
       type: type,
       used: false,
+      isPermanent: isPermanent,
       createdAt: new Date()
     });
 
