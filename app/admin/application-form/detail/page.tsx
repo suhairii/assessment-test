@@ -357,7 +357,7 @@ function DetailContent() {
                         </div>
                         <div className="grid grid-cols-2 gap-4">
                             <InfoRow label="Join Date" value={data.finalSection?.expectedJoinDate} />
-                            <div className="flex flex-col">
+                            <div className="flex flex-col no-print">
                                 <span className="text-[10px] font-black text-black uppercase tracking-widest opacity-40">CV Attachment</span>
                                 <div className="flex items-center justify-between mt-1">
                                     <span className="text-sm font-bold text-black truncate max-w-[150px]">{data.finalSection?.cvFile && data.finalSection.cvFile.startsWith('http') ? data.finalSection.cvFile.split('/').pop() : data.finalSection?.cvFile || "-"}</span>
