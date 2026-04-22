@@ -39,24 +39,10 @@ export default function ApplicationFormAdminPage() {
     checkDb();
   }, []);
   const handleGenerateLink = async () => {
-    try {
-      const res = await fetch("/api/admin/token", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ type: 'APPFORM', isPermanent: true })
-      });
-      const d = await res.json();
-      if (d.success) {
-        const link = `${window.location.origin}/application-form?token=${d.token}`;
-        setShareUrl(link);
-        setShareModalOpen(true);
-      } else {
-        toast.error("Gagal membuat link.");
-      }
-    } catch (e) {
-      console.error(e);
-      toast.error("Terjadi kesalahan.");
-    }
+    // Return the pretty URL for the application form
+    const link = `${window.location.origin}/apply`;
+    setShareUrl(link);
+    setShareModalOpen(true);
   };
 
   const handleDelete = async (id: string) => {

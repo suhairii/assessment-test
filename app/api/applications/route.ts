@@ -16,7 +16,7 @@ export async function POST(request: Request) {
     const db = client.db(DB_NAME);
 
     // Validate Token if exists (application form must have a token now)
-    if (token) {
+    if (token && token !== "PUBLIC") {
         const invite = await db.collection(INVITE_COLLECTION).findOne({ token: token });
         if (!invite || (!invite.isPermanent && invite.used)) {
             return NextResponse.json({ success: false, error: 'Token tidak valid atau sudah terpakai.' }, { status: 403 });
