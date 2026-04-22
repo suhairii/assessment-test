@@ -306,7 +306,7 @@ function DetailContent() {
                                     label={`Paklaring - ${job.companyName}`} 
                                     type="paklaring" 
                                     trigger={
-                                        <button className="flex items-center gap-2 text-black hover:text-gray-600 transition font-black text-[8px] uppercase tracking-widest border-2 border-black px-4 py-1.5 rounded-full ml-4 shrink-0">
+                                        <button className="no-print flex items-center gap-2 text-black hover:text-gray-600 transition font-black text-[8px] uppercase tracking-widest border-2 border-black px-4 py-1.5 rounded-full ml-4 shrink-0">
                                             <Eye size={14} /> Preview File
                                         </button>
                                     }
@@ -367,7 +367,7 @@ function DetailContent() {
                                             label="Curriculum Vitae" 
                                             type="cv" 
                                             trigger={
-                                                <button className="flex items-center gap-2 text-black hover:text-gray-600 transition font-black text-[8px] uppercase tracking-widest border-2 border-black px-3 py-1 rounded-full shrink-0">
+                                                <button className="no-print flex items-center gap-2 text-black hover:text-gray-600 transition font-black text-[8px] uppercase tracking-widest border-2 border-black px-3 py-1 rounded-full shrink-0">
                                                     <Eye size={12} /> Preview CV
                                                 </button>
                                             }
