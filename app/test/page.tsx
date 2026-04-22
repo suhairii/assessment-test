@@ -130,7 +130,16 @@ function TestContent() {
 
       if (data.success) {
         toast.success("Hasil tersimpan! Mengalihkan...");
-        router.push('/submit-success');
+        
+        // Fetch token type to determine redirection
+        const tokenRes = await fetch(`/api/token/validate?token=${token}`);
+        const tokenData = await tokenRes.json();
+        
+        if (tokenData.valid && tokenData.type === 'BUNDLE') {
+            router.push(`/test/bundle?token=${token}`);
+        } else {
+            router.push('/submit-success');
+        }
       } else {
         toast.error(data.error || "Gagal menyimpan hasil tes.");
         setIsSubmitting(false);

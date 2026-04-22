@@ -75,7 +75,16 @@ function VakTestContent() {
       const data = await response.json();
       if (data.success) {
         toast.success("Hasil VAK Test tersimpan!");
-        router.push('/submit-success');
+
+        // Redirect to bundle if applicable
+        const tokenRes = await fetch(`/api/token/validate?token=${token}`);
+        const tokenData = await tokenRes.json();
+        
+        if (tokenData.valid && tokenData.type === 'BUNDLE') {
+            router.push(`/test/bundle?token=${token}`);
+        } else {
+            router.push('/submit-success');
+        }
       } else {
         toast.error(data.error || "Gagal menyimpan hasil.");
         setIsSubmitting(false);
