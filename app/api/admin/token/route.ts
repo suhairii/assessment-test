@@ -16,13 +16,19 @@ export async function POST(request: Request) {
     
     const token = crypto.randomBytes(4).toString('hex'); // 8 chars
 
-    await db.collection(COLLECTION).insertOne({
+    const invitationData: any = {
       token: token,
       type: type,
       used: false,
       isPermanent: isPermanent,
       createdAt: new Date()
-    });
+    };
+
+    if (type === 'BUNDLE') {
+      invitationData.completedTests = [];
+    }
+
+    await db.collection(COLLECTION).insertOne(invitationData);
 
     return NextResponse.json({ success: true, token });
   } catch (error) {

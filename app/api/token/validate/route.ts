@@ -18,7 +18,8 @@ export async function GET(request: Request) {
     if (invite && (invite.isPermanent || !invite.used)) {
       return NextResponse.json({ 
         valid: true, 
-        type: invite.type || 'TEST' 
+        type: invite.type || 'TEST',
+        completedTests: invite.completedTests || []
       });
     }
     return NextResponse.json({ valid: false });

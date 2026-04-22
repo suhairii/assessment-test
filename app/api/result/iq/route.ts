@@ -20,9 +20,24 @@ export async function POST(request: Request) {
     // Validate and Mark Token
     const invite = await db.collection(INVITE_COLLECTION).findOne({ token: token });
     if (!invite || invite.used) return NextResponse.json({ success: false, error: 'Token tidak valid.' }, { status: 403 });
-    
-    await db.collection(INVITE_COLLECTION).updateOne({ token: token }, { $set: { used: true } });
 
+    // Mark token logic
+    if (invite.type === 'BUNDLE') {
+        const completed = invite.completedTests || [];
+        if (!completed.includes('IQ')) {
+            completed.push('IQ');
+        }
+
+        // Bundle is used when all three tests are done
+        const allDone = completed.includes('DISC') && completed.includes('IQ') && completed.includes('VAK');
+        await db.collection(INVITE_COLLECTION).updateOne(
+            { token: token }, 
+            { $set: { completedTests: completed, used: allDone } }
+        );
+    } else {
+        // Mark token as used for single tests
+        await db.collection(INVITE_COLLECTION).updateOne({ token: token }, { $set: { used: true } });
+    }
     await db.collection(COLLECTION_NAME).insertOne({
       id: id,
       createdAt: new Date(),
