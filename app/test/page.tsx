@@ -136,7 +136,7 @@ function TestContent() {
         const tokenData = await tokenRes.json();
         
         if (tokenData.valid && tokenData.type === 'BUNDLE') {
-            router.push(`/test/bundle?token=${token}`);
+            router.push(`/invite/${token}`);
         } else {
             router.push('/submit-success');
         }

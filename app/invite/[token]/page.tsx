@@ -1,13 +1,15 @@
 "use client";
 
-import React, { useState, useEffect, Suspense } from "react";
-import { useSearchParams } from "next/navigation";
+import React, { useState, useEffect, Suspense, use } from "react";
 import { Brain, Ear, Users, CheckCircle2, Lock, Loader2, ArrowRight, Clock, FileText, LayoutGrid } from "lucide-react";
 import Link from "next/link";
 
-function BundleContent() {
-  const searchParams = useSearchParams();
-  const token = searchParams.get("token");
+interface PageProps {
+  params: Promise<{ token: string }>;
+}
+
+function InviteContent({ params }: PageProps) {
+  const { token } = use(params);
   
   const [loading, setLoading] = useState(true);
   const [data, setData] = useState<any>(null);
@@ -42,7 +44,7 @@ function BundleContent() {
     return (
       <div className="min-h-screen flex flex-col items-center justify-center bg-white">
         <Loader2 className="w-8 h-8 text-black animate-spin mb-4" />
-        <p className="text-gray-400 font-black uppercase tracking-widest text-[10px]">Validating Access...</p>
+        <p className="text-gray-400 font-black uppercase tracking-widest text-[10px]">Validating Invitation...</p>
       </div>
     );
   }
@@ -56,7 +58,7 @@ function BundleContent() {
           </div>
           <h1 className="text-2xl font-bold text-gray-900 mb-2">Akses Dibatasi</h1>
           <p className="text-gray-500 mb-8 text-sm font-medium">{error}</p>
-          <Link href="/" className="inline-flex items-center justify-center w-full bg-black text-white px-6 py-3 rounded-full font-bold text-sm hover:bg-gray-800 transition active:scale-95">
+          <Link href="/" className="inline-flex items-center justify-center w-full bg-black text-white px-6 py-3 rounded-full font-bold text-sm hover:bg-gray-800 transition active:scale-95 shadow-lg">
             Kembali ke Beranda
           </Link>
         </div>
@@ -100,7 +102,6 @@ function BundleContent() {
 
   return (
     <div className="min-h-screen bg-white text-gray-900 font-sans pb-32">
-      {/* Sticky Header - Matching Test Pages */}
       <header className="bg-white/90 backdrop-blur-md border-b border-gray-100 sticky top-0 z-20">
         <div className="max-w-3xl mx-auto px-4 py-3 flex justify-between items-center">
           <div className="flex items-center gap-4">
@@ -110,15 +111,12 @@ function BundleContent() {
             </div>
           </div>
         </div>
-        {/* Progress Bar */}
         <div className="h-1 w-full bg-gray-100">
           <div className="h-full bg-black transition-all duration-500 ease-out" style={{ width: `${progress}%` }}></div>
         </div>
       </header>
 
       <main className="max-w-3xl mx-auto px-4 py-8">
-        
-        {/* Intro Section - Biodata Card Style */}
         <div className="bg-white p-6 md:p-8 rounded-2xl border border-gray-200 shadow-sm mb-12 space-y-4">
             <h2 className="text-sm font-bold uppercase tracking-widest text-gray-400 mb-2 border-b border-gray-100 pb-2">Instruksi Asesmen</h2>
             <p className="text-sm text-gray-600 font-medium leading-relaxed">
@@ -208,7 +206,6 @@ function BundleContent() {
         )}
       </main>
 
-      {/* Floating Footer - Action Style */}
       <div className="fixed bottom-0 left-0 right-0 p-4 pb-[env(safe-area-inset-bottom,16px)] bg-white/80 backdrop-blur-xl border-t border-gray-200 z-40">
         <div className="max-w-3xl mx-auto flex justify-between items-center">
            <div className="text-xs text-gray-500 font-bold uppercase tracking-widest">
@@ -223,10 +220,10 @@ function BundleContent() {
   );
 }
 
-export default function BundlePage() {
+export default function InvitePage({ params }: PageProps) {
   return (
     <Suspense fallback={<div className="min-h-screen flex items-center justify-center bg-white"><Loader2 className="animate-spin text-black" size={32}/></div>}>
-      <BundleContent />
+      <InviteContent params={params} />
     </Suspense>
   );
 }

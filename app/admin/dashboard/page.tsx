@@ -44,7 +44,7 @@ export default function Dashboard() {
       });
       const d = await res.json();
       if (d.success) {
-        const link = `${window.location.origin}/test/bundle?token=${d.token}`;
+        const link = `${window.location.origin}/invite/${d.token}`;
         setShareUrl(link);
         setShareModalOpen(true);
       } else {
