@@ -68,10 +68,10 @@ export default function Dashboard() {
         <div className="flex flex-col md:flex-row items-center gap-4 w-full md:w-auto">
           <button 
             onClick={handleGenerateBundleLink}
-            className="w-full md:w-auto bg-blue-600 text-white px-6 py-4 rounded-2xl font-bold flex items-center justify-center gap-3 hover:bg-blue-700 transition shadow-xl shadow-blue-500/20 active:scale-95"
+            className="w-full md:w-auto bg-black text-white px-8 py-4 rounded-xl font-black uppercase tracking-widest text-[10px] flex items-center justify-center gap-3 hover:bg-gray-800 transition shadow-xl shadow-gray-200 active:scale-95 border-2 border-black"
           >
-            <LinkIcon size={20} />
-            Unified Assessment Link
+            <LinkIcon size={16} />
+            Create Assessment Link
           </button>
 
           {!loading && (
