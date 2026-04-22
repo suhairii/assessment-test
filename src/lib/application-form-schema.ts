@@ -6,6 +6,12 @@ const FamilyMemberSchema = z.object({
   occupation: z.string().min(1, "Wajib diisi"),
 });
 
+const OptionalFamilyMemberSchema = z.object({
+  name: z.string().optional().or(z.literal("")),
+  placeDateOfBirth: z.string().optional().or(z.literal("")),
+  occupation: z.string().optional().or(z.literal("")),
+});
+
 const RequiredEducationSchema = z.object({
   institution: z.string().min(1, "Wajib diisi"),
   major: z.string().min(1, "Wajib diisi"),
@@ -48,9 +54,9 @@ export const ApplicationFormSchema = z.object({
   familyData: z.object({
     father: FamilyMemberSchema,
     mother: FamilyMemberSchema,
-    siblings: z.array(FamilyMemberSchema).optional(),
-    spouse: FamilyMemberSchema.partial().optional(),
-    children: z.array(FamilyMemberSchema).optional(),
+    siblings: z.array(OptionalFamilyMemberSchema).optional(),
+    spouse: OptionalFamilyMemberSchema.optional(),
+    children: z.array(OptionalFamilyMemberSchema).optional(),
   }),
 
   education: z.object({

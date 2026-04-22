@@ -53,14 +53,14 @@ export const EducationSection = () => {
   };
 
   return (
-    <div className="space-y-20">
+    <div className="space-y-24">
       {/* C. EDUCATION */}
-      <div className="space-y-10">
-        <div className="border-l-4 border-blue-600 pl-4">
-          <h2 className="text-xl font-semibold text-slate-900 uppercase tracking-tight italic">C. Pendidikan / Education</h2>
-          <p className="text-sm text-slate-500 mt-1">Academic background (SD - SLTA Required).</p>
+      <div className="space-y-12">
+        <div className="border-l-4 border-black pl-6">
+          <h2 className="text-2xl font-black text-black uppercase tracking-tighter leading-none">C. Pendidikan / Education</h2>
+          <p className="text-[10px] font-bold text-gray-400 mt-2 uppercase tracking-[0.2em]">Academic background (SD - SLTA Required).</p>
         </div>
-        <div className="grid grid-cols-1 gap-6">
+        <div className="grid grid-cols-1 gap-8">
           <EduForm label="Primary / SD" path="education.sd" required />
           <EduForm label="Junior High / SLTP" path="education.sltp" required />
           <EduForm label="Senior High / SLTA" path="education.slta" required />
@@ -71,23 +71,23 @@ export const EducationSection = () => {
       </div>
 
       {/* D. COURSES */}
-      <div className="space-y-10 pt-10 border-t border-slate-100">
-        <div className="flex items-center justify-between border-l-4 border-blue-600 pl-4">
-          <div>
-            <h2 className="text-xl font-semibold text-slate-900 uppercase tracking-tight italic">D. Kursus / Courses</h2>
-            <p className="text-sm text-slate-500 mt-1">Certifications or training programs (Max 5).</p>
+      <div className="space-y-12 pt-16 border-t border-gray-100">
+        <div className="flex items-center justify-between">
+          <div className="border-l-4 border-black pl-6">
+            <h2 className="text-2xl font-black text-black uppercase tracking-tighter leading-none">D. Kursus / Courses</h2>
+            <p className="text-[10px] font-bold text-gray-400 mt-2 uppercase tracking-[0.2em]">Certifications or training programs (Max 5).</p>
           </div>
-          <Button type="button" variant="ghost" size="sm" onClick={() => appendCourse({ topic: "", duration: "", year: "", organizer: "", location: "", financedBy: "" })} className="text-blue-600 hover:text-blue-700 hover:bg-blue-50">
-            <Plus className="w-3.5 h-3.5 mr-1" /> Add Course
+          <Button type="button" variant="outline" size="sm" onClick={() => appendCourse({ topic: "", duration: "", year: "", organizer: "", location: "", financedBy: "" })} className="rounded-full text-[10px] uppercase tracking-widest h-8 px-4 border-gray-200">
+            <Plus className="w-3 h-3 mr-1" /> Add Course
           </Button>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {courses.map((field, index) => (
-            <Card key={field.id} className="relative shadow-sm border-slate-100">
-              <Button type="button" variant="ghost" size="icon" onClick={() => removeCourse(index)} className="absolute top-2 right-2 text-slate-300 hover:text-destructive">
+            <Card key={field.id} className="relative shadow-sm border-gray-100 bg-gray-50/50">
+              <Button type="button" variant="ghost" size="icon" onClick={() => removeCourse(index)} className="absolute top-2 right-2 text-gray-300 hover:text-red-600">
                 <Trash2 className="w-4 h-4" />
               </Button>
-              <CardContent className="pt-8 space-y-4">
+              <CardContent className="pt-10 space-y-4">
                 <div className="space-y-2">
                   <Label>Topic</Label>
                   <Input {...register(`courses.${index}.topic`)} />
@@ -123,28 +123,28 @@ export const EducationSection = () => {
       </div>
 
       {/* E. LANGUAGES */}
-      <div className="space-y-10 pt-10 border-t border-slate-100">
-        <div className="flex items-center justify-between border-l-4 border-blue-600 pl-4">
-          <div>
-            <h2 className="text-xl font-semibold text-slate-900 uppercase tracking-tight italic">E. Bahasa / Languages</h2>
-            <p className="text-sm text-slate-500 mt-1">Foreign language proficiency (Max 4).</p>
+      <div className="space-y-12 pt-16 border-t border-gray-100">
+        <div className="flex items-center justify-between">
+          <div className="border-l-4 border-black pl-6">
+            <h2 className="text-2xl font-black text-black uppercase tracking-tighter leading-none">E. Bahasa / Languages</h2>
+            <p className="text-[10px] font-bold text-gray-400 mt-2 uppercase tracking-[0.2em]">Foreign language proficiency (Max 4).</p>
           </div>
-          <Button type="button" variant="ghost" size="sm" onClick={() => appendLang({ language: "", read: "", speak: "", write: "" })} className="text-blue-600 hover:text-blue-700 hover:bg-blue-50">
-            <Plus className="w-3.5 h-3.5 mr-1" /> Add Language
+          <Button type="button" variant="outline" size="sm" onClick={() => appendLang({ language: "", read: "", speak: "", write: "" })} className="rounded-full text-[10px] uppercase tracking-widest h-8 px-4 border-gray-200">
+            <Plus className="w-3 h-3 mr-1" /> Add Language
           </Button>
         </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
           {languages.map((field, index) => (
-            <Card key={field.id} className="relative shadow-sm border-slate-100">
-              <Button type="button" variant="ghost" size="icon" onClick={() => removeLang(index)} className="absolute top-2 right-2 text-slate-300 hover:text-destructive">
+            <Card key={field.id} className="relative shadow-sm border-gray-100 bg-gray-50/50">
+              <Button type="button" variant="ghost" size="icon" onClick={() => removeLang(index)} className="absolute top-2 right-2 text-gray-300 hover:text-red-600">
                 <Trash2 className="w-4 h-4" />
               </Button>
-              <CardContent className="pt-8 space-y-4">
+              <CardContent className="pt-10 space-y-4">
                 <div className="space-y-2">
                   <Label>Language</Label>
                   <Input {...register(`languages.${index}.language`)} />
                 </div>
-                <div className="grid grid-cols-3 gap-2">
+                <div className="grid grid-cols-3 gap-3">
                   <div className="space-y-2">
                     <Label>Read</Label>
                     <Input {...register(`languages.${index}.read`)} />

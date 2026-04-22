@@ -6,6 +6,7 @@ import { Label } from "@/src/components/application-form/ui/label";
 import { Button } from "@/src/components/application-form/ui/button";
 import { Textarea } from "@/src/components/application-form/ui/textarea";
 import { Card, CardHeader, CardTitle, CardContent } from "@/src/components/application-form/ui/card";
+import { toast } from "sonner";
 
 export const EmploymentSection = () => {
   const { register, control, setValue, watch } = useFormContext();
@@ -14,39 +15,61 @@ export const EmploymentSection = () => {
 
   const employmentData = watch("employmentHistory");
 
-  const handleFileChange = (index: number, e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleFileChange = async (index: number, e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (file) {
-      setValue(`employmentHistory.${index}.paklaringFile`, file.name);
+      if (file.size > 2 * 1024 * 1024) {
+        toast.error("File size exceeds 2MB limit.");
+        return;
+      }
+
+      const toastId = toast.loading(`Uploading Paklaring for job #${index + 1}...`);
+      try {
+        const response = await fetch(`/api/admin/upload?filename=${encodeURIComponent(file.name)}`, {
+          method: 'POST',
+          body: file,
+        });
+
+        const blob = await response.json();
+        if (blob.url) {
+          setValue(`employmentHistory.${index}.paklaringFile`, blob.url);
+          toast.success("Paklaring uploaded successfully", { id: toastId });
+        } else {
+          throw new Error("Upload failed");
+        }
+      } catch (error) {
+        console.error("Upload error:", error);
+        toast.error("Failed to upload Paklaring", { id: toastId });
+      }
     }
   };
 
   return (
-    <div className="space-y-20">
+    <div className="space-y-24">
       {/* SECTION F: EMPLOYMENT HISTORY */}
-      <div className="space-y-10">
-        <div className="border-l-4 border-blue-600 pl-4">
-          <h2 className="text-xl font-semibold text-slate-900 uppercase tracking-tight italic">F. Riwayat Pekerjaan / Employment History</h2>
-          <p className="text-sm text-slate-500 mt-1">Provide your last 3 job positions starting from the most recent.</p>
+      <div className="space-y-12">
+        <div className="border-l-4 border-black pl-6">
+          <h2 className="text-2xl font-black text-black uppercase tracking-tighter leading-none">F. Riwayat Pekerjaan / Employment History</h2>
+          <p className="text-[10px] font-bold text-gray-400 mt-2 uppercase tracking-[0.2em]">Provide your last 3 job positions starting from the most recent.</p>
         </div>
 
         <div className="space-y-12">
           {jobs.map((field, index) => (
-            <Card key={field.id} className="shadow-sm border-slate-100 overflow-hidden group hover:shadow-md transition-shadow">
-              <CardHeader className="py-4 bg-slate-50/50 flex flex-row items-center justify-between">
+            <Card key={field.id} className="shadow-sm border-gray-100 overflow-hidden group hover:border-gray-200 transition-all bg-gray-50/50">
+              <CardHeader className="py-5 bg-black flex flex-row items-center justify-between">
                 <div className="flex items-center gap-3">
-                  <div className="w-8 h-8 rounded-full bg-slate-900 text-white flex items-center justify-center text-xs font-black italic">
+                  <div className="w-8 h-8 rounded-full bg-white text-black flex items-center justify-center text-xs font-black">
                     0{index + 1}
                   </div>
-                  <CardTitle className="text-sm font-bold text-slate-800 uppercase tracking-widest italic underline decoration-blue-600 underline-offset-4">
+                  <CardTitle className="text-sm font-black text-white uppercase tracking-widest">
                     {index === 0 ? "Current or Last Position" : `Previous Position ${index + 1}`}
                   </CardTitle>
                 </div>
                 
                 {employmentData?.[index]?.paklaringFile && (
-                  <div className="flex items-center gap-1.5 text-[10px] font-bold text-green-600 bg-green-50 px-2 py-1 rounded-full border border-green-100">
+                  <div className="flex items-center gap-1.5 text-[10px] font-black text-white bg-white/10 px-3 py-1 rounded-full border border-white/20 uppercase tracking-widest">
                     <FileCheck className="w-3 h-3" />
-                    PAKLARING ATTACHED
+                    Attached
                   </div>
                 )}
               </CardHeader>
@@ -105,9 +128,9 @@ export const EmploymentSection = () => {
                     </div>
                     
                     <div className="flex-1 w-full space-y-2">
-                      <Label className="text-blue-600 font-bold">Certificate of Employment / Paklaring (Optional)</Label>
+                      <Label className="text-black font-black uppercase text-[10px] tracking-widest opacity-60">Certificate / Paklaring (Optional)</Label>
                       <div className="relative group">
-                        <Input 
+                        <input 
                           id={`paklaring-${index}`}
                           type="file" 
                           className="hidden" 
@@ -116,22 +139,25 @@ export const EmploymentSection = () => {
                         />
                         <Label 
                           htmlFor={`paklaring-${index}`}
-                          className="flex items-center justify-center w-full h-10 border border-dashed border-blue-200 rounded-lg cursor-pointer hover:bg-blue-50 hover:border-blue-400 transition-all text-[11px] font-medium text-slate-500"
+                          className="flex items-center justify-center w-full h-12 border-2 border-dashed border-gray-200 rounded-xl cursor-pointer hover:bg-gray-50 hover:border-black transition-all text-[11px] font-bold text-gray-500"
                         >
-                          <Upload className="w-3.5 h-3.5 mr-2 text-blue-500" />
-                          {employmentData?.[index]?.paklaringFile ? employmentData[index].paklaringFile : "Upload Paklaring"}
+                          <Upload className="w-4 h-4 mr-2 text-gray-400" />
+                          {employmentData?.[index]?.paklaringFile ? "File Attached" : "Upload Paklaring"}
                         </Label>
                       </div>
                       {employmentData?.[index]?.paklaringFile && (
-                        <Button 
-                          type="button" 
-                          variant="ghost" 
-                          size="sm" 
-                          onClick={() => setValue(`employmentHistory.${index}.paklaringFile`, "")}
-                          className="h-6 text-[10px] text-red-500 hover:text-red-700 p-0"
-                        >
-                          Remove file
-                        </Button>
+                        <div className="flex justify-between items-center mt-2 px-2">
+                           <span className="text-[9px] font-mono text-gray-400 truncate max-w-[150px]">{employmentData[index].paklaringFile}</span>
+                           <Button 
+                              type="button" 
+                              variant="ghost" 
+                              size="sm" 
+                              onClick={() => setValue(`employmentHistory.${index}.paklaringFile`, "")}
+                              className="h-6 text-[10px] text-red-500 hover:text-red-700 p-0 font-black uppercase tracking-widest"
+                            >
+                              Remove
+                            </Button>
+                        </div>
                       )}
                     </div>
                   </div>
@@ -148,18 +174,18 @@ export const EmploymentSection = () => {
       </div>
 
       {/* SECTION G: SOCIAL ACTIVITY */}
-      <div className="space-y-10 pt-10 border-t border-slate-100">
-        <div className="flex items-center justify-between border-l-4 border-blue-600 pl-4">
-          <div>
-            <h2 className="text-xl font-semibold text-slate-900 uppercase tracking-tight italic">G. Aktivitas Sosial / Social Activity</h2>
-            <p className="text-sm text-slate-500 mt-1">Organizational experiences or social activities (Max 3).</p>
+      <div className="space-y-12 pt-16 border-t border-gray-100">
+        <div className="flex items-center justify-between">
+          <div className="border-l-4 border-black pl-6">
+            <h2 className="text-2xl font-black text-black uppercase tracking-tighter leading-none">G. Aktivitas Sosial / Social Activity</h2>
+            <p className="text-[10px] font-bold text-gray-400 mt-2 uppercase tracking-[0.2em]">Organizational experiences or social activities (Max 3).</p>
           </div>
           <Button 
             type="button" 
-            variant="ghost" 
+            variant="outline" 
             size="sm"
             onClick={() => appendSocial({ orgName: "", activity: "", function: "", year: "" })} 
-            className="text-blue-600 hover:text-blue-700 hover:bg-blue-50"
+            className="rounded-full text-[10px] uppercase tracking-widest h-8 px-4 border-gray-200"
           >
             <Plus className="w-3.5 h-3.5 mr-1" /> Add Activity
           </Button>
@@ -167,17 +193,17 @@ export const EmploymentSection = () => {
 
         <div className="grid grid-cols-1 gap-6">
           {social.map((field, index) => (
-            <Card key={field.id} className="relative shadow-sm border-slate-100">
+            <Card key={field.id} className="relative shadow-sm border-gray-100 bg-gray-50/50">
               <Button 
                 type="button" 
                 variant="ghost"
                 size="icon"
                 onClick={() => removeSocial(index)} 
-                className="absolute top-2 right-2 text-slate-300 hover:text-destructive"
+                className="absolute top-2 right-2 text-gray-300 hover:text-red-600"
               >
                 <Trash2 className="w-4 h-4" />
               </Button>
-              <CardContent className="pt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+              <CardContent className="pt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
                 <div className="lg:col-span-2 space-y-2">
                   <Label>Organization Name</Label>
                   <Input {...register(`socialActivities.${index}.orgName`)} />

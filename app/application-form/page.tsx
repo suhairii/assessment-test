@@ -98,7 +98,7 @@ export default function Home() {
         </div>
 
         <footer className="text-center text-slate-400 text-sm font-medium pb-12">
-          &copy; {new Date().getFullYear()} Frexor Assessment System. All rights reserved.
+          &copy; {new Date().getFullYear()} Aptitude Assessment System. All rights reserved.
         </footer>
       </div>
     </main>

@@ -2,14 +2,15 @@
 
 import React from "react";
 import { Button, Card } from "@/src/components/application-form/ui";
-import { Download, Eye, FileText } from "lucide-react";
+import { Download, Eye, FileText, Trash2 } from "lucide-react";
 import Link from "next/link";
 
 interface CandidatesTableProps {
   candidates: any[];
+  onDelete?: (id: string) => void;
 }
 
-const CandidatesTable = ({ candidates }: CandidatesTableProps) => {
+const CandidatesTable = ({ candidates, onDelete }: CandidatesTableProps) => {
   return (
     <div className="overflow-x-auto">
       <table className="w-full text-left border-collapse">
@@ -58,6 +59,13 @@ const CandidatesTable = ({ candidates }: CandidatesTableProps) => {
                     onClick={() => {/* Logika PDF di sini */}}
                   >
                     <Download size={18} />
+                  </button>
+                  <button
+                    className="text-gray-300 hover:text-red-600 p-2 hover:bg-white rounded-lg transition shadow-sm border border-transparent hover:border-gray-100"
+                    title="Hapus Data"
+                    onClick={() => onDelete?.(candidate.id)}
+                  >
+                    <Trash2 size={18} />
                   </button>
                 </div>
               </td>

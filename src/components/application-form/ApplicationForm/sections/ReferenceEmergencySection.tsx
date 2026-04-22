@@ -16,20 +16,20 @@ export const ReferenceEmergencySection = () => {
   const { fields: emergencies, append: appendEmergency, remove: removeEmergency } = useFieldArray({ control, name: "emergencyContacts" });
 
   return (
-    <div className="space-y-20">
+    <div className="space-y-24">
       {/* I. REFERENCES */}
-      <div className="space-y-10">
-        <div className="flex items-center justify-between border-l-4 border-blue-600 pl-4">
-          <div>
-            <h2 className="text-xl font-semibold text-slate-900 uppercase tracking-tight italic">I. Referensi / References</h2>
-            <p className="text-sm text-slate-500 mt-1">Professional references from former bosses or managers.</p>
+      <div className="space-y-12">
+        <div className="flex items-center justify-between">
+          <div className="border-l-4 border-black pl-6">
+            <h2 className="text-2xl font-black text-black uppercase tracking-tighter leading-none">I. Referensi / References</h2>
+            <p className="text-[10px] font-bold text-gray-400 mt-2 uppercase tracking-[0.2em]">Professional references from former bosses or managers.</p>
           </div>
           <Button 
             type="button" 
-            variant="ghost" 
+            variant="outline" 
             size="sm"
             onClick={() => appendRef({ name: "", relationship: "", jobTitle: "", companyName: "", mobilePhone: "" })} 
-            className="text-blue-600 hover:text-blue-700 hover:bg-blue-50"
+            className="rounded-full text-[10px] uppercase tracking-widest h-8 px-4 border-gray-200"
           >
             <Plus className="w-3.5 h-3.5 mr-1" /> Add Reference
           </Button>
@@ -37,23 +37,23 @@ export const ReferenceEmergencySection = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {refs.map((field, index) => (
-            <Card key={field.id} className="relative shadow-sm border-slate-100 hover:shadow-md transition-shadow">
+            <Card key={field.id} className="relative shadow-sm border-gray-100 bg-gray-50/50 group hover:border-gray-200 transition-all">
               <Button 
                 type="button" 
                 variant="ghost"
                 size="icon"
                 onClick={() => removeRef(index)} 
-                className={`absolute top-2 right-2 text-slate-300 hover:text-destructive ${refs.length <= 1 ? 'hidden' : 'block'}`}
+                className={`absolute top-2 right-2 text-gray-300 hover:text-red-600 ${refs.length <= 1 ? 'hidden' : 'block'}`}
               >
                 <Trash2 className="w-4 h-4" />
               </Button>
               
-              <CardContent className="pt-8 space-y-4">
-                <div className="flex items-center gap-2 mb-2">
-                  <div className="w-6 h-6 rounded-full bg-slate-100 text-slate-400 text-[10px] flex items-center justify-center font-bold">
+              <CardContent className="pt-10 space-y-4">
+                <div className="flex items-center gap-2 mb-4">
+                  <div className="w-6 h-6 rounded-full bg-black text-white text-[10px] flex items-center justify-center font-bold">
                     {index + 1}
                   </div>
-                  <Label className="text-xs font-bold text-slate-400 uppercase tracking-widest">Reference Entry</Label>
+                  <Label className="text-[10px] font-black text-gray-400 uppercase tracking-[0.2em]">Reference Entry</Label>
                 </div>
                 
                 <div className="space-y-2">
@@ -85,18 +85,18 @@ export const ReferenceEmergencySection = () => {
       </div>
 
       {/* J. EMERGENCY CONTACTS */}
-      <div className="space-y-10 pt-10 border-t border-slate-100">
-        <div className="flex items-center justify-between border-l-4 border-blue-600 pl-4">
-          <div>
-            <h2 className="text-xl font-semibold text-slate-900 uppercase tracking-tight italic">J. Kontak Darurat / Emergency Contacts</h2>
-            <p className="text-sm text-slate-500 mt-1">Person that can be contacted in case of emergency.</p>
+      <div className="space-y-12 pt-16 border-t border-gray-100">
+        <div className="flex items-center justify-between">
+          <div className="border-l-4 border-black pl-6">
+            <h2 className="text-2xl font-black text-black uppercase tracking-tighter leading-none">J. Kontak Darurat / Emergency Contacts</h2>
+            <p className="text-[10px] font-bold text-gray-400 mt-2 uppercase tracking-[0.2em]">Person that can be contacted in case of emergency.</p>
           </div>
           <Button 
             type="button" 
-            variant="ghost" 
+            variant="outline" 
             size="sm"
             onClick={() => appendEmergency({ name: "", relationship: "", mobilePhone: "" })} 
-            className="text-blue-600 hover:text-blue-700 hover:bg-blue-50"
+            className="rounded-full text-[10px] uppercase tracking-widest h-8 px-4 border-gray-200"
           >
             <Plus className="w-3.5 h-3.5 mr-1" /> Add Contact
           </Button>
@@ -104,23 +104,23 @@ export const ReferenceEmergencySection = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {emergencies.map((field, index) => (
-            <Card key={field.id} className="relative shadow-sm border-slate-100 bg-slate-50/30">
+            <Card key={field.id} className="relative shadow-sm border-gray-100 bg-gray-50/50 group hover:border-gray-200 transition-all">
               <Button 
                 type="button" 
                 variant="ghost"
                 size="icon"
                 onClick={() => removeEmergency(index)} 
-                className={`absolute top-2 right-2 text-slate-300 hover:text-destructive ${emergencies.length <= 1 ? 'hidden' : 'block'}`}
+                className={`absolute top-2 right-2 text-gray-300 hover:text-red-600 ${emergencies.length <= 1 ? 'hidden' : 'block'}`}
               >
                 <Trash2 className="w-4 h-4" />
               </Button>
 
-              <CardContent className="pt-8 space-y-4">
-                <div className="flex items-center gap-2">
-                  <div className="w-6 h-6 rounded-full bg-blue-600 text-white text-[10px] flex items-center justify-center font-bold">
+              <CardContent className="pt-10 space-y-4">
+                <div className="flex items-center gap-2 mb-4">
+                  <div className="w-6 h-6 rounded-full bg-black text-white text-[10px] flex items-center justify-center font-bold">
                     {index + 1}
                   </div>
-                  <Label className="text-xs font-bold text-slate-500 uppercase tracking-widest">Emergency Contact</Label>
+                  <Label className="text-[10px] font-black text-gray-400 uppercase tracking-[0.2em]">Emergency Contact</Label>
                 </div>
                 
                 <div className="space-y-2">

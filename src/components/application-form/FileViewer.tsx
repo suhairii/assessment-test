@@ -6,73 +6,144 @@ import {
   DialogContent,
   DialogHeader,
   DialogTitle,
+  DialogDescription,
   DialogTrigger,
 } from "@/src/components/application-form/ui/dialog";
-import { FileText, ExternalLink, Paperclip, Eye } from "lucide-react";
+import { FileText, ExternalLink, Paperclip, Eye, Download, Award, Loader2, X } from "lucide-react";
 
 interface FileViewerProps {
-  filename: string;
+  filename: string; 
   label: string;
   type: "cv" | "paklaring";
   trigger?: React.ReactNode;
 }
 
 export const FileViewer = ({ filename, label, type, trigger }: FileViewerProps) => {
+  const cleanUrl = (filename || "").split('?')[0].toLowerCase();
+  const isImage = cleanUrl.match(/\.(jpg|jpeg|png|gif|webp)$/i);
+  const isPdf = cleanUrl.endsWith('.pdf') || cleanUrl.includes('.pdf');
+  
+  const [loading, setLoading] = React.useState(true);
+  const [isOpen, setIsOpen] = React.useState(false);
+
+  // Sync loading state with Dialog lifecycle
+  React.useEffect(() => {
+    if (isOpen) {
+      setLoading(true);
+      // Forced fallback: Remove loading screen after 4 seconds no matter what
+      const timer = setTimeout(() => {
+        setLoading(false);
+      }, 4000);
+      return () => clearTimeout(timer);
+    }
+  }, [isOpen]);
+
   return (
-    <Dialog>
+    <Dialog open={isOpen} onOpenChange={setIsOpen}>
       <DialogTrigger asChild>
         {trigger || (
-          <button className="flex items-center gap-2 px-4 py-2 bg-white border border-slate-200 rounded-xl text-[10px] font-black uppercase tracking-widest text-slate-500 hover:text-blue-600 hover:border-blue-200 transition-all shadow-sm">
+          <button className="flex items-center gap-2 px-4 py-2 bg-white border-2 border-black rounded-full text-[10px] font-black uppercase tracking-widest text-black hover:bg-black hover:text-white transition-all">
             View Detail <Eye className="w-3 h-3" />
           </button>
         )}
       </DialogTrigger>
-      <DialogContent className="max-w-4xl w-[90vw] h-[80vh] flex flex-col p-0 overflow-hidden rounded-[2rem] border-none shadow-2xl">
-        <DialogHeader className="p-6 bg-slate-900 text-white">
-          <DialogTitle className="flex items-center gap-3 text-lg font-black uppercase italic tracking-tight">
-            {type === "cv" ? <FileText className="w-5 h-5 text-blue-400" /> : <Paperclip className="w-5 h-5 text-blue-400" />}
-            {label}
-          </DialogTitle>
-          <p className="text-white/40 text-[10px] font-bold uppercase tracking-widest mt-1">File Name: {filename}</p>
+      <DialogContent className="max-w-5xl w-[95vw] h-[90vh] flex flex-col p-0 overflow-hidden rounded-[2rem] border-2 border-black shadow-2xl bg-white">
+        <DialogHeader className="p-6 md:p-8 bg-white border-b-2 border-black shrink-0 relative">
+          <div className="flex justify-between items-center">
+            <div>
+                <DialogTitle className="flex items-center gap-3 text-xl md:text-2xl font-black uppercase tracking-tighter text-black">
+                    {type === "cv" ? <FileText className="w-6 h-6" /> : <Paperclip className="w-6 h-6" />}
+                    {label}
+                </DialogTitle>
+                <DialogDescription className="text-black/40 text-[9px] font-bold uppercase tracking-widest mt-1 italic truncate max-w-md">
+                    Live Document Reference: {filename}
+                </DialogDescription>
+            </div>
+          </div>
         </DialogHeader>
         
-        <div className="flex-1 bg-slate-100 p-8 flex items-center justify-center relative">
-          {/* Simulasi Tampilan File */}
-          <div className="w-full max-w-2xl aspect-[1/1.414] bg-white shadow-2xl rounded-sm border border-slate-200 flex flex-col p-12 space-y-6 overflow-hidden">
-             <div className="h-4 w-1/3 bg-slate-100 rounded"></div>
-             <div className="h-8 w-2/3 bg-slate-200 rounded"></div>
-             <div className="space-y-3 pt-8">
-                <div className="h-3 w-full bg-slate-50 rounded"></div>
-                <div className="h-3 w-full bg-slate-50 rounded"></div>
-                <div className="h-3 w-5/6 bg-slate-50 rounded"></div>
-             </div>
-             <div className="grid grid-cols-2 gap-8 pt-10">
-                <div className="aspect-square bg-slate-50 rounded-xl"></div>
-                <div className="space-y-3">
-                   <div className="h-3 w-full bg-slate-50 rounded"></div>
-                   <div className="h-3 w-full bg-slate-50 rounded"></div>
+        <div className="flex-1 bg-gray-50 flex items-center justify-center relative overflow-hidden">
+          {loading && (
+            <div className="absolute inset-0 flex flex-col items-center justify-center bg-white/90 backdrop-blur-sm z-50">
+                <Loader2 className="w-10 h-10 animate-spin text-black mb-4" />
+                <p className="text-[10px] font-black uppercase tracking-[0.3em] mb-6">Opening Document...</p>
+                <button 
+                  onClick={() => setLoading(false)}
+                  className="text-[9px] font-black uppercase border-b border-black hover:opacity-50 transition-opacity"
+                >
+                  Skip Loading Screen
+                </button>
+            </div>
+          )}
+
+          {filename && filename.startsWith('http') ? (
+            <div className="w-full h-full flex items-center justify-center">
+              {isImage ? (
+                <div className="w-full h-full p-4 md:p-12 overflow-auto flex items-center justify-center">
+                    <img 
+                      src={filename} 
+                      alt={label} 
+                      className="max-w-full max-h-full object-contain shadow-2xl border-2 border-black bg-white"
+                      onLoad={() => setLoading(false)}
+                      onError={() => setLoading(false)}
+                    />
+                </div>
+              ) : isPdf ? (
+                <iframe 
+                  src={`${filename}#toolbar=0&navpanes=0&scrollbar=0`} 
+                  className="w-full h-full border-none bg-white"
+                  onLoad={() => setLoading(false)}
+                  title={label}
+                />
+              ) : (
+                <div className="text-center p-10 bg-white border-2 border-black rounded-3xl shadow-xl mx-4">
+                    <FileText size={48} className="mx-auto mb-4 opacity-20" />
+                    <p className="text-sm font-black uppercase mb-2 text-black">Cannot Preview Directly</p>
+                    <p className="text-[10px] text-black/40 font-bold max-w-xs mx-auto mb-6">
+                        This file format is not supported for instant preview.
+                    </p>
+                    <button 
+                        onClick={() => window.open(filename, '_blank')}
+                        className="bg-black text-white px-8 py-3 rounded-full text-[10px] font-black uppercase tracking-widest"
+                    >
+                        Open In New Tab
+                    </button>
+                </div>
+              )}
+            </div>
+          ) : (
+             <div className="text-center p-12 bg-white border-2 border-black rounded-[3rem] shadow-2xl max-w-md mx-4">
+                <Award size={48} className="mx-auto mb-6 opacity-10 text-black" />
+                <h3 className="text-xl font-black uppercase tracking-widest mb-3 text-black">Legacy Document</h3>
+                <p className="text-[10px] text-black/60 font-bold leading-relaxed uppercase tracking-tight mb-8">
+                   This file was registered before the live preview system was active. <br/>
+                   <span className="text-black font-black">Filename: {filename}</span>
+                </p>
+                <div className="p-4 bg-gray-50 rounded-2xl border border-black/5 text-[9px] font-bold text-gray-400">
+                    NEW UPLOADS WILL BE PREVIEWED AUTOMATICALLY
                 </div>
              </div>
-             
-             <div className="absolute inset-0 bg-gradient-to-b from-transparent via-white/20 to-white/80 flex items-center justify-center">
-                <div className="bg-white/80 backdrop-blur-md px-6 py-4 rounded-2xl border border-white shadow-xl text-center">
-                   <p className="text-xs font-black text-slate-900 uppercase tracking-widest mb-1">Preview Mode</p>
-                   <p className="text-[10px] text-slate-500 font-medium leading-relaxed">
-                      Actual file content for <span className="font-bold text-blue-600">{filename}</span> <br/>
-                      will be displayed here when uploaded to server.
-                   </p>
-                </div>
-             </div>
-          </div>
+          )}
         </div>
 
-        <div className="p-4 bg-white border-t border-slate-100 flex justify-end gap-3">
-           <button 
-             onClick={() => window.open('#', '_blank')}
-             className="flex items-center gap-2 px-6 py-2.5 bg-blue-600 text-white rounded-xl text-xs font-black uppercase tracking-widest hover:bg-blue-700 transition-all shadow-lg shadow-blue-200"
-           >
-              Download Original <ExternalLink className="w-4 h-4" />
-           </button>
+        <div className="p-4 md:p-6 bg-white border-t-2 border-black flex flex-col md:flex-row justify-between items-center gap-4 px-10 shrink-0">
+           <p className="hidden md:block text-[9px] font-black uppercase tracking-widest text-black/30">Document Security Verified</p>
+           <div className="flex gap-4 w-full md:w-auto">
+                <button 
+                    onClick={() => window.open(filename, '_blank')}
+                    disabled={!filename || !filename.startsWith('http')}
+                    className="flex-1 md:flex-none flex items-center justify-center gap-2 px-8 py-3 bg-white border-2 border-black text-black rounded-full text-[10px] font-black uppercase tracking-widest hover:bg-gray-50 transition-all disabled:opacity-30"
+                >
+                    Download <Download className="w-3 h-3" />
+                </button>
+                <button 
+                    onClick={() => window.open(filename, '_blank')}
+                    disabled={!filename || !filename.startsWith('http')}
+                    className="flex-1 md:flex-none flex items-center justify-center gap-2 px-8 py-3 bg-black text-white rounded-full text-[10px] font-black uppercase tracking-widest hover:bg-gray-800 transition-all shadow-xl shadow-gray-200 disabled:opacity-30"
+                >
+                    Full Access <ExternalLink className="w-3 h-3" />
+                </button>
+           </div>
         </div>
       </DialogContent>
     </Dialog>

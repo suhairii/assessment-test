@@ -16,6 +16,7 @@ const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
 export default function ApplicationFormAdminPage() {
   const [dbStatus, setDbStatus] = useState<{ status: string; message: string } | null>(null);
+  const [deleteModal, setDeleteModal] = useState<{ isOpen: boolean; id: string }>({ isOpen: false, id: "" });
   const [shareModalOpen, setShareModalOpen] = useState(false);
   const [shareUrl, setShareUrl] = useState("");
   const [searchTerm, setSearchTerm] = useState("");
@@ -58,6 +59,22 @@ export default function ApplicationFormAdminPage() {
     }
   };
 
+  const handleDelete = async (id: string) => {
+    try {
+      const res = await fetch(`/api/applications?id=${id}`, { method: 'DELETE' });
+      const d = await res.json();
+      if (d.success) {
+        mutate();
+        toast.success("Data pelamar berhasil dihapus.");
+        setDeleteModal({ isOpen: false, id: "" });
+      } else {
+        toast.error(d.error || "Gagal menghapus data.");
+      }
+    } catch {
+      toast.error("Terjadi kesalahan sistem.");
+    }
+  };
+
   const applications = Array.isArray(data) ? data : [];
 
   const filteredApplications = applications.filter((app: any) => {
@@ -77,6 +94,15 @@ export default function ApplicationFormAdminPage() {
   return (
     <div className="p-1">
       <ShareModal isOpen={shareModalOpen} onClose={() => setShareModalOpen(false)} url={shareUrl} />
+      <Modal 
+        isOpen={deleteModal.isOpen}
+        title="Hapus Data Pelamar?"
+        message="Apakah Anda yakin ingin menghapus data pelamar ini secara permanen? Tindakan ini tidak dapat dibatalkan."
+        type="danger"
+        confirmText="Hapus Sekarang"
+        onConfirm={() => handleDelete(deleteModal.id)}
+        onCancel={() => setDeleteModal({ isOpen: false, id: "" })}
+      />
       
       <header className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 gap-4">
         <div>
@@ -146,7 +172,10 @@ export default function ApplicationFormAdminPage() {
       </div>
 
       <div className="bg-white rounded-2xl shadow-sm border border-gray-200 overflow-hidden">
-        <CandidatesTable candidates={filteredApplications} />
+        <CandidatesTable 
+          candidates={filteredApplications} 
+          onDelete={(id) => setDeleteModal({ isOpen: true, id })}
+        />
         {filteredApplications.length === 0 && (
           <div className="p-20 text-center text-gray-300">
             <div className="flex flex-col items-center justify-center">

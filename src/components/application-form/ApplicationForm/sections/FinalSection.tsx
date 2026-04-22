@@ -8,26 +8,47 @@ import { Button } from "@/src/components/application-form/ui/button";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/src/components/application-form/ui/select";
 import { Card, CardHeader, CardTitle, CardContent, CardDescription } from "@/src/components/application-form/ui/card";
 import { Upload } from "lucide-react";
+import { toast } from "sonner";
 
 export const FinalSection = () => {
   const { register, control, setValue, watch, formState: { errors } } = useFormContext();
   const errorClass = "text-[11px] text-destructive mt-1 font-medium";
   const cvFile = watch("finalSection.cvFile");
 
-  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (file) {
-      // Untuk simulasi, kita simpan nama filenya saja
-      // Dalam produksi, Anda bisa mengupload ke server/cloud storage di sini
-      setValue("finalSection.cvFile", file.name);
+      if (file.size > 2 * 1024 * 1024) {
+        toast.error("File size exceeds 2MB limit.");
+        return;
+      }
+
+      const toastId = toast.loading("Uploading CV...");
+      try {
+        const response = await fetch(`/api/admin/upload?filename=${encodeURIComponent(file.name)}`, {
+          method: 'POST',
+          body: file,
+        });
+        
+        const blob = await response.json();
+        if (blob.url) {
+          setValue("finalSection.cvFile", blob.url); 
+          toast.success("CV uploaded successfully", { id: toastId });
+        } else {
+          throw new Error("Upload failed");
+        }
+      } catch (error) {
+        console.error("Upload error:", error);
+        toast.error("Failed to upload CV", { id: toastId });
+      }
     }
   };
 
   return (
     <div className="space-y-12">
-      <div className="border-l-4 border-blue-600 pl-4">
-        <h2 className="text-xl font-semibold text-slate-900 uppercase tracking-tight italic">{FORM_STATEMENTS.finalDeclaration.title}</h2>
-        <p className="text-sm text-slate-500 mt-1">{FORM_STATEMENTS.finalDeclaration.subtitle}</p>
+      <div className="border-l-4 border-black pl-6">
+        <h2 className="text-2xl font-black text-black uppercase tracking-tighter leading-none">{FORM_STATEMENTS.finalDeclaration.title}</h2>
+        <p className="text-[10px] font-bold text-gray-400 mt-2 uppercase tracking-[0.2em]">{FORM_STATEMENTS.finalDeclaration.subtitle}</p>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -79,14 +100,14 @@ export const FinalSection = () => {
               />
               <Label 
                 htmlFor="cv-upload" 
-                className="flex flex-col items-center justify-center w-full h-32 border-2 border-dashed border-slate-200 rounded-xl cursor-pointer hover:bg-slate-50 hover:border-blue-400 transition-all"
+                className="flex flex-col items-center justify-center w-full h-32 border-2 border-dashed border-gray-200 rounded-2xl cursor-pointer hover:bg-gray-50 hover:border-black transition-all"
               >
-                <div className="flex flex-col items-center justify-center pt-5 pb-6">
-                  <Upload className="w-8 h-8 text-slate-400 mb-2 group-hover:text-blue-500" />
-                  <p className="text-sm text-slate-600 font-medium">
+                <div className="flex flex-col items-center justify-center pt-5 pb-6 text-center px-4">
+                  <Upload className="w-8 h-8 text-gray-300 mb-2 group-hover:text-black transition-colors" />
+                  <p className="text-xs text-gray-600 font-bold uppercase tracking-widest">
                     {cvFile ? `Selected: ${cvFile}` : "Click to upload your CV"}
                   </p>
-                  <p className="text-xs text-slate-400 mt-1">PDF, DOC, DOCX (Max 2MB)</p>
+                  <p className="text-[10px] text-gray-400 mt-2 uppercase tracking-widest">PDF, DOC, DOCX (Max 2MB)</p>
                 </div>
               </Label>
             </div>
@@ -96,7 +117,7 @@ export const FinalSection = () => {
                 variant="ghost" 
                 size="sm" 
                 onClick={() => setValue("finalSection.cvFile", "")}
-                className="text-red-500 hover:text-red-700 hover:bg-red-50"
+                className="text-red-600 hover:text-red-700 font-bold uppercase tracking-widest text-[10px]"
               >
                 Remove
               </Button>
@@ -105,8 +126,8 @@ export const FinalSection = () => {
         </div>
       </div>
 
-      <Card className="bg-blue-50/50 border-blue-100 shadow-sm overflow-hidden">
-        <CardContent className="p-8 flex items-start gap-4">
+      <Card className="bg-black text-white border-none shadow-xl shadow-gray-200 overflow-hidden">
+        <CardContent className="p-10 flex items-start gap-6">
           <Controller
             name="finalSection.declaration"
             control={control}
@@ -115,18 +136,18 @@ export const FinalSection = () => {
                 id="declaration" 
                 checked={field.value} 
                 onCheckedChange={field.onChange} 
-                className="mt-1"
+                className="mt-1 border-white data-[state=checked]:bg-white data-[state=checked]:text-black"
               />
             )}
           />
-          <div className="grid gap-1.5 leading-none">
-            <Label htmlFor="declaration" className="text-sm font-medium leading-relaxed cursor-pointer select-none text-slate-700">
+          <div className="grid gap-3 leading-none">
+            <Label htmlFor="declaration" className="text-sm font-bold leading-relaxed cursor-pointer select-none text-white/90">
               {FORM_STATEMENTS.finalDeclaration.agreement.id}
             </Label>
-            <p className="text-xs italic text-slate-500 mt-2">
+            <p className="text-xs italic text-white/50 leading-relaxed">
               {FORM_STATEMENTS.finalDeclaration.agreement.en}
             </p>
-            {errors.finalSection?.declaration && <p className="text-sm text-destructive font-bold italic mt-2">{errors.finalSection.declaration.message as string}</p>}
+            {errors.finalSection?.declaration && <p className="text-xs text-red-400 font-black uppercase tracking-widest mt-4">{errors.finalSection.declaration.message as string}</p>}
           </div>
         </CardContent>
       </Card>

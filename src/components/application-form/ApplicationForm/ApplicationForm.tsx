@@ -32,7 +32,13 @@ export default function ApplicationForm({ token }: ApplicationFormProps) {
     mode: "onBlur",
     defaultValues: {
       personalData: { gender: "Laki-laki/Male", status: "Single" },
-      familyData: { siblings: [], children: [] },
+      familyData: { 
+        siblings: [
+          { name: "", placeDateOfBirth: "", occupation: "" },
+          { name: "", placeDateOfBirth: "", occupation: "" }
+        ], 
+        children: [] 
+      },
       courses: [],
       languages: [],
       employmentHistory: [{}, {}, {}],
@@ -81,58 +87,11 @@ export default function ApplicationForm({ token }: ApplicationFormProps) {
     }, 500);
   };
 
-  const fillDummyData = () => {
-    const today = new Date().toISOString().split('T')[0];
-    const dummy: ApplicationFormData = {
-      personalData: {
-        appliedPosition: "Expert Next.js Developer", vacancySource: "Direct", fullName: "Test Candidate",
-        gender: "Laki-laki/Male", nickname: "Tester", bloodType: "B", placeOfBirth: "Jakarta",
-        dateOfBirth: "1990-01-01", religion: "Islam", ktpNo: "1234567890123456",
-        ktpValidUntil: "2030-01-01", email: "test@example.com", mobilePhone: "08123456789",
-        currentAddress: "Jakarta", ktpAddress: "Jakarta", status: "Single",
-      },
-      familyData: {
-        father: { name: "Father Name", placeDateOfBirth: "Jakarta, 1960", occupation: "Retired" },
-        mother: { name: "Mother Name", placeDateOfBirth: "Jakarta, 1965", occupation: "Housewife" },
-        siblings: [], children: []
-      },
-      education: {
-        sd: { institution: "SD 01", major: "General", graduationYear: "2000", gpa: "3.0" },
-        sltp: { institution: "SMP 01", major: "General", graduationYear: "2003", gpa: "3.0" },
-        slta: { institution: "SMA 01", major: "IPA", graduationYear: "2006", gpa: "3.0" },
-      },
-      courses: [], languages: [],
-      employmentHistory: Array(3).fill({ 
-        companyName: "Company", jobTitle: "Dev", salary: "10M", officePhone: "021", 
-        startWorking: "2010", resigned: "2020", reasonForResignation: "Resign",
-        jobDesc: "Dev", businessType: "IT", supervisorName: "Boss", 
-        supervisorTitle: "CEO", reportingCount: "0" 
-      }),
-      socialActivities: [],
-      references: [
-        { name: "Reference 1", relationship: "Manager", jobTitle: "Lead", companyName: "Co", mobilePhone: "0811" }
-      ],
-      emergencyContacts: [
-        { name: "Emergency 1", relationship: "Brother", mobilePhone: "0811" },
-        { name: "Emergency 2", relationship: "Sister", mobilePhone: "0822" }
-      ],
-      finalSection: { 
-        expectedSalary: "15.000.000", 
-        availability: "Immediately", 
-        expectedJoinDate: today, 
-        declaration: true 
-      }
-    };
-    reset(dummy);
-    toast.info("Dummy data loaded!");
-  };
-
   const next = async () => {
     const fields = STEPS[currentStep].fields as any;
     const isValid = await trigger(fields, { shouldFocus: true });
     
     if (!isValid) {
-      toast.error("Please fix the errors before continuing.");
       const firstError = document.querySelector('[aria-invalid="true"]');
       if (firstError) firstError.scrollIntoView({ behavior: "smooth", block: "center" });
       return;
@@ -185,25 +144,29 @@ export default function ApplicationForm({ token }: ApplicationFormProps) {
     <div className="max-w-4xl mx-auto px-4 py-12 sm:px-6 lg:px-8 bg-white min-h-screen">
       <Toaster position="top-center" richColors />
       
-      <div className="mb-12 sticky top-0 bg-white/95 backdrop-blur-sm z-20 py-6 border-b border-slate-100">
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-6 mb-8">
+      <div className="mb-16 sticky top-0 bg-white/95 backdrop-blur-sm z-20 py-8 border-b-2 border-black">
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-8">
           <div>
-            <h1 className="text-3xl font-bold text-slate-900 tracking-tight italic uppercase">Application Form</h1>
-            <p className="text-sm text-muted-foreground mt-1 font-medium">
-              Step {currentStep + 1} of {STEPS.length}: <span className="text-blue-600">{STEPS[currentStep].title}</span>
+            <h1 className="text-3xl md:text-5xl font-black text-black tracking-tighter uppercase leading-none">Application Form</h1>
+            <p className="text-xs md:text-sm text-gray-400 mt-3 font-bold uppercase tracking-widest">
+              Aptitude Assessment System / Step {currentStep + 1} of {STEPS.length}
             </p>
           </div>
           <div className="flex items-center gap-3">
-            <Button variant="outline" size="sm" onClick={saveProgressManual} disabled={isSaving} className="text-blue-600 border-blue-100 hover:bg-blue-50">
+            <Button variant="outline" size="sm" onClick={saveProgressManual} disabled={isSaving} className="rounded-full border-gray-200 text-gray-400 hover:text-black hover:border-black">
               <Save className="w-4 h-4 mr-2" />
               {isSaving ? "Saving..." : "Save Draft"}
             </Button>
-            <Button variant="ghost" size="sm" onClick={fillDummyData} className="text-slate-400 hover:text-slate-600">
-              Fill Dummy
-            </Button>
           </div>
         </div>
-        <Progress value={progressValue} className="h-2" />
+        
+        <div className="space-y-3">
+            <div className="flex justify-between items-end">
+                <span className="text-[10px] font-black uppercase tracking-[0.2em] text-black">{STEPS[currentStep].title}</span>
+                <span className="text-[10px] font-mono text-gray-400">{Math.round(progressValue)}%</span>
+            </div>
+            <Progress value={progressValue} className="h-1.5" />
+        </div>
       </div>
 
       <FormProvider {...methods}>
@@ -223,24 +186,24 @@ export default function ApplicationForm({ token }: ApplicationFormProps) {
             {currentStep === 4 && <FinalSection />}
           </div>
 
-          <div className="flex w-full justify-between items-center pt-10 border-t border-slate-100 mt-10">
+          <div className="flex w-full justify-between items-center pt-10 border-t border-gray-100 mt-20">
             <Button 
               type="button" 
               variant="ghost"
               onClick={() => setCurrentStep(s => s - 1)} 
-              className={currentStep === 0 ? 'invisible' : 'visible text-slate-500'}
+              className={currentStep === 0 ? 'invisible' : 'visible text-gray-400 font-bold uppercase tracking-widest text-[10px] hover:text-black'}
             >
-              <ChevronLeft className="w-4 h-4 mr-2" /> Back
+              <ChevronLeft className="w-3 h-3 mr-2" /> Previous Step
             </Button>
             <Button 
               type="button" 
               onClick={currentStep < STEPS.length - 1 ? next : handleSubmit(onSubmit)}
               disabled={isSubmitting}
-              className="rounded-full px-8 bg-blue-600 hover:bg-blue-700 shadow-lg shadow-blue-200"
+              className="rounded-full px-12 bg-black text-white hover:bg-gray-800 shadow-xl shadow-gray-200 uppercase tracking-widest text-xs font-black"
             >
-              {isSubmitting ? "Submitting..." : currentStep < STEPS.length - 1 ? (
-                <>Continue <ChevronRight className="w-4 h-4 ml-2" /></>
-              ) : "Finalize & Submit"}
+              {isSubmitting ? "Processing..." : currentStep < STEPS.length - 1 ? (
+                <>Next Section <ChevronRight className="w-4 h-4 ml-2" /></>
+              ) : "Submit Application"}
             </Button>
           </div>
         </form>

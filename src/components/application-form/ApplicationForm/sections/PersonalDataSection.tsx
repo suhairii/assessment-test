@@ -14,9 +14,9 @@ export const PersonalDataSection = () => {
   return (
     <div className="space-y-10">
       <Card className="border-none shadow-none bg-transparent">
-        <CardHeader className="px-0 pt-0 border-l-4 border-blue-600 pl-4 rounded-none mb-6">
-          <CardTitle className="text-xl font-semibold text-slate-900 leading-none">A. Data Pribadi / Personal Data</CardTitle>
-          <CardDescription className="text-sm text-slate-500 mt-2">Provide your basic and legal information.</CardDescription>
+        <CardHeader className="px-0 pt-0 border-l-4 border-black pl-6 rounded-none mb-12">
+          <CardTitle className="text-2xl font-black text-black leading-none uppercase tracking-tighter">A. Data Pribadi / Personal Data</CardTitle>
+          <CardDescription className="text-[10px] font-bold text-gray-400 mt-2 uppercase tracking-[0.2em]">Provide your basic and legal information accurately.</CardDescription>
         </CardHeader>
         
         <CardContent className="px-0 grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6">

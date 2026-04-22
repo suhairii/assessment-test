@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import clientPromise from "@/src/lib/mongodb";
+import { ObjectId } from "mongodb";
 
 export const dynamic = 'force-dynamic';
 
@@ -67,5 +68,30 @@ export async function GET() {
       { success: false, error: "Failed to fetch applications" },
       { status: 500 }
     );
+  }
+}
+
+export async function DELETE(request: Request) {
+  try {
+    const { searchParams } = new URL(request.url);
+    const id = searchParams.get('id');
+
+    if (!id) {
+      return NextResponse.json({ success: false, error: 'ID is required' }, { status: 400 });
+    }
+
+    const client = await clientPromise;
+    const db = client.db(DB_NAME);
+    
+    const result = await db.collection(COLLECTION_NAME).deleteOne({ _id: new ObjectId(id) });
+
+    if (result.deletedCount === 0) {
+      return NextResponse.json({ success: false, error: 'Application not found' }, { status: 404 });
+    }
+
+    return NextResponse.json({ success: true });
+  } catch (error) {
+    console.error('Error deleting application:', error);
+    return NextResponse.json({ success: false, error: 'Failed to delete application' }, { status: 500 });
   }
 }
